@@ -1,0 +1,75 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>KPI08 - 스크롤시 이미지 크기 변화</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <script src="https://code.jquery.com/jquery-2.2.4.js"
+        integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+</head>
+
+<style>
+    body {
+        height: 1500px;
+		overflow-x:hidden;
+    }
+
+    * {
+        padding: 0;
+        margin: 0;
+        border: 0;
+        outline: none;
+    }
+
+    img {
+        max-width: 100%;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    ul,
+    li {
+        list-style: none;
+    }
+    .bg_img {
+	width:100%;
+	height:100%;
+	background:url('/file/bora/img/slide01.png')no-repeat center center;
+	transition:all 0.5s;
+}
+
+</style>
+
+<body>
+
+  
+    <div class="bg_img"></div>
+
+
+    <script>
+        $(window).ready(function () {
+
+            $(window).scroll(function() {
+				var scroll = $(window).scrollTop();
+				var scale = (scroll/5000)+1;
+
+				if(scroll > 50) {
+					$(".bg_img").css("transform", "scale(" + scale +")");
+				}else {
+					$(".bg_img").css("transform", "scale(1)");
+				}
+			})
+
+        })
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,119 @@
+{
+	"BarobillState": {
+		"description":"바로빌 상태값 테이블",
+		"table": [
+			{"code":"1000",		"description":"임시저장"},
+			{"code":"2010",		"description":"발행예정 승인대기"},
+			{"code":"2011",		"description":"발행예정 승인완료"},
+			{"code":"2020",		"description":"역발행요청 발행대기"},
+			{"code":"3011",		"description":"발행예정 발행완료"},
+			{"code":"3021",		"description":"역발행요청 발행완료"},
+			{"code":"3014",		"description":"발행완료"},
+			{"code":"4012",		"description":"발행예정 거부"},
+			{"code":"4022",		"description":"역발행요청 거부"},
+			{"code":"5013",		"description":"발행예정 승인 전 공급자에 의한 취소"},
+			{"code":"5023",		"description":"역발행요청 승인 전 공급받는자에 의한 취소"},
+			{"code":"5031",		"description":"발행예정 승인 후, 또는 발행완료 후 공급자에 의한 취소"}
+		]
+	},
+	"NTSSendResult": {
+		"description":"국세청 전송결과 테이블",
+		"table": [
+			{"code":"SUC001",	"description":"성공"},
+			{"code":"SYN002",	"description":"공급사업자, 수탁자 전자서명 오류<br>- 공급사업자 전자서명 또는 위수탁세금계산서의 경우 수탁자 전자서명이 유효하지 않는 경우"},
+			{"code":"SYN003",	"description":"승인번호 오류 <br>- 승인번호 형식이 안 맞는 경우"},
+			{"code":"SYN004",	"description":"전자세금계산서 스키마 오류 <br>- 유효하지 않은 전자세금계산서 구조(엘리먼트 중복, 필수 엘리먼트 미존재, 코드오류, 데이터 유형 오류 등)을 가진 경우"},
+			{"code":"ERR001",	"description":"공급자 사업자번호 오류 <br>- 국세청 미등록 사업자"},
+			{"code":"ERR002",	"description":"공급받는자 사업자번호 오류 <br>- 국세청 미등록 사업자 또는 미등록 주민등록번호인 경우"},
+			{"code":"ERR003",	"description":"수탁자 사업자번호 오류 <br>- 수탁사업자 존재 시 국세청 미등록사업자"},
+			{"code":"ERR004",	"description":"전송일시 오류 <br>- 국세청에 전송한 당일이 아닌 경우"},
+			{"code":"ERR005",	"description":"발행일시 오류 <br>- 발행일시가 유효하지 않는 경우, 발행일시가 전송일시 이후인 경우"},
+			{"code":"ERR006",	"description":"작성일시 오류 <br>- 작성일자가 유효하지 않은 경우, 작성일자가 발행일시 이후인 경우, 해당 과세 기간 내의 자료가 아닌 경우(수정세금계산서의 경우는 제외)"},
+			{"code":"ERR007",	"description":"공급가액, 세액 오류 <br>- 공급가액과 세액의 부호가 다른 경우, 수정세금계산서의 환입 또는 계약의 해제 시 금액이 + 값인 경우"},
+			{"code":"ERR008",	"description":"코드 유형 오류 <br>- 세금계산서 종류, 공급받는(사업)자 사업자등록번호 구분 코드, 수정세금계산서일 때 수정 코드에 오류가 있는 경우"},
+			{"code":"ERR009",	"description":"폐업사업자 발행오류 <br>- 공급자[수탁자]가 폐업신고일자 이후 계산서를 발행한 경우"},
+			{"code":"ERR010",	"description":"국세청 등록번호 오류 <br>- 발행시스템 승인번호의 국세청등록번호와 전송시스템의 국세청등록번호가 다른 경우"},
+			{"code":"ERR011",	"description":"당초승인번호 오류 <br>- 수정(세금)계산서에 당초승인번호가 없거나 공급자의 당초승인번호가 아닌 경우<br>- 일반(세금)계산서일 때 당초승인번호가 입력된 경우"},
+			{"code":"ERR999",	"description":"기타 오류"}
+		]
+	},
+	"FaxSendResult": {
+		"description":"팩스 전송 결과 테이블",
+		"table": [
+			{"code":"100",	"description":"과금실패"},
+			{"code":"101",	"description":"변환실패"},
+			{"code":"102",	"description":"변환실패 (30분 타임아웃)"},
+			{"code":"801",	"description":"부분완료 [부분환불]"},
+			{"code":"802",	"description":"완료"},
+			{"code":"803",	"description":"통화중 (재전송시도)"},
+			{"code":"804",	"description":"잘못된 수신번호 (환불)"},
+			{"code":"805",	"description":"응답없음 (환불)"},
+			{"code":"806",	"description":"수화기들음"},
+			{"code":"807",	"description":"수신거부 (환불)"},
+			{"code":"808",	"description":"알수없는 오류 (환불)"},
+			{"code":"809",	"description":"콜 혼잡 (환불)"},
+			{"code":"810",	"description":"파일변환 오류 (환불)"},
+			{"code":"811",	"description":"전송데이터 없음 (환불)"},
+			{"code":"812",	"description":"파일저장오류 (환불)"},
+			{"code":"813",	"description":"입력항목 오류 (환불)"},
+			{"code":"814",	"description":"소켓통신오류 (환불)"}
+		]
+	},
+	"ToGo": {
+		"description":"바로빌 특정 메뉴 코드값",
+		"table": [
+			{"code":"MAIN",					"description":"메인화면"},
+			{"code":"CERT",					"description":"공인인증서 등록"},
+			{"code":"CHRG",					"description":"포인트 충전"},
+			{"code":"JICIN",				"description":"직인 등록"},
+			{"code":"BLICENSE",				"description":"사업자등록증 사본 등록"},
+			{"code":"BANKBOOK",				"description":"통장사본 등록"},
+			{"code":"NTSOPT",				"description":"국세청 전송설정"},
+			{"code":"TI_INTEROPBOX",		"description":"전자세금계산서 - 임시저장(연동)함"},
+			{"code":"TI_PRESALESBOX",		"description":"전자세금계산서 - 매출발행 대기함"},
+			{"code":"TI_PREPURCHASEBOX",	"description":"전자세금계산서 - 매입승인 대기함"},
+			{"code":"TI_SALESBOX",			"description":"전자세금계산서 - 매출 보관함"},
+			{"code":"TI_PURCHASEBOX",		"description":"전자세금계산서 - 매입 보관함"},
+			{"code":"TI_TRUSTSALESBOX",		"description":"전자세금계산서 - 위수탁 보관함"},
+			{"code":"TI_CLIENTANAL",		"description":"전자세금계산서 - 거래처별 매출/매입"},
+			{"code":"TI_PERIODANAL",		"description":"전자세금계산서 - 기간별 매출/매입"},
+			{"code":"TI_WRITE",				"description":"전자세금계산서 - 매출 작성"},
+			{"code":"EDOC_INTEROPBOX",		"description":"전자문서 - 임시저장(연동)함"},
+			{"code":"EDOC_SALESBOX",		"description":"전자문서 - 발신 보관함"},
+			{"code":"EDOC_PURCHASEBOX",		"description":"전자문서 - 수신 보관함"},
+			{"code":"EDOC_CLIENTANAL",		"description":"전자문서 - 거래처별 매출/매입"},
+			{"code":"EDOC_PERIODANAL",		"description":"전자문서 - 기간별 매출/매입"},
+			{"code":"EDOC_WRITE_DI",		"description":"전자문서 - 거래명세서 작성"},
+			{"code":"EDOC_WRITE_PI",		"description":"전자문서 - 청구서 작성"},
+			{"code":"EDOC_WRITE_ES",		"description":"전자문서 - 견적서 작성"},
+			{"code":"EDOC_WRITE_PO",		"description":"전자문서 - 발주서 작성"},
+			{"code":"EDOC_WRITE_RS",		"description":"전자문서 - 입금표 작성"},
+			{"code":"EDOC_WRITE_RC",		"description":"전자문서 - 영수증 작성"},
+			{"code":"CASHBILL_INTEROPBOX",	"description":"현금영수증 - 임시저장(연동)함"},
+			{"code":"CASHBILL_SALESBOX",	"description":"현금영수증 - 발급 보관함"},
+			{"code":"CASHBILL_PURCHASEBOX",	"description":"현금영수증 - 수취 보관함"},
+			{"code":"CASHBILL_PERIODANAL",	"description":"현금영수증 - 기간별 통계"},
+			{"code":"CASHBILL_WRITE",		"description":"현금영수증 - 작성"},
+			{"code":"SMS",					"description":"문자 전송내역"},
+			{"code":"FAX",					"description":"팩스 전송내역"},
+			{"code":"HOMETAX_TI_REQ",		"description":"홈택스 세금계산서 연동 신청"},
+			{"code":"HOMETAX_CASHBILL_REQ",	"description":"홈택스 현금영수증 연동 신청"},
+			{"code":"CARDREQ",				"description":"카드 조회 서비스 신청"},
+			{"code":"CARDMGT",				"description":"카드정보 관리"},
+			{"code":"CARDLOG",				"description":"카드 사용내역"},
+			{"code":"BANKACCOUNTREQ",		"description":"계좌 조회 서비스 신청"},
+			{"code":"BANKACCOUNTMGT",		"description":"계좌정보 관리"},
+			{"code":"BANKACCOUNTLOG",		"description":"계좌 입출금내역"},
+			{"code":"CORPSTATEREQ",			"description":"휴폐업 조회 서비스 신청"}
+		]
+	},
+	"TI_ProcType": {
+		"description":"세금계산서 처리 코드값",
+		"table": [
+			{"code":"CANCEL",			"description":"- 발행예정 한 세금계산서의 승인요청을 공급받는자가 승인하기 전에 공급자가 취소하고자 하는 경우<br>- 역발행을 요청한 세금계산서를 공급자가 발행하기 전에 공급받는자가 취소하고자 하는 경우<br>"},
+			{"code":"ACCEPT",			"description":"발행예정 한 세금계산서를 공급받는자가 승인하고자 하는 경우"},
+			{"code":"REFUSE",			"description":"- 발행예정 한 세금계산서를 공급받는자가 거부하고자 하는 경우<br>- 역발행을 요청한 세금계산서를 공급자가 거부하고자 하는 경우"},
+			{"code":"ISSUE_CANCEL",		"description":"발행완료 된 세금계산서를 공급자가 취소하고자 하는 경우<br><span class='red'>국세청으로 전송되기 전에만 취소가능.</span>"}
+		]
+	}	
+}

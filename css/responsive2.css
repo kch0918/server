@@ -1,0 +1,264 @@
+@media only screen and (max-width: 1650px){
+
+}
+
+@media only screen and (max-width: 1350px){
+	.mtit-big{
+		font-size:62px;
+	}
+	.mtit-sp{
+		font-size:16px;
+	}
+	.mypage-top {
+		padding: 95px 30px 95px 100px;
+	}
+}
+
+@media only screen and (max-width: 1260px){
+	.mytop-name{
+		font-size:26px;
+		margin: 10px 0 58px;
+	}
+	.mytop-tit {
+		font-size: 22px;
+	}
+}
+
+@media only screen and (max-width: 1050px){
+	.mtit-big{
+		font-size:52px;
+	}
+	.mtit-sp, .log-prc > div{
+		font-size:14px;
+	}
+	.login-wr input, .log-ptxt > p, .log-fot a, .myn-bot p{
+		font-size:14px;
+	}
+	.login-btn, .myp-tit{
+		font-size:18px;
+	}
+	.login-bot {
+		padding: 80px 30px;
+	}
+	.login-box, .mypage-top {
+		padding:60px 30px;
+	}
+	.sub-top{
+	    padding: 100px 30px 30px;
+	}
+	.mypage-div {
+		padding: 60px 30px 0;
+	}
+	#fncForm .text-center {
+		margin-bottom: 70px;
+	}
+	.join-view .text-center {
+		margin-bottom: 50px;
+	}
+	.agree-cont{
+	    padding: 40px 30px;
+	}
+	.cli-info li span, .cli-info li a, .payment-final label, .myp-service ul p, .main_table .pick_list_num p, .table_1 tr th, .table_1 tr td{
+		font-size: 14px;
+	}
+	.cli-info li {
+		margin-bottom: 10px;
+	}
+	.myr-div h5 {
+		margin-bottom: 20px;
+	}
+	.myn-btit {
+		margin-bottom: 10px;
+	}
+	.mytop-name{
+	    margin: 10px 0 48px;
+	}
+	.myp-rec{
+	    padding: 60px 0;
+	    font-size: 20px;
+	}
+	.myp-payment .cell .myp-ptit {
+	    font-size: 18px;
+		margin: 0 0 35px;
+	}
+	.myp-payment{
+		padding:35px 10px;
+	}
+	.myp-payment .myp-rchk label, .myp-payment .myp-rchk label span{
+		font-size:16px;
+	}
+	.myp-payment .cell2 ul li {
+		margin: 0px 0 12px;
+	}
+	.payment p, .myp-service ul strong {
+		font-size: 16px;
+	}
+	.payment p span{
+		font-size:38px;
+	}
+	.payment {
+		padding: 20px 35px;
+	}
+	.myp-service ul{
+	    padding: 35px 0 10px;
+	}
+	
+}
+
+@media only screen and (max-width: 767px){
+	.close-btn {
+		width: 21px;
+		height: 21px;
+		position: absolute;
+		right: -25px;
+		top: -25px;
+		cursor: pointer;
+	}
+	.agree-popup .tb- .inner {
+		padding: 0 30px;
+	}
+	.log-ptxt > p{
+		display:inline-block;
+		padding:0 10px;
+	}
+	.log-ptxt > p.log-ptit {
+		display:block;
+	}
+	.login-btn, .payment-final .cell2 button{
+		font-size:16px;
+		height: 70px;
+		line-height: 70px;
+	}
+	.login-wr > div{
+		margin-bottom:15px;
+	}
+	#loginForm {
+		margin-bottom: 30px;
+	}
+	.login-wr input{
+		padding: 30px 0 12px;
+	}
+	.log-prc{
+	    margin: 20px auto;
+		padding: 20px;
+	}
+	.login-box {
+		padding: 40px 30px;
+	}
+	.login-bot {
+		padding: 60px 30px;
+	}
+	#fncForm .text-center {
+		margin-bottom: 40px;
+	}
+	.join-view .text-center {
+		margin-bottom: 30px;
+	}
+	.login-wr .join-chkwr > .join-chkall {
+		padding: 40px 0 15px;
+	}
+	.join-chkall label{
+		font-size:16px;
+	}
+	.join-chk label{
+		font-size:14px;
+	}
+	.login-wr .join-chkwr .join-chk{
+		padding:15px 0;
+	}
+	input[type=checkbox] + label:before, input[type=radio] + label:before{
+		width: 20px;
+		height: 20px;
+		background-size: 20px 20px;
+		margin-top:-13px;
+	}
+	.chk-box + .chk-box {
+		margin-top: 15px;
+	}
+	.agree-post{
+		font-size:12px;
+	}
+	.chk-box{
+	    padding-right: 90px;
+	}
+	.agree-post{
+		top:1px;
+	}
+	.login-wr .join-box {
+		margin-bottom: 25px;
+	}
+	.join-view .login-wr > div:nth-child(3) {
+		margin-bottom: 40px;
+	}
+	.p010{
+		padding:0;
+	}
+	.myp-service ul li{
+		width:33%;
+	}
+	.table_1 tr th, .table_1 tr td{
+		padding:0;
+	}
+	.table_1 thead{
+		display:none;
+	}
+	.notice_table .table_1{
+		margin-top:45px;
+		border-top:1px solid #000;
+	}
+	.main_table .pick_list_num{
+		top:-25px;
+	}
+	.table_1 tr td{
+		display:block;
+		border-bottom:0;
+	}
+	.table_1 tr{
+		display:block;
+		padding:10px 15px;
+		border-bottom: 1px solid #e5e5e5;
+	}
+}
+@media only screen and (max-width: 550px){
+	.table > div{
+		display:block;
+	}
+	.log-fot > div{
+		display:table-cell;
+	}
+	.log-prc > div{
+		width:50%;
+		float:left;
+	}
+	.log-prc > div:nth-child(3):before{
+		display:none;
+	}
+	.ser-name{
+		margin:0;
+	}
+	.log-ptxt > p.log-ptit{
+		margin-bottom:5px;
+	}
+	.joine-popup .agree-cont{
+		width:90%;
+	}
+	.joine-tit {
+	   font-size: 18px;
+	}
+	.joine-stit {
+		margin-bottom: 30px;
+		word-break:keep-all;
+	}
+	.joine-stit br{
+		display:none;
+	}
+	.joine-div img{
+		margin-top:0;
+	}
+	.myp-service ul li{
+		width:50%;
+	}
+	.notice_list tr th:first-child, .notice_list tr td:first-child, .notice_list tr th:nth-child(3), .notice_list tr td:nth-child(3){
+		display:block;
+	}
+}

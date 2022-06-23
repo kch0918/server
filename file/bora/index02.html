@@ -1,0 +1,202 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>KPI02 - 브라우저 창 크기 비율에 맞게 동영상 팝업으로 띄우기</title>
+
+    <script src="https://code.jquery.com/jquery-2.2.4.js"
+        integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+</head>
+
+<style>
+    body {
+        height: 950px;
+        text-align: center;
+    }
+
+    * {
+        padding: 0;
+        margin: 0;
+        border: 0;
+        outline: none;
+    }
+
+    img {
+        max-width: 100%;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    .vid_wr {
+        display: table;
+        width: 100%;
+        height: 950px;
+        background: #111;
+        text-align: center;
+    }
+
+    .vid_pop {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+        display: none;
+    }
+
+    .iframe_wrap {
+        width: 60%;
+        height: 100%;
+        top: 0%;
+        left: 20%;
+    }
+
+    .vid_pop iframe {
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin: auto;
+        top: 50%;
+    }
+
+    .vid_pop .btn_close {
+        position: absolute;
+        right: 30px;
+        top: 30px;
+        cursor: pointer;
+        z-index: 999;
+
+    }
+
+    .btn_box {
+        display: table-cell;
+        vertical-align: middle;
+    }
+
+    .btn_play {
+        position: relative;
+        width: 80px;
+        height: 80px;
+        background: url('http://rora.dechive.co.kr/img/icon_play.png')no-repeat center center;
+        background-size: 80px 80px;
+        margin: 0 auto;
+        cursor: pointer;
+        transition: all 0.5s;
+    }
+
+    .btn_play:before {
+        content: '';
+        position: absolute;
+        width: 128px;
+        height: 128px;
+        top: 50%;
+        margin-top: -64px;
+        left: 50%;
+        margin-left: -64px;
+        background: url('http://rora.dechive.co.kr/img/icon_play2.png')no-repeat center center;
+        background-size: 128px 128px;
+        opacity: 0.8;
+        transform: rotate(7deg);
+    }
+
+    .btn_play:after {
+        content: '';
+        position: absolute;
+        width: 1px;
+        height: 51px;
+        bottom: -51px;
+        left: 0;
+        right: 0;
+        margin: auto;
+        background: #fff;
+        opacity: 0.5;
+    }
+
+    .btn_play:hover {
+        background: url('http://rora.dechive.co.kr/img/icon_play_ho.png')no-repeat center center;
+        background-size: 80px 80px;
+    }
+
+    .btn_play:hover:before {
+        animation: rotate 2s 1;
+    }
+
+    .play_txt {
+        font-size: 19px;
+        color: #fff;
+        margin-top: 58px;
+    }
+
+    @keyframes rotate {
+        0% {
+            transform: rotate(7deg);
+            -webkit-transform: rotate(7deg);
+            -ms-transform: rotate(7deg);
+        }
+
+        100% {
+            transform: rotate(367deg);
+            -webkit-transform: rotate(367deg);
+            -ms-transform: rotate(367deg);
+        }
+    }
+</style>
+
+<body>
+    <div class="vid_wr">
+        <div class="btn_box">
+            <div class="btn_play"></div>
+            <p class="play_txt">PLAY VIDEO</p>
+        </div>
+    </div>
+
+    <div class="vid_pop">
+         <iframe src="https://www.youtube.com/embed/EYSLLoRldy8" frameborder="0" llowfullscreen="allowfullscreen"></iframe>
+        <img class="btn_close" src="http://rora.dechive.co.kr/img/btn_close.png">
+    </div>
+
+
+
+    <script>
+        $(window).ready(function () {
+            $(".btn_play").each(function () {
+                var src = $(".vid_pop").find("iframe").attr("src");
+                var widd = $(document).width();
+
+                $(this).on("click", function () {
+                    pop_go();
+                })
+
+                function pop_go() {
+                    $(".vid_pop").find("iframe").attr("src", src);
+                    $(".vid_pop iframe").css({ "width": widd * 0.65, "height": widd * 0.37, "margin-top": -(widd * 0.37) / 2 });
+                    $(".vid_pop").show();
+                }
+            })
+
+            $(".btn_close").on("click", function () {
+                close();
+            })
+
+            function close() {
+                $(".vid_pop").hide();
+                $(".vid_pop iframe").attr("src", "");
+            }
+
+
+
+        })
+
+
+
+    </script>
+
+</body>
+
+</html>

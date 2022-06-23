@@ -1,0 +1,36 @@
+/*
+#edm {width:100%;max-width:700px;margin:0 auto;background:White;}
+.edm-top {padding:50px;}
+.edm-top .inner {position:relative;}
+.edm-top .edm-logo {float:right;margin-bottom:40px;}
+.edm-top .tbox {display:table;width:100%;}
+
+.edm-top .tbox-1 {padding-bottom:30px;margin-bottom:30px;border-bottom:1px solid #e1e1e1;}
+.edm-top .tbox-1 span,.edm-top .tbox strong, .edm-top .tbox p {display:block;}
+.edm-top .tbox-1 span {font-family: "Times New Roman", Times, serif;	font-style: italic;font-size:18px;font-weight:400;color:#333333;}
+.edm-top .tbox-1 strong {font-size:38px;font-weight:bold;color:#333333;margin:3px 0 25px;letter-spacing:-2px;}
+.edm-top .tbox-1 p {font-size:16px;color:#7a7a7a;}
+
+.edm-top .tbox-2 p {display:block;font-size:0;}
+.edm-top .tbox-2 p:not(:last-child) {margin-bottom:5px;}
+.edm-top .tbox-2 span {display:inline-block;vertical-align:middle;font-size:16px;color:inherit;}
+.edm-top .tbox-2 .edm-expiration-date span{font-weight:bold;color:#6bc0cb !important;}
+.edm-top .tbox-2 .edm-expiration-date span:last-child {position:relative;top:1px;}
+.edm-top .tbox-2 .edm-important {font-size:16px;font-weight:500;color:#6bc0cb;letter-spacing:-1px;}
+.edm-top .tbox-2 span:first-child {font-weight:bold;color:#7a7a7a;letter-spacing:-1px;margin-right:10px;}
+
+.edm-link-wrap .link-box {display:table;width:100%;height:200px;background:#f5f5f5;text-align:center;}
+.edm-link-wrap .link-box-1 {margin-bottom:5px;}
+.edm-link-wrap .link-box > div {display:table-cell;vertical-align:middle;}
+.edm-link-wrap .link-box > div p {font-size:18px;color:#000000;}
+.edm-link-wrap .link-box > div a {display:block;width:260px;height:50px;line-height:50px;text-align:center;margin:20px auto 0;font-size:15px;color:#ffffff;}
+.edm-link-wrap .link-box-1 > div a {background:#333333;}
+.edm-link-wrap .link-box-2 > div a {background:#00a6b6;}
+
+.edm-bottom {text-align:center;padding:45px 50px;}
+.edm-bottom p {display:block;font-size:16px;color:#7a7a7a;}
+.edm-bottom .en-text {font-size:60px;font-weight:bold;color:#f0f0f0;margin:10px 0;}
+.edm-bottom .questions-box {padding:30px 0 0 0;margin:30px 0 0 0;border-top:1px solid #e6e6e6;}
+.edm-bottom .questions-box strong {display:block;margin:5px 0 ;font-size:16px;font-weight:bold;color:rgba(0,0,0,.8);}
+.edm-bottom .questions-box strong img {position:relative;top:1px;margin-right:5px;}
+*/

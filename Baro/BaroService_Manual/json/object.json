@@ -1,0 +1,617 @@
+{
+	"Contact": {
+		"description":"바로빌 회원사 담당자 정보",
+		"field": [
+			{"required":"O",	"type":"string",	"length":"20",	"name":"ID",			"description":"바로빌 회원 아이디",	"remark":"대소문자 구분"},
+			{"required":"O",	"type":"string",	"length":"30",	"name":"ContactName",	"description":"담당자명",			"remark":""},
+			{"required":"X",	"type":"string",	"length":"20",	"name":"Grade",			"description":"직급",				"remark":""},
+			{"required":"X",	"type":"string",	"length":"20",	"name":"TEL",			"description":"전화번호",			"remark":""},
+			{"required":"X",	"type":"string",	"length":"20",	"name":"HP",			"description":"휴대폰",				"remark":""},
+			{"required":"O",	"type":"string",	"length":"40",	"name":"Email",			"description":"이메일",				"remark":""}
+		]
+	},
+	"AttachedFile": {
+		"description":"첨부파일 정보",
+		"field": [
+			{"required":"O",	"type":"int",		"length":"",	"name":"FileIndex",			"description":"순번",			"remark":"DeleteAttachedFileWithIndex 에서 활용"},
+			{"required":"O",	"type":"string",	"length":"300",	"name":"FileName",			"description":"파일명",			"remark":"첨부된 파일의 실제파일명"},
+			{"required":"O",	"type":"string",	"length":"300",	"name":"DisplayFileName",	"description":"표시 파일명",	"remark":"메일,화면상에 표시되는 파일명"}
+		]
+	},
+	"EMAILPUBLICKEY": {
+		"description":"대용량연계사업자 이세로 공개키 등록 이메일",
+		"field": [
+			{"required":"O",	"type":"string",	"length":"",	"name":"Email",			"description":"이메일 주소",			"remark":""},
+			{"required":"O",	"type":"string",	"length":"8",	"name":"NTSCertNum",	"description":"국세청 표준인증번호",	"remark":""}
+		]
+	},
+	"InvoiceLog": {
+		"description":"문서 처리 이력 정보",
+		"field": [
+			{"required":"O",	"type":"int",		"length":"",	"name":"Seq",				"description":"순번",			"remark":""},
+			{"required":"O",	"type":"string",	"length":"",	"name":"LogType",			"description":"이력형태",		"remark":""},
+			{"required":"O",	"type":"string",	"length":"70",	"name":"ProcCorpName",		"description":"처리 회사명",	"remark":""},
+			{"required":"O",	"type":"string",	"length":"30",	"name":"ProcContactName",	"description":"처리 담당자명",	"remark":""},
+			{"required":"O",	"type":"string",	"length":"14",	"name":"LogDateTime",		"description":"이력일시",		"remark":"yyyyMMddHHmmss 형식"},
+			{"required":"X",	"type":"string",	"length":"",	"name":"Memo",				"description":"메모",			"remark":""}
+		]
+	},
+	"InvoiceParty": {
+		"description":"공급자, 공급받는자, 수탁자 정보",
+		"field": [
+			{"required":"△",	"type":"string",	"length":"24",	"name":"MgtNum",		"description":"연동사부여 문서키",	"remark":""},
+			{"required":"O",	"type":"string",	"length":"13",	"name":"CorpNum",		"description":"사업자번호",			"remark":"'-'를 제외한 숫자만 입력<br><br>개인의 경우 주민등록번호 13자리, 외국인인 경우 '9999999999999'를 입력하고, 비고1 에 외국인등록번호 또는 여권번호 기입"},
+			{"required":"X",	"type":"string",	"length":"4",	"name":"TaxRegID",		"description":"종사업장 번호",		"remark":"사업자 단위 과세제도 사용시 국세청 부여 종사업장 식별번호 숫자 4자리"},
+			{"required":"O",	"type":"string",	"length":"70",	"name":"CorpName",		"description":"회사명",				"remark":"특수문자 사용 불가<br><br>ex. 특수문자 중 1 byte '㈜' 는 '(주)'로 입력"},
+			{"required":"O",	"type":"string",	"length":"30",	"name":"CEOName",		"description":"대표자명",			"remark":""},
+			{"required":"O",	"type":"string",	"length":"150",	"name":"Addr",			"description":"주소",				"remark":""},
+			{"required":"X",	"type":"string",	"length":"40",	"name":"BizClass",		"description":"업종",				"remark":""},
+			{"required":"X",	"type":"string",	"length":"40",	"name":"BizType",		"description":"업태",				"remark":""},  
+			{"required":"△",	"type":"string",	"length":"20",	"name":"ContactID",		"description":"바로빌 회원 아이디",	"remark":"대소문자 구분"},
+			{"required":"O",	"type":"string",	"length":"30",	"name":"ContactName",	"description":"담당자명",			"remark":""},
+			{"required":"X",	"type":"string",	"length":"20",	"name":"TEL",			"description":"전화번호",			"remark":""},
+			{"required":"X",	"type":"string",	"length":"20",	"name":"HP",			"description":"휴대폰",				"remark":""},
+			{"required":"△",	"type":"string",	"length":"40",	"name":"Email",			"description":"이메일",				"remark":""}
+		]
+	},
+	"LinkedDoc": {
+		"description":"연결된 문서 정보",
+		"field": [
+			{"required":"O",	"type":"int",		"length":"",	"name":"DocType",		"description":"문서 형태",			"remark":"1:세금계산서 2:계산서 3:전자문서"},
+			{"required":"O",	"type":"string",	"length":"24",	"name":"InvoiceKey",	"description":"바로빌부여 관리키",	"remark":""},
+			{"required":"O",	"type":"string",	"length":"24",	"name":"MgtKey",		"description":"연동사부여 문서키",	"remark":""}
+		]
+	},
+	"NTSSendOption": {
+		"description":"국세청 전송 설정 정보",
+		"field": [
+			{"required":"O",	"type":"int",	"length":"",	"name":"TaxationOption",			"description":"과세,영세 국세청 전송방법",	"remark":"1:발행 익일 자동전송 2:발행 즉시 전송"},
+			{"required":"O",	"type":"int",	"length":"",	"name":"TaxationAddTaxAllowYN",		"description":"과세,영세 가산세 허용여부",	"remark":"1:허용 0:차단"},
+			{"required":"O",	"type":"int",	"length":"",	"name":"TaxExemptionOption",		"description":"면세 국세청 전송방법",		"remark":"1:발행 익일 자동전송 2:발행 즉시 전송 3:수동전송"},
+			{"required":"O",	"type":"int",	"length":"",	"name":"TaxExemptionAddTaxAllowYN",	"description":"면세 가산세 허용여부",		"remark":"1:허용 0:차단"}
+		]
+	},
+	"TaxInvoice": {
+		"description":"(세금)계산서 정보",
+		"field": [
+			{"required":"O",	"type":"object",	"length":"",	"name":"InvoicerParty",				"description":"공급자 정보",		"remark":"",	"object":"InvoiceParty"},
+			{"required":"O",	"type":"object",	"length":"",	"name":"InvoiceeParty",				"description":"공급받는자 정보",	"remark":"",	"object":"InvoiceParty"},
+			{"required":"X",	"type":"object",	"length":"",	"name":"BrokerParty",				"description":"수탁자 정보",		"remark":"<span class='red'>위수탁(세금)계산서 등록/수정시에는 필수</span>",	"object":"InvoiceParty"},
+			{"required":"X",	"type":"string",	"length":"40",	"name":"InvoiceeASPEmail",			"description":"ASP 이메일",			"remark":"타 대용량 연계사업자의 이메일 주소를 기입합니다. 기입 시 국세청 전송완료 후 해당 이메일로 암호화된 전자(세금)계산서 XML파일을 첨부하여 전송하게 됩니다."},
+			{"required":"O",	"type":"int",		"length":"",	"name":"IssueDirection",			"description":"발행방향",			"remark":"1:정발행 2:역발행"},
+			{"required":"O",	"type":"int",		"length":"",	"name":"TaxInvoiceType",			"description":"(세금)계산서 형태",	"remark":"1:세금계산서 2:계산서 4:위수탁세금계산서 5:위수탁계산서 7:수입세금계산서 8:수입계산서"},
+			{"required":"O",	"type":"int",		"length":"",	"name":"TaxType",					"description":"과세형태",			"remark":"1:과세 2:영세 3:면세(계산서)"},
+			{"required":"O",	"type":"int",		"length":"",	"name":"TaxCalcType",				"description":"세율계산형태",		"remark":"1:절상 2:절사 3:반올림"},
+			{"required":"O",	"type":"int",		"length":"",	"name":"PurposeType",				"description":"영수/청구형태",		"remark":"1:영수 2:청구"},
+			{"required":"X",	"type":"string",	"length":"1",	"name":"ModifyCode",				"description":"수정사유 코드",		"remark":"<span class='red'>수정(세금)계산서 작성 시 필수</span><br><br>1:기재사항의 착오/정정 2:공급가액의 변동 3:재화의 환입 4:계약의 혜제 5:내국신용장 사후개설 6:단순 착오에 의한 이중발급"},
+			{"required":"O",	"type":"string",	"length":"8",	"name":"WriteDate",					"description":"작성일자",			"remark":"yyyyMMdd 형식, 미입력시 기본값은 현재일자."},
+			{"required":"O",	"type":"string",	"length":"18",	"name":"AmountTotal",				"description":"공급가액",			"remark":"소수점 불가, 컴마(',')를 제외한 숫자만 입력"},
+			{"required":"O",	"type":"string",	"length":"18",	"name":"TaxTotal",					"description":"세액",				"remark":"소수점 불가, 컴마(',')를 제외한 숫자만 입력"},
+			{"required":"O",	"type":"string",	"length":"18",	"name":"TotalAmount",				"description":"합계금액",			"remark":"소수점 불가, 컴마(',')를 제외한 숫자만 입력"},
+			{"required":"X",	"type":"string",	"length":"18",	"name":"Cash",						"description":"현금",				"remark":"소수점 불가, 컴마(',')를 제외한 숫자만 입력"},
+			{"required":"X",	"type":"string",	"length":"18",	"name":"ChkBill",					"description":"수표",				"remark":"소수점 불가, 컴마(',')를 제외한 숫자만 입력"},
+			{"required":"X",	"type":"string",	"length":"18",	"name":"Note",						"description":"어음",				"remark":"소수점 불가, 컴마(',')를 제외한 숫자만 입력"},
+			{"required":"X",	"type":"string",	"length":"18",	"name":"Credit",					"description":"외상미수금",			"remark":"소수점 불가, 컴마(',')를 제외한 숫자만 입력"},
+			{"required":"X",	"type":"string",	"length":"4",	"name":"Kwon",						"description":"권",					"remark":"별지서식 11호 상의 [권] 항목"},
+			{"required":"X",	"type":"string",	"length":"4",	"name":"Ho",						"description":"호",					"remark":"별지서식 11호 상의 [호] 항목"},
+			{"required":"X",	"type":"string",	"length":"27",	"name":"SerialNum",					"description":"일련번호",			"remark":"별지서식 11호 상의 [일련번호] 항목"},
+			{"required":"X",	"type":"string",	"length":"150",	"name":"Remark1",					"description":"비고1",				"remark":""},
+			{"required":"X",	"type":"string",	"length":"150",	"name":"Remark2",					"description":"비고2",				"remark":""},
+			{"required":"X",	"type":"string",	"length":"150",	"name":"Remark3",					"description":"비고3",				"remark":""},
+			{"required":"O",	"type":"object[]",	"length":"",	"name":"TaxInvoiceTradeLineItems",	"description":"품목 상세 목록",		"remark":"최대 99개까지 등록 가능",		"object":"TaxInvoiceTradeLineItem[]"}
+		]
+	},
+	"TaxInvoiceTradeLineItem": {
+		"description":"(세금)계산서 품목 상세",
+		"field": [
+			{"required":"X",	"type":"string",	"length":"8",	"name":"PurchaseExpiry",	"description":"공급일자",	"remark":"yyyyMMdd 형식"},
+			{"required":"X",	"type":"string",	"length":"100",	"name":"Name",				"description":"품목",		"remark":""},
+			{"required":"X",	"type":"string",	"length":"60",	"name":"Information",		"description":"규격",		"remark":""},
+			{"required":"X",	"type":"string",	"length":"12",	"name":"ChargeableUnit",	"description":"수량",		"remark":"소수점 2자리 허용, 컴마(',')를 제외한 숫자만 입력"},
+			{"required":"X",	"type":"string",	"length":"18",	"name":"UnitPrice",			"description":"단가",		"remark":"소수점 2자리 허용, 컴마(',')를 제외한 숫자만 입력"},
+			{"required":"X",	"type":"string",	"length":"18",	"name":"Amount",			"description":"공급가액",	"remark":"소수점 불가, 컴마(',')를 제외한 숫자만 입력"},
+			{"required":"X",	"type":"string",	"length":"18",	"name":"Tax",				"description":"세액",		"remark":"소수점 불가, 컴마(',')를 제외한 숫자만 입력"},
+			{"required":"X",	"type":"string",	"length":"40",	"name":"Description",		"description":"비고",		"remark":""}
+		]
+	},
+	"TaxInvoiceState": {
+		"description":"(세금)계산서 상태 정보",
+		"field": [
+			{"required":"O",	"type":"string",	"length":"24",	"name":"MgtKey",		"description":"연동사부여 문서키",			"remark":""},
+			{"required":"O",	"type":"int",		"length":"",	"name":"BarobillState",	"description":"바로빌 상태",				"remark":"",		"code":"BarobillState"},
+			{"required":"O",	"type":"int",		"length":"",	"name":"NTSSendState",	"description":"국세청 전송상태",			"remark":"1:전송전 2:전송대기 3:전송중 4:전송완료 5:전송실패"},
+			{"required":"X",	"type":"string",	"length":"24",	"name":"NTSSendKey",	"description":"국세청 승인번호",			"remark":"홈텍스 조회시 사용 가능"},
+			{"required":"X",	"type":"string",	"length":"6",	"name":"NTSSendResult",	"description":"국세청 전송결과",			"remark":"",		"code":"NTSSendResult"},
+			{"required":"X",	"type":"string",	"length":"14",	"name":"NTSSendDT",		"description":"국세청 전송일시",			"remark":"yyyyMMddHHmmss 형식"},
+			{"required":"X",	"type":"string",	"length":"14",	"name":"NTSResultDT",	"description":"국세청 전송결과 수신일시",	"remark":"yyyyMMddHHmmss 형식"},
+			{"required":"O",	"type":"int",		"length":"",	"name":"IsOpened",		"description":"수신자 개봉여부",			"remark":"0:미개봉 1:개봉"},
+			{"required":"X",	"type":"string",	"length":"200",	"name":"Remark1",		"description":"비고1",						"remark":"상태처리에 대한 요청자의 처리사유"},
+			{"required":"X",	"type":"string",	"length":"200",	"name":"Remark2",		"description":"비고2",						"remark":"상태처리에 대한 수신자의 처리사유"}
+		]
+	},
+	"TaxInvoiceStateEX": {
+		"description":"(세금)계산서 상태 정보 (확장)",
+		"field": [
+			{"required":"O",	"type":"string",	"length":"24",	"name":"MgtKey",		"description":"연동사부여 문서키",			"remark":""},
+			{"required":"O",	"type":"int",		"length":"",	"name":"BarobillState",	"description":"바로빌 상태",				"remark":"",		"code":"BarobillState"},
+			{"required":"O",	"type":"int",		"length":"",	"name":"NTSSendState",	"description":"국세청 전송상태",			"remark":"1:전송전 2:전송대기 3:전송중 4:전송완료 5:전송실패"},
+			{"required":"X",	"type":"string",	"length":"24",	"name":"NTSSendKey",	"description":"국세청 승인번호",			"remark":"홈텍스 조회시 사용 가능"},
+			{"required":"X",	"type":"string",	"length":"6",	"name":"NTSSendResult",	"description":"국세청 전송결과",			"remark":"",		"code":"NTSSendResult"},
+			{"required":"X",	"type":"string",	"length":"14",	"name":"NTSSendDT",		"description":"국세청 전송일시",			"remark":"yyyyMMddHHmmss 형식"},
+			{"required":"X",	"type":"string",	"length":"14",	"name":"NTSResultDT",	"description":"국세청 전송결과 수신일시",	"remark":"yyyyMMddHHmmss 형식"},
+			{"required":"O",	"type":"int",		"length":"",	"name":"IsOpened",		"description":"수신자 개봉여부",			"remark":"0:미개봉 1:개봉"},
+			{"required":"O",	"type":"int",		"length":"",	"name":"IsConfirmed",	"description":"수신자 확인여부",			"remark":"0:미확인 1:확인"},
+			{"required":"O",	"type":"string",	"length":"14",	"name":"RegistDT",		"description":"등록일시",					"remark":"yyyyMMddHHmmss 형식"},
+			{"required":"O",	"type":"string",	"length":"10",	"name":"WriteDate",		"description":"작성일자",					"remark":"yyyyMMdd 형식"},
+			{"required":"X",	"type":"string",	"length":"14",	"name":"PreIssueDT",	"description":"발행예정일시",				"remark":"yyyyMMddHHmmss 형식"},
+			{"required":"X",	"type":"string",	"length":"14",	"name":"IssueDT",		"description":"발행일시",					"remark":"yyyyMMddHHmmss 형식"},
+			{"required":"X",	"type":"string",	"length":"200",	"name":"Remark1",		"description":"비고1",						"remark":"상태처리에 대한 요청자의 처리사유"},
+			{"required":"X",	"type":"string",	"length":"200",	"name":"Remark2",		"description":"비고2",						"remark":"상태처리에 대한 수신자의 처리사유"}
+		]
+	},
+	"PagedTaxInvoice": {
+		"description":"페이징 된 (세금)계산서 요약 내역",
+		"field": [
+			{"required":"O",	"type":"int",		"length":"",	"name":"MaxIndex",				"description":"전체 건수",				"remark":""},
+			{"required":"O",	"type":"int",		"length":"",	"name":"CountPerPage",			"description":"페이지 당 건수",			"remark":"10 ~ 100 허용"},
+			{"required":"O",	"type":"int",		"length":"",	"name":"MaxPageNum",			"description":"최대 페이지 수",			"remark":""},
+			{"required":"O",	"type":"int",		"length":"",	"name":"CurrentPage",			"description":"현재 페이지",			"remark":""},
+			{"required":"X",	"type":"object[]",	"length":"",	"name":"SimpleTaxInvoiceList",	"description":"(세금)계산서 요약 목록",	"remark":"",	"object":"SimpleTaxInvoice[]"}
+		]
+	},
+	"SimpleTaxInvoice": {
+		"description":"(세금)계산서 요약 정보",
+		"field": [
+			{"required":"O",	"type":"string",	"length":"24",	"name":"NTSSendKey",	"description":"국세청 승인번호",		"remark":""},
+			{"required":"O",	"type":"string",	"length":"13",	"name":"CorpNum",		"description":"거래처 사업자번호",		"remark":""},
+			{"required":"X",	"type":"string",	"length":"4",	"name":"TaxRegID",		"description":"거래처 종사업장번호",	"remark":""},
+			{"required":"O",	"type":"string",	"length":"70",	"name":"CorpName",		"description":"거래처 회사명",			"remark":""},
+			{"required":"O",	"type":"string",	"length":"30",	"name":"CEOName",		"description":"거래처 대표자명",		"remark":""},
+			{"required":"O",	"type":"string",	"length":"8",	"name":"WriteDate",		"description":"작성일자",				"remark":"yyyyMMdd 형식"},
+			{"required":"O",	"type":"int",		"length":"",	"name":"TaxType",		"description":"과세형태",				"remark":"1:과세 2:영세 3:면세(계산서)"},
+			{"required":"X",	"type":"string",	"length":"1",	"name":"ModifyCode",	"description":"수정사유 코드",			"remark":"1:기재사항의 착오/정정<br>2:공급가액의 변동<br>3:재화의 환입<br>4:계약의 혜제<br>5:내국신용장 사후개설<br>6:단순 착오에 의한 이중발급<br>99:식별불가"},
+			{"required":"O",	"type":"string",	"length":"18",	"name":"AmountTotal",	"description":"공급가액",				"remark":""},
+			{"required":"O",	"type":"string",	"length":"18",	"name":"TaxTotal",		"description":"세액",					"remark":""},
+			{"required":"O",	"type":"string",	"length":"18",	"name":"TotalAmount",	"description":"합계금액",				"remark":""}
+		]
+	},
+	"PagedTaxInvoiceEx": {
+		"description":"페이징 된 (세금)계산서 요약 내역 (대표품목 포함)",
+		"field": [
+			{"required":"O",	"type":"int",		"length":"",	"name":"MaxIndex",					"description":"전체 건수",				"remark":""},
+			{"required":"O",	"type":"int",		"length":"",	"name":"CountPerPage",				"description":"페이지 당 건수",			"remark":"10 ~ 100 허용"},
+			{"required":"O",	"type":"int",		"length":"",	"name":"MaxPageNum",				"description":"최대 페이지 수",			"remark":""},
+			{"required":"O",	"type":"int",		"length":"",	"name":"CurrentPage",				"description":"현재 페이지",			"remark":""},
+			{"required":"X",	"type":"object[]",	"length":"",	"name":"SimpleTaxInvoiceExList",	"description":"(세금)계산서 요약 목록",	"remark":"",	"object":"SimpleTaxInvoiceEx[]"}
+		]
+	},
+	"SimpleTaxInvoiceEx": {
+		"description":"(세금)계산서 요약 정보 (대표품목 포함)",
+		"field": [
+			{"required":"O",	"type":"string",	"length":"24",	"name":"NTSSendKey",			"description":"국세청 승인번호",			"remark":""},
+			{"required":"O",	"type":"string",	"length":"14",	"name":"NTSSendDT",				"description":"국세청전송일자",				"remark":"yyyyMMddHHmmss 형식"},
+			{"required":"O",	"type":"string",	"length":"14",	"name":"IssueDT",				"description":"발행일자",					"remark":"yyyyMMddHHmmss 형식"},
+			{"required":"O",	"type":"string",	"length":"8",	"name":"WriteDate",				"description":"작성일자",					"remark":"yyyyMMdd 형식"},
+			{"required":"X",	"type":"string",	"length":"1",	"name":"ModifyCode",			"description":"수정사유 코드",				"remark":"1:기재사항의 착오/정정<br>2:공급가액의 변동<br>3:재화의 환입<br>4:계약의 혜제<br>5:내국신용장 사후개설<br>6:단순 착오에 의한 이중발급<br>99:식별불가"},
+			{"required":"O",	"type":"int",		"length":"",	"name":"TaxType",				"description":"과세형태",					"remark":"1:과세 2:영세 3:면세(계산서)"},
+			{"required":"O",	"type":"int",		"length":"",	"name":"PurposeType",			"description":"영수/청구",					"remark":"1:영수 2:청구"},
+			{"required":"O",	"type":"string",	"length":"13",	"name":"InvoicerCorpNum",		"description":"공급자 사업자번호",			"remark":""},
+			{"required":"X",	"type":"string",	"length":"4",	"name":"InvoicerTaxRegID",		"description":"공급자 종사업장번호",		"remark":""},
+			{"required":"O",	"type":"string",	"length":"70",	"name":"InvoicerCorpName",		"description":"공급자 회사명",				"remark":""},
+			{"required":"O",	"type":"string",	"length":"30",	"name":"InvoicerCEOName",		"description":"공급자 대표자명",			"remark":""},
+			{"required":"X",	"type":"string",	"length":"150",	"name":"InvoicerAddr",			"description":"공급자 주소",				"remark":""},
+			{"required":"X",	"type":"string",	"length":"40",	"name":"InvoicerBizType",		"description":"공급자 업태",				"remark":""},
+			{"required":"X",	"type":"string",	"length":"40",	"name":"InvoicerBizClass",		"description":"공급자 종목",				"remark":""},
+			{"required":"X",	"type":"string",	"length":"70",	"name":"InvoicerContactName",	"description":"공급자 담당자",				"remark":""},
+			{"required":"X",	"type":"string",	"length":"40",	"name":"InvoicerEmail",			"description":"공급자 이메일",				"remark":""},
+			{"required":"O",	"type":"string",	"length":"13",	"name":"InvoiceeCorpNum",		"description":"공급받는자 사업자번호",		"remark":""},
+			{"required":"X",	"type":"string",	"length":"4",	"name":"InvoiceeTaxRegID",		"description":"공급받는자 종사업장번호",	"remark":""},
+			{"required":"O",	"type":"string",	"length":"70",	"name":"InvoiceeCorpName",		"description":"공급받는자 회사명",			"remark":""},
+			{"required":"O",	"type":"string",	"length":"30",	"name":"InvoiceeCEOName",		"description":"공급받는자 대표자명",		"remark":""},
+			{"required":"X",	"type":"string",	"length":"150",	"name":"InvoiceeAddr",			"description":"공급받는자 주소",			"remark":""},
+			{"required":"X",	"type":"string",	"length":"40",	"name":"InvoiceeBizType",		"description":"공급받는자 업태",			"remark":""},
+			{"required":"X",	"type":"string",	"length":"40",	"name":"InvoiceeBizClass",		"description":"공급받는자 종목",			"remark":""},
+			{"required":"X",	"type":"string",	"length":"70",	"name":"InvoiceeContactName",	"description":"공급받는자 담당자",			"remark":""},
+			{"required":"X",	"type":"string",	"length":"40",	"name":"InvoiceeEmail",			"description":"공급받는자 이메일",			"remark":""},
+			{"required":"O",	"type":"string",	"length":"13",	"name":"BrokerCorpNum",			"description":"수탁자 사업자번호",			"remark":""},
+			{"required":"X",	"type":"string",	"length":"4",	"name":"BrokerTaxRegID",		"description":"수탁자 종사업장번호",		"remark":""},
+			{"required":"O",	"type":"string",	"length":"70",	"name":"BrokerCorpName",		"description":"수탁자 회사명",				"remark":""},
+			{"required":"O",	"type":"string",	"length":"30",	"name":"BrokerCEOName",			"description":"수탁자 대표자명",			"remark":""},
+			{"required":"X",	"type":"string",	"length":"150",	"name":"BrokerAddr",			"description":"수탁자 주소",				"remark":""},
+			{"required":"X",	"type":"string",	"length":"40",	"name":"BrokerBizType",			"description":"수탁자 업태",				"remark":""},
+			{"required":"X",	"type":"string",	"length":"40",	"name":"BrokerBizClass",		"description":"수탁자 종목",				"remark":""},
+			{"required":"X",	"type":"string",	"length":"70",	"name":"BrokerContactName",		"description":"수탁자 담당자",				"remark":""},
+			{"required":"X",	"type":"string",	"length":"40",	"name":"BrokerEmail",			"description":"수탁자 이메일",				"remark":""},
+			{"required":"O",	"type":"string",	"length":"18",	"name":"AmountTotal",			"description":"공급가액",					"remark":""},
+			{"required":"O",	"type":"string",	"length":"18",	"name":"TaxTotal",				"description":"세액",						"remark":""},
+			{"required":"O",	"type":"string",	"length":"18",	"name":"TotalAmount",			"description":"합계금액",					"remark":""},
+			{"required":"X",	"type":"string",	"length":"18",	"name":"Cash",					"description":"현금",						"remark":""},
+			{"required":"X",	"type":"string",	"length":"18",	"name":"ChkBill",				"description":"수표",						"remark":""},
+			{"required":"X",	"type":"string",	"length":"18",	"name":"Note",					"description":"어음",						"remark":""},
+			{"required":"X",	"type":"string",	"length":"18",	"name":"Credit",				"description":"외상미수금",					"remark":""},
+			{"required":"X",	"type":"string",	"length":"150",	"name":"Remark1",				"description":"비고1",						"remark":""},
+			{"required":"X",	"type":"string",	"length":"150",	"name":"Remark2",				"description":"비고2",						"remark":""},
+			{"required":"X",	"type":"string",	"length":"150",	"name":"Remark3",				"description":"비고3",						"remark":""},
+			{"required":"X",	"type":"string",	"length":"100",	"name":"ItemName",				"description":"대표품목명",					"remark":"등록된 첫번째 품목의 이름"},
+			{"required":"O",	"type":"string",	"length":"13",	"name":"CorpNum",				"description":"거래처 사업자번호",			"remark":""},
+			{"required":"X",	"type":"string",	"length":"4",	"name":"TaxRegID",				"description":"거래처 종사업장번호",		"remark":""},
+			{"required":"O",	"type":"string",	"length":"70",	"name":"CorpName",				"description":"거래처 회사명",				"remark":""},
+			{"required":"O",	"type":"string",	"length":"30",	"name":"CEOName",				"description":"거래처 대표자명",			"remark":""}
+		]
+	},
+	"EDoc": {
+		"description":"전자문서 정보",
+		"field": [
+			{"required":"O",	"type":"string",	"length":"24",	"name":"MgtKey",				"description":"연동사부여 문서키",		"remark":""},
+			{"required":"X",	"type":"string",	"length":"24",	"name":"InvoiceNum",			"description":"전자문서번호",			"remark":""},
+			{"required":"O",	"type":"string",	"length":"14",	"name":"FormKey",				"description":"문서 양식키",			"remark":""},
+			{"required":"O",	"type":"string",	"length":"20",	"name":"UserID",				"description":"바로빌 회원 아이디",		"remark":"대소문자 구분"},
+			{"required":"O",	"type":"object",	"length":"",	"name":"InvoicerParty",			"description":"공급자 정보",			"remark":"",	"object":"EDocParty"},
+			{"required":"O",	"type":"object",	"length":"",	"name":"InvoiceeParty",			"description":"공급받는자 정보",		"remark":"",	"object":"EDocParty"},
+			{"required":"O",	"type":"int",		"length":"",	"name":"EDocInvoiceType",		"description":"전자문서 구분",			"remark":"1:거래명세서 2:입금표 3:청구서 4:견적서 5:영수증"},
+			{"required":"O",	"type":"bool",		"length":"",	"name":"CertYN",				"description":"공인인증서 확인여부",	"remark":"발행 시 공인인증서 확인 여부"},
+			{"required":"O",	"type":"bool",		"length":"",	"name":"AutoAcceptYN",			"description":"자동승인 여부",			"remark":"발행 시 자동승인 여부"},
+			{"required":"O",	"type":"bool",		"length":"",	"name":"BusinessLicenseYN",		"description":"사업자등록증 사본 여부",	"remark":"사업자등록증 사본 첨부 여부"},
+			{"required":"O",	"type":"bool",		"length":"",	"name":"BankBookYN",			"description":"통장사본 여부",			"remark":"통장사본 첨부 여부"},
+			{"required":"O",	"type":"string",	"length":"8",	"name":"WriteDate",				"description":"작성일자",				"remark":"yyyyMMdd 형식"},
+			{"required":"O",	"type":"int",		"length":"",	"name":"TaxType",				"description":"과세형태",				"remark":"1: 과세 2: 영세 3: 면세"},
+			{"required":"X",	"type":"int",		"length":"",	"name":"PurposeType",			"description":"영수/청구형태",			"remark":"1: 영수 2: 청구 (미지정 시 영수)"},
+			{"required":"O",	"type":"string",	"length":"18",	"name":"AmountTotal",			"description":"공급가액",				"remark":"소수점 불가, 컴마(',')를 제외한 숫자만 입력"},
+			{"required":"O",	"type":"string",	"length":"18",	"name":"TaxTotal",				"description":"세액",					"remark":"소수점 불가, 컴마(',')를 제외한 숫자만 입력"},
+			{"required":"O",	"type":"string",	"length":"18",	"name":"TotalAmount",			"description":"합계금액",				"remark":"소수점 불가, 컴마(',')를 제외한 숫자만 입력"},
+			{"required":"X",	"type":"string",	"length":"150",	"name":"Remark1",				"description":"비고1",					"remark":""},
+			{"required":"X",	"type":"string",	"length":"150",	"name":"Remark2",				"description":"비고2",					"remark":""},
+			{"required":"X",	"type":"string",	"length":"150",	"name":"Remark3",				"description":"비고3",					"remark":""},
+			{"required":"O",	"type":"string",	"length":"30",	"name":"SerialNum",				"description":"일련번호",				"remark":""},
+			{"required":"X",	"type":"object[]",	"length":"",	"name":"EDocProperties",		"description":"전자문서 속성 목록",		"remark":"",	"object":"EDocProperty[]"},
+			{"required":"X",	"type":"object[]",	"length":"",	"name":"EDocTradeLineItems",	"description":"전자문서 품목 상세 목록","remark":"최대 99개까지 등록 가능",	"object":"EDocTradeLineItem[]"}
+		]
+	},
+	"EDocParty": {
+		"description":"전자문서 공급자, 공급받는자 정보",
+		"field": [
+			{"required":"O",	"type":"string",	"length":"13",	"name":"CorpNum",		"description":"사업자번호",		"remark":"'-'를 제외한 숫자만 입력"},
+			{"required":"X",	"type":"string",	"length":"4",	"name":"TaxRegID",		"description":"종사업장번호",	"remark":"사업자 단위 과세제도 사용시 국세청 부여한 종사업장 식별번호"},
+			{"required":"O",	"type":"string",	"length":"70",	"name":"CorpName",		"description":"회사명",			"remark":""},
+			{"required":"O",	"type":"string",	"length":"30",	"name":"CEOName",		"description":"대표자명",		"remark":"공급받는자의 경우 필수 아님."},
+			{"required":"O",	"type":"string",	"length":"150",	"name":"Addr",			"description":"주소",			"remark":"공급받는자의 경우 필수 아님."},
+			{"required":"X",	"type":"string",	"length":"40",	"name":"BizClass",		"description":"업종",			"remark":""},
+			{"required":"X",	"type":"string",	"length":"40",	"name":"BizType",		"description":"업태",			"remark":""},
+			{"required":"O",	"type":"string",	"length":"30",	"name":"ContactName",	"description":"담당자명",		"remark":"공급받는자의 경우 필수 아님."},
+			{"required":"X",	"type":"string",	"length":"30",	"name":"DeptName",		"description":"부서명",			"remark":""},
+			{"required":"X",	"type":"string",	"length":"20",	"name":"TEL",			"description":"전화번호",		"remark":""},
+			{"required":"X",	"type":"string",	"length":"20",	"name":"HP",			"description":"휴대폰",			"remark":""},
+			{"required":"X",	"type":"string",	"length":"20",	"name":"FAX",			"description":"팩스",			"remark":""},
+			{"required":"O",	"type":"string",	"length":"40",	"name":"Email",			"description":"이메일",			"remark":""}
+		]
+	},
+	"EDocProperty": {
+		"description":"전저문서 속성 정보",
+		"field": [
+			{"required":"O",	"type":"string",	"length":"30",	"name":"Name",			"description":"속성명",	"remark":"문서 양식에 따라 정해진 속성만 사용 가능"},
+			{"required":"O",	"type":"string",	"length":"200",	"name":"Value",			"description":"값",		"remark":""}
+		]
+	},
+	"EDocTradeLineItem": {
+		"description":"전자문서 품목 상세",
+		"field": [
+			{"required":"X",	"type":"string",	"length":"8",	"name":"PurchaseExpiry",	"description":"공급일자",	"remark":"yyyyMMdd 형식"},
+			{"required":"X",	"type":"string",	"length":"100",	"name":"Name",				"description":"품목",		"remark":""},
+			{"required":"X",	"type":"string",	"length":"60",	"name":"Information",		"description":"규격",		"remark":""},
+			{"required":"X",	"type":"string",	"length":"12",	"name":"ChargeableUnit",	"description":"수량",		"remark":"소수점 2자리 허용, 컴마(',')를 제외한 숫자만 입력"},
+			{"required":"X",	"type":"string",	"length":"18",	"name":"UnitPrice",			"description":"단가",		"remark":"소수점 2자리 허용, 컴마(',')를 제외한 숫자만 입력"},
+			{"required":"X",	"type":"string",	"length":"18",	"name":"Amount",			"description":"공급가액",	"remark":"소수점 불가, 컴마(',')를 제외한 숫자만 입력"},
+			{"required":"X",	"type":"string",	"length":"18",	"name":"Tax",				"description":"세액",		"remark":"소수점 불가, 컴마(',')를 제외한 숫자만 입력"},
+			{"required":"X",	"type":"string",	"length":"40",	"name":"Description",		"description":"비고",		"remark":""},
+			{"required":"X",	"type":"string",	"length":"100",	"name":"Temp1",				"description":"임시필드1",	"remark":""},
+			{"required":"X",	"type":"string",	"length":"100",	"name":"Temp2",				"description":"임시필드2",	"remark":""},
+			{"required":"X",	"type":"string",	"length":"100",	"name":"Temp3",				"description":"임시필드3",	"remark":""},
+			{"required":"X",	"type":"string",	"length":"100",	"name":"Temp4",				"description":"임시필드4",	"remark":""},
+			{"required":"X",	"type":"string",	"length":"100",	"name":"Temp5",				"description":"임시필드5",	"remark":""}
+		]
+	},
+	"EDocState": {
+		"description":"전자문서 상태 정보",
+		"field": [
+			{"required":"O",	"type":"string",	"length":"24",	"name":"MgtKey",		"description":"연동사부여 문서키",	"remark":""},
+			{"required":"O",	"type":"int",		"length":"",	"name":"BarobillState",	"description":"바로빌 상태",		"remark":"1000:임시저장<br>2010:승인대기<br>3011:발행완료(공급받는자 승인)<br>4012:공급받는자 거부<br>5013:공급받는자 승인 전 취소<br>5031:공급받는자 승인 후 취소"},
+			{"required":"O",	"type":"bool",		"length":"",	"name":"OpenYN",		"description":"개봉여부",			"remark":"0:미개봉 1:개봉"},
+			{"required":"X",	"type":"string",	"length":"200",	"name":"Remark1",		"description":"비고1",				"remark":"상태처리에 대한 요청자의 처리사유"},
+			{"required":"X",	"type":"string",	"length":"200",	"name":"Remark2",		"description":"비고2",				"remark":"상태처리에 대한 수신자의 처리사유"}
+		]
+	},
+	"CashBill": {
+		"description":"현금영수증 정보",
+		"field": [
+			{"required":"O",	"type":"string",	"length":"24",	"name":"MgtKey",				"description":"연동사부여 문서키",			"remark":""},
+			{"required":"-",	"type":"string",	"length":"9",	"name":"NTSConfirmNum",			"description":"국세청 승인번호",			"remark":""},
+			{"required":"O",	"type":"string",	"length":"10",	"name":"FranchiseCorpNum",		"description":"가맹점 사업자번호",			"remark":"'-'를 제외한 숫자만 입력"},
+			{"required":"O",	"type":"string",	"length":"20",	"name":"FranchiseMemberID",		"description":"가맹점 바로빌 회원 아이디",	"remark":""},
+			{"required":"O",	"type":"string",	"length":"70",	"name":"FranchiseCorpName",		"description":"가맹점 회사명",				"remark":"특수문자 사용 불가<br><br>ex. 특수문자 중 1 byte '㈜' 는 '(주)'로 입력"},
+			{"required":"O",	"type":"string",	"length":"30",	"name":"FranchiseCEOName",		"description":"가맹점 대표자명",			"remark":""},
+			{"required":"O",	"type":"string",	"length":"400",	"name":"FranchiseAddr",			"description":"가맹점 주소",				"remark":""},
+			{"required":"O",	"type":"string",	"length":"20",	"name":"FranchiseTel",			"description":"가맹점 전화번호",			"remark":""},
+			{"required":"O",	"type":"string",	"length":"20",	"name":"IdentityNum",			"description":"소비자 신분확인번호",		"remark":"사업자번호, 주민등록번호, 휴대폰, 카드번호 입력 가능"},
+			{"required":"X",	"type":"string",	"length":"20",	"name":"HP",					"description":"소비자 휴대폰",				"remark":""},
+			{"required":"X",	"type":"string",	"length":"20",	"name":"Fax",					"description":"소비자 팩스",				"remark":""},
+			{"required":"X",	"type":"string",	"length":"40",	"name":"Email",					"description":"소비자 이메일",				"remark":""},
+			{"required":"O",	"type":"string",	"length":"8",	"name":"TradeDate",				"description":"거래일자",					"remark":"yyyyMMdd 형식"},
+			{"required":"O",	"type":"string",	"length":"1",	"name":"TradeType",				"description":"거래구분",					"remark":"N:승인거래 D:취소거래"},
+			{"required":"O",	"type":"string",	"length":"1",	"name":"TradeUsage",			"description":"거래용도",					"remark":"1:소득공제 2:지출증빙"},
+			{"required":"O",	"type":"string",	"length":"1",	"name":"TradeMethod",			"description":"거래방법",					"remark":"1:카드번호 3:주민등록번호 4:사업자번호 5:휴대폰번호<br><br><span class='red'>자진발급인 경우에는 5:휴대폰번호로 설정</span>"},
+			{"required":"X",	"type":"string",	"length":"70",	"name":"ItemName",				"description":"품목명",						"remark":""},
+			{"required":"O",	"type":"string",	"length":"9",	"name":"Amount",				"description":"공급가액",					"remark":""},
+			{"required":"O",	"type":"string",	"length":"9",	"name":"Tax",					"description":"부가세",						"remark":""},
+			{"required":"O",	"type":"string",	"length":"9",	"name":"ServiceCharge",			"description":"봉사료",						"remark":""},
+			{"required":"X",	"type":"string",	"length":"1",	"name":"CancelType",			"description":"취소사유",					"remark":"<span class='red'>취소거래분 작성 시 필수</span><br><br>1:거래취소 2:오류발급 3:기타"},
+			{"required":"X",	"type":"string",	"length":"9",	"name":"CancelNTSConfirmNum",	"description":"취소원본 국세청 승인번호",	"remark":"<span class='red'>취소거래분 작성 시 필수</span>"},
+			{"required":"X",	"type":"string",	"length":"8",	"name":"CancelNTSConfirmDate",	"description":"취소원본 국세층 승인일자",	"remark":"<span class='red'>취소거래분 작성 시 필수</span><br><br>yyyyMMdd 형식"}
+		]
+	},
+	"CashBillLog": {
+		"description":"현금영수증 이력 정보",
+		"field": [
+			{"required":"O",	"type":"int",		"length":"",	"name":"Seq",			"description":"순번",		"remark":""},
+			{"required":"O",	"type":"string",	"length":"",	"name":"LogType",		"description":"이력형태",	"remark":""},
+			{"required":"O",	"type":"string",	"length":"14",	"name":"LogDateTime",	"description":"이력일시",	"remark":"yyyyMMddHHmmss 형식"},
+			{"required":"X",	"type":"string",	"length":"",	"name":"Memo",			"description":"메모",		"remark":""}
+		]
+	},
+	"CashBillState": {
+		"description":"현금영수증 상태 정보",
+		"field": [
+			{"required":"O",	"type":"string",	"length":"24",	"name":"MgtKey",			"description":"연동사부여 문서키",	"remark":""},
+			{"required":"O",	"type":"int",		"length":"",	"name":"BarobillState",		"description":"바로빌 상태",		"remark":"1000:임시저장 2000:발행완료 3000:국세청 전송완료 4000:국세청 전송실패 5000:취소처리중 6000:취소완료(국세청 전송후) 7000:취소완료(국세청 전송전)"},
+			{"required":"O",	"type":"string",	"length":"8",	"name":"TradeDate",			"description":"거래일자",			"remark":"yyyyMMdd 형식"},
+			{"required":"O",	"type":"string",	"length":"14",	"name":"RegistDT",			"description":"등록일시",			"remark":"yyyyMMddHHmmss 형식"},
+			{"required":"X",	"type":"string",	"length":"14",	"name":"IssueDT",			"description":"발행일시",			"remark":"yyyyMMddHHmmss 형식"},
+			{"required":"X",	"type":"string",	"length":"9",	"name":"NTSConfirmNum",		"description":"국세청 승인번호",	"remark":""},
+			{"required":"X",	"type":"string",	"length":"14",	"name":"NTSSendDT",			"description":"국세청 전송일시",	"remark":"yyyyMMddHHmmss 형식"},
+			{"required":"X",	"type":"string",	"length":"14",	"name":"NTSConfirmDT",		"description":"국세청 승인일시",	"remark":"yyyyMMddHHmmss 형식"},
+			{"required":"X",	"type":"string",	"length":"100",	"name":"NTSConfirmMessage",	"description":"국세청 전송결과",	"remark":"전송 성공인 경우에만 확인 가능"}
+		]
+	},
+	"PagedCashBill": {
+		"description":"페이징 된 현금영수증 요약 내역",
+		"field": [
+			{"required":"O",	"type":"int",		"length":"",	"name":"MaxIndex",				"description":"전체 건수",				"remark":""},
+			{"required":"O",	"type":"int",		"length":"",	"name":"CountPerPage",			"description":"페이지 당 건수",			"remark":"10 ~ 100 허용"},
+			{"required":"O",	"type":"int",		"length":"",	"name":"MaxPageNum",			"description":"최대 페이지 수",			"remark":""},
+			{"required":"O",	"type":"int",		"length":"",	"name":"CurrentPage",			"description":"현재 페이지",			"remark":""},
+			{"required":"O",	"type":"object[]",	"length":"",	"name":"SimpleCashBillList",	"description":"현금영수증 요약 목록",	"remark":"",	"object":"SimpleCashBill[]"}
+		]
+	},
+	"SimpleCashBill": {
+		"description":"현금영수증 요약 정보",
+		"field": [
+			{"required":"O",	"type":"string",	"length":"9",	"name":"NTSConfirmNum",		"description":"국세청승인번호",		"remark":""},
+			{"required":"O",	"type":"string",	"length":"8",	"name":"TradeDate",			"description":"거래일시",			"remark":"yyyyMMdd 형식"},
+			{"required":"O",	"type":"string",	"length":"1",	"name":"TradeType",			"description":"거래구분",			"remark":"N:승인거래 D:취소거래"},
+			{"required":"O",	"type":"string",	"length":"10",	"name":"FranchiseCorpNum",	"description":"가맹점 사업자번호",	"remark":""},
+			{"required":"O",	"type":"string",	"length":"70",	"name":"FranchiseCorpName",	"description":"가맹점명",			"remark":""},
+			{"required":"O",	"type":"string",	"length":"20",	"name":"IdentityNum",		"description":"신분확인번호",		"remark":"사업자번호, 주민등록번호, 휴대폰, 카드번호"},
+			{"required":"O",	"type":"string",	"length":"9",	"name":"Amount",			"description":"공급가액",			"remark":""},
+			{"required":"O",	"type":"string",	"length":"9",	"name":"Tax",				"description":"부가세",				"remark":""},
+			{"required":"O",	"type":"string",	"length":"9",	"name":"ServiceCharge",		"description":"봉사료",				"remark":""}
+		]
+	},
+	"SMSMessage": {
+		"description":"문자메세지 정보",
+		"field": [
+			{"required":"-",	"type":"string",	"length":"",	"name":"SendKey",		"description":"바로빌부여 전송키",	"remark":""},
+			{"required":"X",	"type":"string",	"length":"100",	"name":"RefKey",		"description":"연동사부여 전송키",	"remark":""},
+			{"required":"O",	"type":"string",	"length":"20",	"name":"ID",			"description":"바로빌 회원 아이디",	"remark":""},
+			{"required":"O",	"type":"string",	"length":"13",	"name":"SenderNum",		"description":"발신번호",			"remark":""},
+			{"required":"O",	"type":"string",	"length":"20",	"name":"ReceiverName",	"description":"수신자명",			"remark":""},
+			{"required":"O",	"type":"string",	"length":"13",	"name":"ReceiverNum",	"description":"수신번호",			"remark":""},
+			{"required":"O",	"type":"string",	"length":"90",	"name":"Message",		"description":"메세지",				"remark":"90 byte 제한"},
+			{"required":"O",	"type":"string",	"length":"14",	"name":"SendDT",		"description":"전송일시",			"remark":"yyyyMMddHHmmss 형식. 전송 또는 예약 일시"},
+			{"required":"O",	"type":"int",		"length":"",	"name":"SendState",		"description":"전송상태",			"remark":"1:전송성공<br>음수:전송실패 (오류코드 조회 기능에서 사유 확인)"}
+		]
+	},
+	"XMSMessage": {
+		"description":"다량 전송 요청시 문자메세지 정보",
+		"field": [
+			{"required":"X",	"type":"string",	"length":"100",	"name":"RefKey",		"description":"연동사부여 전송키",	"remark":""},
+			{"required":"O",	"type":"string",	"length":"20",	"name":"SenderNum",		"description":"발신번호",			"remark":""},
+			{"required":"O",	"type":"string",	"length":"20",	"name":"ReceiverName",	"description":"수신자명",			"remark":""},
+			{"required":"O",	"type":"string",	"length":"20",	"name":"ReceiverNum",	"description":"수신번호",			"remark":""},
+			{"required":"O",	"type":"string",	"length":"2000","name":"Message",		"description":"메세지",				"remark":""}
+		]
+	},
+	"PagedSMSMessage": {
+		"description":"페이징 된 문자메세지 전송 내역",
+		"field": [
+			{"required":"O",	"type":"int",		"length":"",	"name":"MaxIndex",		"description":"전체 건수",				"remark":""},
+			{"required":"O",	"type":"int",		"length":"",	"name":"CountPerPage",	"description":"페이지 당 건수",			"remark":"10 ~ 100 허용"},
+			{"required":"O",	"type":"int",		"length":"",	"name":"MaxPageNum",	"description":"최대 페이지 수",			"remark":""},
+			{"required":"O",	"type":"int",		"length":"",	"name":"CurrentPage",	"description":"현재 페이지",			"remark":""},
+			{"required":"O",	"type":"object[]",	"length":"",	"name":"MessageList",	"description":"문자메세지 전송 목록",	"remark":"",	"object":"SMSMessage[]"}
+		]
+	},
+	"FaxMessage": {
+		"description":"팩스 정보",
+		"field": [
+			{"required":"-",	"type":"string",	"length":"",	"name":"SendKey",			"description":"바로빌부여 전송키",	"remark":""},
+			{"required":"X",	"type":"string",	"length":"50",	"name":"RefKey",			"description":"연동사부여 전송키",	"remark":""},
+			{"required":"O",	"type":"string",	"length":"20",	"name":"ID",				"description":"바로빌 회원 아이디",	"remark":""},
+			{"required":"O",	"type":"string",	"length":"255",	"name":"SendFileName",		"description":"전송 파일명",		"remark":""},
+			{"required":"X",	"type":"int",		"length":"",	"name":"SendPageCount",		"description":"전송 페이지 수",		"remark":"파일 변환 후 페이지 수"},
+			{"required":"X",	"type":"int",		"length":"",	"name":"SuccessPageCount",	"description":"성공 페이지 수",		"remark":"전송종료 후 완료된 페이지 수"},
+			{"required":"X",	"type":"string",	"length":"3",	"name":"SendResult",		"description":"전송결과",			"remark":"",		"code":"FaxSendResult"},
+			{"required":"O",	"type":"string",	"length":"13",	"name":"SenderNum",			"description":"발신번호",			"remark":""},
+			{"required":"O",	"type":"string",	"length":"30",	"name":"ReceiveCorp",		"description":"수신자 회사명",		"remark":""},
+			{"required":"O",	"type":"string",	"length":"20",	"name":"ReceiverName",		"description":"수신자명",			"remark":""},
+			{"required":"O",	"type":"string",	"length":"13",	"name":"ReceiverNum",		"description":"수신번호",			"remark":""},
+			{"required":"O",	"type":"string",	"length":"14",	"name":"SendDT",			"description":"전송일시",			"remark":"yyyyMMddHHmmss 형식. 전송 또는 예약 일시"},
+			{"required":"O",	"type":"int",		"length":"",	"name":"SendState",			"description":"전송상태",			"remark":"0:변환대기중 1:변환중 2:변환완료 3:전송완료 4:DB항목 오류 5:변환중 오류"}
+		]
+	},
+	"FaxMessageEx": {
+		"description":"팩스 정보 (확장)",
+		"field": [
+			{"required":"-",	"type":"string",	"length":"",	"name":"SendKey",			"description":"바로빌부여 전송키",	"remark":""},
+			{"required":"X",	"type":"string",	"length":"50",	"name":"RefKey",			"description":"연동사부여 전송키",	"remark":""},
+			{"required":"O",	"type":"string",	"length":"20",	"name":"ID",				"description":"바로빌 회원 아이디",	"remark":""},
+			{"required":"O",	"type":"string",	"length":"255",	"name":"SendFileName",		"description":"전송 파일명",		"remark":""},
+			{"required":"X",	"type":"int",		"length":"",	"name":"SendPageCount",		"description":"전송 페이지 수",		"remark":"파일 변환 후 페이지 수"},
+			{"required":"X",	"type":"int",		"length":"",	"name":"SuccessPageCount",	"description":"성공 페이지 수",		"remark":"전송종료 후 완료된 페이지 수"},
+			{"required":"X",	"type":"string",	"length":"3",	"name":"SendResult",		"description":"전송결과",			"remark":"",		"code":"FaxSendResult"},
+			{"required":"O",	"type":"string",	"length":"13",	"name":"SenderNum",			"description":"발신번호",			"remark":""},
+			{"required":"O",	"type":"string",	"length":"30",	"name":"ReceiveCorp",		"description":"수신자 회사명",		"remark":""},
+			{"required":"O",	"type":"string",	"length":"20",	"name":"ReceiverName",		"description":"수신자명",			"remark":""},
+			{"required":"O",	"type":"string",	"length":"13",	"name":"ReceiverNum",		"description":"수신번호",			"remark":""},
+			{"required":"O",	"type":"string",	"length":"14",	"name":"SendDT",			"description":"전송일시",			"remark":"yyyyMMddHHmmss 형식. 전송 또는 예약 일시"},
+			{"required":"O",	"type":"int",		"length":"",	"name":"SendState",			"description":"전송상태",			"remark":"0:변환대기중 1:변환중 2:변환완료 3:전송완료 4:DB항목 오류 5:변환중 오류"},
+			{"required":"O",	"type":"string[]",	"length":"",	"name":"fileURLs",			"description":"전송파일 URL",		"remark":"팩스전송 시 사용된 TIF 파일의 URL 배열"}
+		]
+	},
+	"PagedFaxMessages": {
+		"description":"페이징 된 팩스 전송 내역",
+		"field": [
+			{"required":"O",	"type":"int",		"length":"",	"name":"MaxIndex",		"description":"전체 건수",			"remark":""},
+			{"required":"O",	"type":"int",		"length":"",	"name":"CountPerPage",	"description":"페이지 당 건수",		"remark":"10 ~ 100 허용"},
+			{"required":"O",	"type":"int",		"length":"",	"name":"MaxPageNum",	"description":"최대 페이지 수",		"remark":""},
+			{"required":"O",	"type":"int",		"length":"",	"name":"CurrentPage",	"description":"현재 페이지",		"remark":""},
+			{"required":"O",	"type":"object[]",	"length":"",	"name":"MessageList",	"description":"팩스 전송 목록",		"remark":"",	"object":"FaxMessage[]"}
+		]
+	},
+	"Card": {
+		"description":"카드 정보",
+		"field": [
+			{"required":"O",	"type":"string",	"length":"20",	"name":"CardCompanyName",	"description":"카드사",		"remark":""},
+			{"required":"O",	"type":"string",	"length":"20",	"name":"CardNum",			"description":"카드번호",	"remark":""}
+		]
+	},
+	"CardLog": {
+		"description":"카드 사용내역 정보",
+		"field": [
+			{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",			"description":"바로빌 회원사 사업자번호",	"remark":""},
+			{"required":"O",	"type":"string",	"length":"20",	"name":"CardNum",			"description":"카드번호",					"remark":""},
+			{"required":"O",	"type":"string",	"length":"20",	"name":"CardApprovalNum",	"description":"카드승인번호",				"remark":""},
+			{"required":"X",	"type":"string",	"length":"20",	"name":"CardApprovalType",	"description":"카드승인형태",				"remark":""},
+			{"required":"O",	"type":"string",	"length":"23",	"name":"CardApprovalCost",	"description":"카드승인금액",				"remark":""},
+			{"required":"O",	"type":"string",	"length":"14",	"name":"UseDT",				"description":"사용일시",					"remark":"yyyyMMddHHmmss 형식"},
+			{"required":"X",	"type":"string",	"length":"20",	"name":"UseStoreNum",		"description":"가맹점번호",					"remark":""},
+			{"required":"X",	"type":"string",	"length":"50",	"name":"UseStoreName",		"description":"가맹점명",					"remark":""},
+			{"required":"O",	"type":"string",	"length":"23",	"name":"Amount",			"description":"공급가액",					"remark":""},
+			{"required":"O",	"type":"string",	"length":"23",	"name":"Tax",				"description":"부가세",						"remark":""},
+			{"required":"O",	"type":"string",	"length":"23",	"name":"ServiceCharge",		"description":"봉사료",						"remark":""},
+			{"required":"O",	"type":"string",	"length":"23",	"name":"TotalAmount",		"description":"합계금액",					"remark":""}
+		]
+	},
+	"CardLogEx": {
+		"description":"카드 사용내역 정보 (가맹점 정보 확장)",
+		"field": [
+			{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",			"description":"바로빌 회원사 사업자번호",	"remark":""},
+			{"required":"O",	"type":"string",	"length":"20",	"name":"CardNum",			"description":"카드번호",					"remark":""},
+			{"required":"O",	"type":"string",	"length":"30",	"name":"UseKey",			"description":"사용키",						"remark":"고유 키"},
+			{"required":"O",	"type":"string",	"length":"14",	"name":"UseDT",				"description":"사용일시",					"remark":"yyyyMMddHHmmss 형식"},
+			{"required":"X",	"type":"string",	"length":"20",	"name":"CardApprovalType",	"description":"카드승인형태",				"remark":""},
+			{"required":"O",	"type":"string",	"length":"20",	"name":"CardApprovalNum",	"description":"카드승인번호",				"remark":""},
+			{"required":"O",	"type":"string",	"length":"23",	"name":"CardApprovalCost",	"description":"카드승인금액",				"remark":""},
+			{"required":"O",	"type":"string",	"length":"23",	"name":"Amount",			"description":"공급가액",					"remark":""},
+			{"required":"O",	"type":"string",	"length":"23",	"name":"Tax",				"description":"부가세",						"remark":""},
+			{"required":"O",	"type":"string",	"length":"23",	"name":"ServiceCharge",		"description":"봉사료",						"remark":""},
+			{"required":"O",	"type":"string",	"length":"23",	"name":"TotalAmount",		"description":"합계금액",					"remark":""},
+			{"required":"X",	"type":"string",	"length":"20",	"name":"UseStoreNum",		"description":"가맹점번호",					"remark":""},
+			{"required":"X",	"type":"string",	"length":"50",	"name":"UseStoreCorpNum",	"description":"가맹점 사업자번호",			"remark":""},
+			{"required":"X",	"type":"string",	"length":"20",	"name":"UseStoreName",		"description":"가맹점명",					"remark":""},
+			{"required":"X",	"type":"string",	"length":"50",	"name":"UseStoreCeo",		"description":"가맹점 대표자명",			"remark":""},
+			{"required":"X",	"type":"string",	"length":"50",	"name":"UseStoreAddr",		"description":"가맹점 주소",				"remark":""},
+			{"required":"X",	"type":"string",	"length":"20",	"name":"UseStoreBizType",	"description":"가맹점 업태",				"remark":""},
+			{"required":"X",	"type":"string",	"length":"50",	"name":"UseStoreTel",		"description":"가맹점 전화번호",			"remark":""},
+			{"required":"X",	"type":"int",		"length":"",	"name":"UseStoreTaxType",	"description":"가맹점 과세구분",			"remark":"0:없는사업자 1:일반과세자 2:간이과세자 3:법인사업자 4:면세사업자 5:과특사업자 6:비영리법인"}
+		]
+	},
+	"PagedCardLog": {
+		"description":"페이징 된 카드 사용내역",
+		"field": [
+			{"required":"O",	"type":"int",		"length":"",	"name":"MaxIndex",		"description":"전체 건수",			"remark":""},
+			{"required":"O",	"type":"int",		"length":"",	"name":"CountPerPage",	"description":"페이지 당 건수",		"remark":"10 ~ 100 허용"},
+			{"required":"O",	"type":"int",		"length":"",	"name":"MaxPageNum",	"description":"최대 페이지 수",		"remark":""},
+			{"required":"O",	"type":"int",		"length":"",	"name":"CurrentPage",	"description":"현재 페이지",		"remark":""},
+			{"required":"O",	"type":"object[]",	"length":"",	"name":"CardLogList",	"description":"카드 사용내역 목록",	"remark":"",	"object":"CardLog[]"}
+		]
+	},
+	"PagedCardLogEx": {
+		"description":"페이징 된 카드 사용내역 (가맹점 정보 확장)",
+		"field": [
+			{"required":"O",	"type":"int",		"length":"",	"name":"MaxIndex",		"description":"전체 건수",			"remark":""},
+			{"required":"O",	"type":"int",		"length":"",	"name":"CountPerPage",	"description":"페이지 당 건수",		"remark":"10 ~ 100 허용"},
+			{"required":"O",	"type":"int",		"length":"",	"name":"MaxPageNum",	"description":"최대 페이지 수",		"remark":""},
+			{"required":"O",	"type":"int",		"length":"",	"name":"CurrentPage",	"description":"현재 페이지",		"remark":""},
+			{"required":"O",	"type":"object[]",	"length":"",	"name":"CardLogList",	"description":"카드 사용내역 목록",	"remark":"",	"object":"CardLogEx[]"}
+		]
+	},
+	"BankAccount": {
+		"description":"은행계좌 정보",
+		"field": [
+			{"required":"O",	"type":"string",	"length":"20",	"name":"BankName",			"description":"은행",		"remark":""},
+			{"required":"O",	"type":"string",	"length":"30",	"name":"BankAccountNum",	"description":"계좌번호",	"remark":""}
+		]
+	},
+	"BankAccountLog": {
+		"description":"은행계좌 입출금내역 정보",
+		"field": [
+			{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",			"description":"사업자번호",		"remark":""},
+			{"required":"O",	"type":"string",	"length":"30",	"name":"BankAccountNum",	"description":"계좌번호",		"remark":""},
+			{"required":"X",	"type":"string",	"length":"23",	"name":"Withdraw",			"description":"출금액",			"remark":""},
+			{"required":"X",	"type":"string",	"length":"23",	"name":"Deposit",			"description":"입금액",			"remark":""},
+			{"required":"O",	"type":"string",	"length":"23",	"name":"Balance",			"description":"잔액",			"remark":""},
+			{"required":"O",	"type":"string",	"length":"14",	"name":"TransDT",			"description":"입출금일시",		"remark":"yyyyMMddHHmmss 형식"},
+			{"required":"X",	"type":"string",	"length":"50",	"name":"TransType",			"description":"입출금구분",		"remark":""},
+			{"required":"X",	"type":"string",	"length":"50",	"name":"TransOffice",		"description":"입출금취급점",	"remark":""},
+			{"required":"X",	"type":"string",	"length":"50",	"name":"TransRemark",		"description":"입출금비고",		"remark":""},
+			{"required":"X",	"type":"string",	"length":"50",	"name":"MgtRemark1",		"description":"적요1",			"remark":""},
+			{"required":"X",	"type":"string",	"length":"50",	"name":"MgtRemark2",		"description":"적요2",			"remark":""}
+		]
+	},
+	"BankAccountLogEx": {
+		"description":"은행계좌 입출금내역 정보 (고유 키값 추가)",
+		"field": [
+			{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",			"description":"사업자번호",		"remark":""},
+			{"required":"O",	"type":"string",	"length":"30",	"name":"BankAccountNum",	"description":"계좌번호",		"remark":""},
+			{"required":"X",	"type":"string",	"length":"23",	"name":"Withdraw",			"description":"출금액",			"remark":""},
+			{"required":"X",	"type":"string",	"length":"23",	"name":"Deposit",			"description":"입금액",			"remark":""},
+			{"required":"O",	"type":"string",	"length":"23",	"name":"Balance",			"description":"잔액",			"remark":""},
+			{"required":"O",	"type":"string",	"length":"14",	"name":"TransDT",			"description":"입출금일시",		"remark":"yyyyMMddHHmmss 형식"},
+			{"required":"X",	"type":"string",	"length":"50",	"name":"TransType",			"description":"입출금구분",		"remark":""},
+			{"required":"X",	"type":"string",	"length":"50",	"name":"TransOffice",		"description":"입출금취급점",	"remark":""},
+			{"required":"X",	"type":"string",	"length":"50",	"name":"TransRemark",		"description":"입출금비고",		"remark":""},
+			{"required":"X",	"type":"string",	"length":"24",	"name":"TransRefKey",		"description":"입출금키",		"remark":"고유 키"},
+			{"required":"X",	"type":"string",	"length":"50",	"name":"MgtRemark1",		"description":"적요1",			"remark":""},
+			{"required":"X",	"type":"string",	"length":"50",	"name":"MgtRemark2",		"description":"적요2",			"remark":""}
+		]
+	},
+	"PagedBankAccountLog": {
+		"description":"페이징 된 은행계좌 입출금내역",
+		"field": [
+			{"required":"O",	"type":"int",		"length":"",	"name":"MaxIndex",				"description":"전체 건수",					"remark":""},
+			{"required":"O",	"type":"int",		"length":"",	"name":"CountPerPage",			"description":"페이지 당 건수",				"remark":"10 ~ 100 허용"},
+			{"required":"O",	"type":"int",		"length":"",	"name":"MaxPageNum",			"description":"최대 페이지 수",				"remark":""},
+			{"required":"O",	"type":"int",		"length":"",	"name":"CurrentPage",			"description":"현재 페이지",				"remark":""},
+			{"required":"O",	"type":"object[]",	"length":"",	"name":"BankAccountLogList",	"description":"은행계좌 입출금내역 목록",	"remark":"",		"object":"BankAccountLog[]"}
+		]
+	},
+	"PagedBankAccountLogEx": {
+		"description":"페이징 된 은행계좌 입출금내역 (고유 키값 추가)",
+		"field": [
+			{"required":"O",	"type":"int",		"length":"",	"name":"MaxIndex",				"description":"전체 건수",					"remark":""},
+			{"required":"O",	"type":"int",		"length":"",	"name":"CountPerPage",			"description":"페이지 당 건수",				"remark":"10 ~ 100 허용"},
+			{"required":"O",	"type":"int",		"length":"",	"name":"MaxPageNum",			"description":"최대 페이지 수",				"remark":""},
+			{"required":"O",	"type":"int",		"length":"",	"name":"CurrentPage",			"description":"현재 페이지",				"remark":""},
+			{"required":"O",	"type":"object[]",	"length":"",	"name":"BankAccountLogList",	"description":"은행계좌 입출금내역 목록",	"remark":"",		"object":"BankAccountLogEx[]"}
+		]
+	},
+	"CorpState": {
+		"description":"휴폐업 상태 정보",
+		"field": [
+			{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",	"description":"사업자번호",	"remark":""},
+			{"required":"O",	"type":"int",		"length":"",	"name":"TaxType",	"description":"과세구분",	"remark":"0:없는사업자 1:일반과세자 2:간이과세자 3:법인사업자 4:면세사업자 5:과특사업자 6:비영리법인"},
+			{"required":"O",	"type":"int",		"length":"",	"name":"State",		"description":"휴폐업상태",	"remark":"0:없는사업자 1:계속사업자 2:휴업자 3:폐업자"},
+			{"required":"X",	"type":"string",	"length":"8",	"name":"StateDate",	"description":"휴폐업일자",	"remark":"yyyyMMdd 형식"},
+			{"required":"X",	"type":"string",	"length":"8",	"name":"BaseDate",	"description":"기준일자",	"remark":"yyyyMMdd 형식"}
+		]
+	}
+}

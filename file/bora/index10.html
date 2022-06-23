@@ -1,0 +1,469 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>KPI10 - 슬라이더 커버플로우 효과</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<style>
+    body {
+        height: 950px;
+    }
+
+    * {
+        padding: 0;
+        margin: 0;
+        border: 0;
+        outline: none;
+    }
+
+    img {
+        max-width: 100%;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    ul,
+    li {
+        list-style: none;
+    }
+
+    .main-sec02 {
+        clear: both;
+        padding: 140px 0;
+    }
+
+    div[class*="show_box"] {
+        width: 615px;
+        height: 737px;
+    }
+
+    .show_img {
+        position: relative;
+        width: 615px;
+        height: 737px;
+        z-index: 10;
+    }
+
+    .show_box1 .show_img {
+        background: url('/file/bora/img/floor01.jpg')no-repeat center center;
+    }
+
+    .show_box2 .show_img {
+        background: url('/file/bora/img/floor02.jpg')no-repeat center center;
+    }
+
+    .show_box3 .show_img {
+        background: url('/file/bora/img/floor03.jpg')no-repeat center center;
+    }
+
+
+    .show_info {
+        position: absolute;
+        left: -300px;
+        top: 40%;
+        display: none;
+    }
+
+    .floor {
+        font-size: 17px;
+        color: rgba(136, 136, 136, 0.8);
+        font-weight: 500;
+        line-height: 1;
+    }
+
+    .show_info h3 {
+        position: relative;
+        font-size: 45px;
+        font-weight: 300;
+        margin-bottom: 20px;
+    }
+
+    .show_info h3:after {
+        content: '';
+        position: absolute;
+        width: 320px;
+        height: 2px;
+        background: #000;
+        bottom: 0;
+        left: 0;
+    }
+
+    .show_desc {
+        font-size: 16px;
+        color: #555;
+        text-align: left;
+    }
+
+
+    .show_num {
+        position: absolute;
+        right: 15px;
+        bottom: -100px;
+        color: #fff;
+        font-size: 0;
+        opacity: 0;
+    }
+
+    .show_num>span {
+        position: relative;
+        bottom: -300px;
+        font-size: 200px;
+        font-weight: 100;
+        letter-spacing: -13px;
+        opacity: 0;
+        transition: all 1s 0.2s;
+    }
+
+    .show_num>span:last-child {
+        transition-delay: 0.4s;
+    }
+    .swiper-slide-active .show_info {
+        display: block;
+    }
+
+    .swiper-slide-active .show_num {
+        opacity: 1;
+    }
+
+    .swiper-slide-active .show_num span {
+        bottom: 70px;
+        opacity: 1;
+    }
+
+
+    .arrow_box {
+        position: relative;
+        margin: 40px 0;
+    }
+
+    .arrow_box>div {
+        width: 70px !important;
+        height: 70px !important;
+        top: 0 !important;
+        margin-top: 0 !important;
+        background: none;
+        border-radius: 100%;
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        transition: all 0.5s;
+        outline: none;
+        overflow: hidden;
+    }
+
+    .arrow_box>div:hover {
+        border: 1px solid #000;
+        background: #1d1612;
+    }
+
+    .arrow_box>div:before,
+    .arrow_box>div:after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        transition: all 0.5s;
+    }
+
+    .arrow_box>div.swiper-button-prev {
+        left: 0;
+    }
+
+    .arrow_box>div.swiper-button-next {
+        right: 0;
+    }
+
+    .main-sec02 .arrow_box>div.swiper-button-next {
+        left: 79px;
+    }
+
+    .arrow_box>div.swiper-button-prev:before {
+        background: url('/file/bora/img/prev_default.png')no-repeat center center;
+        transition-delay: 0.4s;
+    }
+
+    .arrow_box>div.swiper-button-prev:after {
+        background: url('/file/bora/img/prev_hover.png')no-repeat center center;
+        width: 0;
+    }
+
+    .arrow_box>div.swiper-button-prev:hover:before {
+        width: 0;
+    }
+
+    .arrow_box>div.swiper-button-prev:hover:after {
+        width: 100%;
+    }
+
+    .arrow_box>div.swiper-button-next:before {
+        background: url('/file/bora/img/next_default.png')no-repeat center center;
+        transition-delay: 0.2s;
+    }
+
+    .arrow_box>div.swiper-button-next:after {
+        background: url('/file/bora/img/next_hover.png')no-repeat center center;
+        width: 0;
+    }
+
+    .arrow_box>div.swiper-button-next:hover:before {
+        width: 0;
+    }
+
+    .arrow_box>div.swiper-button-next:hover:after {
+        width: 100%;
+    }
+</style>
+</head>
+
+
+
+<body>
+
+    <div class="main-sec02">
+        <div class="showroom_wr img-ani bottom-top">
+
+            <div class="swiper-container swiper-container-coverflow swiper-container-3d swiper-container-initialized swiper-container-horizontal">
+                <div class="swiper-wrapper" id="swiper-wrapper-a2d52ab1e801c18f" aria-live="polite" style="transition: all 0ms ease 0s; transform: translate3d(-1816px, 0px, 0px);"><div class="show_box2 swiper-slide swiper-slide-duplicate swiper-slide-duplicate-prev" data-swiper-slide-index="0" role="group" aria-label="1 / 9" style="transition: all 0ms ease 0s; transform: translate3d(-2200px, 0px, -1200px) rotateX(0deg) rotateY(200deg) scale(1); z-index: -3;">
+                        <div class="show_info">
+                            <p class="floor">2ND FLOOR</p>
+                            <h3>GALLERY</h3>
+                            <p class="show_desc">2층 갤러리에서는 여러 제작물들을 <br> 만나볼 수 있습니다.</p>
+
+                            <!-- Add Arrows -->
+                            <div class="arrow_box">
+                                <div class="swiper-button-next" tabindex="0" role="button" aria-label="Next slide" aria-controls="swiper-wrapper-a2d52ab1e801c18f"></div>
+                                <div class="swiper-button-prev" tabindex="0" role="button" aria-label="Previous slide" aria-controls="swiper-wrapper-a2d52ab1e801c18f"></div>
+                            </div>
+
+                        </div>
+
+                        <div class="show_img">
+                            <p class="show_num">
+                                <span>0</span>
+                                <span>2</span>
+                            </p>
+                        </div>
+                    <div class="swiper-slide-shadow-left" style="opacity: 4; transition: all 0ms ease 0s;"></div><div class="swiper-slide-shadow-right" style="opacity: 0; transition: all 0ms ease 0s;"></div></div><div class="show_box3 swiper-slide swiper-slide-duplicate swiper-slide-duplicate-active" data-swiper-slide-index="1" role="group" aria-label="2 / 9" style="transition: all 0ms ease 0s; transform: translate3d(-1650px, 0px, -900px) rotateX(0deg) rotateY(150deg) scale(1); z-index: -2;">
+                        <div class="show_info">
+                            <p class="floor">3RD FLOOR</p>
+                            <h3>GALLERY</h3>
+                            <p class="show_desc">3층 갤러리에서는 여러 제작물들을 <br> 만나볼 수 있습니다.</p>
+
+                            <!-- Add Arrows -->
+                            <div class="arrow_box">
+                                <div class="swiper-button-next" tabindex="0" role="button" aria-label="Next slide" aria-controls="swiper-wrapper-a2d52ab1e801c18f"></div>
+                                <div class="swiper-button-prev" tabindex="0" role="button" aria-label="Previous slide" aria-controls="swiper-wrapper-a2d52ab1e801c18f"></div>
+                            </div>
+
+                        </div>
+
+                        <div class="show_img">
+                            <p class="show_num">
+                                <span>0</span>
+                                <span>3</span>
+                            </p>
+                        </div>
+
+                    <div class="swiper-slide-shadow-left" style="opacity: 3; transition: all 0ms ease 0s;"></div><div class="swiper-slide-shadow-right" style="opacity: 0; transition: all 0ms ease 0s;"></div></div><div class="show_box1 swiper-slide swiper-slide-duplicate swiper-slide-duplicate-next" data-swiper-slide-index="2" role="group" aria-label="3 / 9" style="transition: all 0ms ease 0s; transform: translate3d(-1100px, 0px, -600px) rotateX(0deg) rotateY(100deg) scale(1); z-index: -1;">
+                        <div class="show_info">
+                            <p class="floor">1ST FLOOR</p>
+                            <h3>GALLERY</h3>
+                            <p class="show_desc">1층 갤러리에서는 여러 제작물들을 <br> 만나볼 수 있습니다.</p>
+
+                            <!-- Add Arrows -->
+                            <div class="arrow_box">
+                                <div class="swiper-button-next" tabindex="0" role="button" aria-label="Next slide" aria-controls="swiper-wrapper-a2d52ab1e801c18f"></div>
+                                <div class="swiper-button-prev" tabindex="0" role="button" aria-label="Previous slide" aria-controls="swiper-wrapper-a2d52ab1e801c18f"></div>
+                            </div>
+                        </div>
+
+                        <div class="show_img">
+                            <p class="show_num">
+                                <span>0</span>
+                                <span>1</span>
+                            </p>
+                        </div>
+                    <div class="swiper-slide-shadow-left" style="opacity: 2; transition: all 0ms ease 0s;"></div><div class="swiper-slide-shadow-right" style="opacity: 0; transition: all 0ms ease 0s;"></div></div>
+                    <div class="show_box2 swiper-slide swiper-slide-prev" data-swiper-slide-index="0" role="group" aria-label="4 / 9" style="transition: all 0ms ease 0s; transform: translate3d(-550px, 0px, -300px) rotateX(0deg) rotateY(50deg) scale(1); z-index: 0;">
+                        <div class="show_info">
+                            <p class="floor">2ND FLOOR</p>
+                            <h3>GALLERY</h3>
+                            <p class="show_desc">2층 갤러리에서는 여러 제작물들을 <br> 만나볼 수 있습니다.</p>
+
+                            <!-- Add Arrows -->
+                            <div class="arrow_box">
+                                <div class="swiper-button-next" tabindex="0" role="button" aria-label="Next slide" aria-controls="swiper-wrapper-a2d52ab1e801c18f"></div>
+                                <div class="swiper-button-prev" tabindex="0" role="button" aria-label="Previous slide" aria-controls="swiper-wrapper-a2d52ab1e801c18f"></div>
+                            </div>
+
+                        </div>
+
+                        <div class="show_img">
+                            <p class="show_num">
+                                <span>0</span>
+                                <span>2</span>
+                            </p>
+                        </div>
+                    <div class="swiper-slide-shadow-left" style="opacity: 1; transition: all 0ms ease 0s;"></div><div class="swiper-slide-shadow-right" style="opacity: 0; transition: all 0ms ease 0s;"></div></div> <!-- show_box2 -->
+
+                    <div class="show_box3 swiper-slide swiper-slide-active" data-swiper-slide-index="1" role="group" aria-label="5 / 9" style="transition: all 0ms ease 0s; transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) scale(1); z-index: 1;">
+                        <div class="show_info">
+                            <p class="floor">3RD FLOOR</p>
+                            <h3>GALLERY</h3>
+                            <p class="show_desc">3층 갤러리에서는 여러 제작물들을 <br> 만나볼 수 있습니다.</p>
+
+                            <!-- Add Arrows -->
+                            <div class="arrow_box">
+                                <div class="swiper-button-next" tabindex="0" role="button" aria-label="Next slide" aria-controls="swiper-wrapper-a2d52ab1e801c18f"></div>
+                                <div class="swiper-button-prev" tabindex="0" role="button" aria-label="Previous slide" aria-controls="swiper-wrapper-a2d52ab1e801c18f"></div>
+                            </div>
+
+                        </div>
+
+                        <div class="show_img">
+                            <p class="show_num">
+                                <span>0</span>
+                                <span>3</span>
+                            </p>
+                        </div>
+
+                    <div class="swiper-slide-shadow-left" style="opacity: 0; transition: all 0ms ease 0s;"></div><div class="swiper-slide-shadow-right" style="opacity: 0; transition: all 0ms ease 0s;"></div></div> <!-- show_box3 -->
+
+                    <div class="show_box1 swiper-slide swiper-slide-next" data-swiper-slide-index="2" role="group" aria-label="6 / 9" style="transition: all 0ms ease 0s; transform: translate3d(550px, 0px, -300px) rotateX(0deg) rotateY(-50deg) scale(1); z-index: 0;">
+                        <div class="show_info">
+                            <p class="floor">1ST FLOOR</p>
+                            <h3>GALLERY</h3>
+                            <p class="show_desc">1층 갤러리에서는 여러 제작물들을 <br> 만나볼 수 있습니다.</p>
+
+                            <!-- Add Arrows -->
+                            <div class="arrow_box">
+                                <div class="swiper-button-next" tabindex="0" role="button" aria-label="Next slide" aria-controls="swiper-wrapper-a2d52ab1e801c18f"></div>
+                                <div class="swiper-button-prev" tabindex="0" role="button" aria-label="Previous slide" aria-controls="swiper-wrapper-a2d52ab1e801c18f"></div>
+                            </div>
+                        </div>
+
+                        <div class="show_img">
+                            <p class="show_num">
+                                <span>0</span>
+                                <span>1</span>
+                            </p>
+                        </div>
+                    <div class="swiper-slide-shadow-left" style="opacity: 0; transition: all 0ms ease 0s;"></div><div class="swiper-slide-shadow-right" style="opacity: 1; transition: all 0ms ease 0s;"></div></div> <!-- show_box1 -->
+
+                <div class="show_box2 swiper-slide swiper-slide-duplicate swiper-slide-duplicate-prev" data-swiper-slide-index="0" role="group" aria-label="7 / 9" style="transition: all 0ms ease 0s; transform: translate3d(1100px, 0px, -600px) rotateX(0deg) rotateY(-100deg) scale(1); z-index: -1;">
+                        <div class="show_info">
+                            <p class="floor">2ND FLOOR</p>
+                            <h3>GALLERY</h3>
+                            <p class="show_desc">2층 갤러리에서는 여러 제작물들을 <br> 만나볼 수 있습니다.</p>
+
+                            <!-- Add Arrows -->
+                            <div class="arrow_box">
+                                <div class="swiper-button-next" tabindex="0" role="button" aria-label="Next slide" aria-controls="swiper-wrapper-a2d52ab1e801c18f"></div>
+                                <div class="swiper-button-prev" tabindex="0" role="button" aria-label="Previous slide" aria-controls="swiper-wrapper-a2d52ab1e801c18f"></div>
+                            </div>
+
+                        </div>
+
+                        <div class="show_img">
+                            <p class="show_num">
+                                <span>0</span>
+                                <span>2</span>
+                            </p>
+                        </div>
+                    <div class="swiper-slide-shadow-left" style="opacity: 0; transition: all 0ms ease 0s;"></div><div class="swiper-slide-shadow-right" style="opacity: 2; transition: all 0ms ease 0s;"></div></div><div class="show_box3 swiper-slide swiper-slide-duplicate swiper-slide-duplicate-active" data-swiper-slide-index="1" role="group" aria-label="8 / 9" style="transition: all 0ms ease 0s; transform: translate3d(1650px, 0px, -900px) rotateX(0deg) rotateY(-150deg) scale(1); z-index: -2;">
+                        <div class="show_info">
+                            <p class="floor">3RD FLOOR</p>
+                            <h3>GALLERY</h3>
+                            <p class="show_desc">3층 갤러리에서는 여러 제작물들을 <br> 만나볼 수 있습니다.</p>
+
+                            <!-- Add Arrows -->
+                            <div class="arrow_box">
+                                <div class="swiper-button-next" tabindex="0" role="button" aria-label="Next slide" aria-controls="swiper-wrapper-a2d52ab1e801c18f"></div>
+                                <div class="swiper-button-prev" tabindex="0" role="button" aria-label="Previous slide" aria-controls="swiper-wrapper-a2d52ab1e801c18f"></div>
+                            </div>
+
+                        </div>
+
+                        <div class="show_img">
+                            <p class="show_num">
+                                <span>0</span>
+                                <span>3</span>
+                            </p>
+                        </div>
+
+                    <div class="swiper-slide-shadow-left" style="opacity: 0; transition: all 0ms ease 0s;"></div><div class="swiper-slide-shadow-right" style="opacity: 3; transition: all 0ms ease 0s;"></div></div><div class="show_box1 swiper-slide swiper-slide-duplicate swiper-slide-duplicate-next" data-swiper-slide-index="2" role="group" aria-label="9 / 9" style="transition: all 0ms ease 0s; transform: translate3d(2200px, 0px, -1200px) rotateX(0deg) rotateY(-200deg) scale(1); z-index: -3;">
+                        <div class="show_info">
+                            <p class="floor">1ST FLOOR</p>
+                            <h3>GALLERY</h3>
+                            <p class="show_desc">1층 갤러리에서는 여러 제작물들을 <br> 만나볼 수 있습니다.</p>
+
+                            <!-- Add Arrows -->
+                            <div class="arrow_box">
+                                <div class="swiper-button-next" tabindex="0" role="button" aria-label="Next slide" aria-controls="swiper-wrapper-a2d52ab1e801c18f"></div>
+                                <div class="swiper-button-prev" tabindex="0" role="button" aria-label="Previous slide" aria-controls="swiper-wrapper-a2d52ab1e801c18f"></div>
+                            </div>
+                        </div>
+
+                        <div class="show_img">
+                            <p class="show_num">
+                                <span>0</span>
+                                <span>1</span>
+                            </p>
+                        </div>
+                    <div class="swiper-slide-shadow-left" style="opacity: 0; transition: all 0ms ease 0s;"></div><div class="swiper-slide-shadow-right" style="opacity: 4; transition: all 0ms ease 0s;"></div></div></div>
+            <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+
+            <!-- Add Pagination -->
+            <div class="swiper-pagination"></div>
+
+        </div><!-- showroom_wr -->
+
+
+    </div>
+
+
+    <script>
+        $(window).ready(function () {
+
+            /* showroom */
+            var swiper2 = new Swiper('.main-sec02 .swiper-container', {
+                effect: 'coverflow',
+                centeredSlides: true,
+                slidesPerView: 'auto',
+                coverflowEffect: {
+                    rotate: 50,
+                    stretch: -550,
+                    depth: 300,
+                    modifier: 1,
+                    slideShadows: true,
+                },
+                speed: 1500,
+                loop: true,
+                /*
+                pagination: {
+                    el: '.main-sec02 .swiper-pagination',
+                    type: 'fraction',
+                    clickable: true,
+                },*/
+                navigation: {
+                    nextEl: '.main-sec02 .swiper-button-next',
+                    prevEl: '.main-sec02 .swiper-button-prev',
+                },
+            });
+
+
+        })
+
+
+
+
+    </script>
+
+
+
+</body></html>

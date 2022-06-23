@@ -1,0 +1,363 @@
+/* 메인 */
+
+#header_left {
+	position:fixed;
+	height:100%;
+	width:100px;
+	z-index:100;
+}
+
+#header_left .left_table {
+	transform:rotate(90deg);
+	/* height:100%; */
+}
+
+#header_left .left_table li {
+	display:inline-block;
+	/* margin-left:55px; */
+}
+
+
+#wrap .main-sec h1 {
+	font-size: 49px;
+    margin-bottom: 45px;
+}
+
+#wrap .main-pwr p {
+	font-size: 18px;
+    color: #7a7a7a;
+    line-height: 1.8;
+}
+
+
+
+/* login 페이지 */
+
+.join-view .text-center {
+	margin-bottom:70px !important;
+}
+
+.join-view .log-fot .log-l a:hover:after {
+	content:"";
+	display:block;
+	width:100%;
+	height:1px;
+	background:#333;
+}
+
+.join-view .log-fot .log-r a:hover:after {
+	content:"";
+	display:block;
+	width:100%;
+	height:1px;
+	background:#333;
+}
+
+.join-view .login-wr > div:nth-child(3) {
+	margin-bottom:50px;
+}
+
+.join-view .login-wr .join_page_btn {
+	margin-bottom:0;
+}
+
+
+/* join_약관동의 페이지 */
+
+.login-wr .join-chkwr > .join-chkall {
+	padding:60px 0 30px;
+}
+
+.login-wr .join-chkwr .join-chk {
+	padding:30px 0;
+}
+ 
+.login-wr .join-chk .btn-line:after {
+	content:"";
+	display:block;
+	width:10px;
+	height:13px;
+	background:url(/img/fo-icon01.png) no-repeat center center;
+	position:Absolute;
+	right:-20px;
+	top:50%;
+	margin-top:-6.5px;
+}
+
+
+/* join_정보입력 페이지 */
+
+/* #fncForm .login-wr input {
+	padding:10px 0;
+}
+
+#fncForm .join-input span {
+	display:none;
+}
+
+#fncForm .join-intit {
+	color: #333;
+    margin-bottom: 5px;
+    font-family: KoPubDotum;
+    font-weight: 600;
+    letter-spacing: -2px;
+} */
+
+.join-view .text-center {
+	margin-bottom:70px !important;
+}
+
+.join-view .log-fot .log-l a:hover:after {
+	content:"";
+	display:block;
+	width:100%;
+	height:1px;
+	background:#333;
+}
+
+.join-view .log-fot .log-r a:hover:after {
+	content:"";
+	display:block;
+	width:100%;
+	height:1px;
+	background:#333;
+}
+
+.join-view .login-wr > div:nth-child(3) {
+	margin-bottom:50px;
+}
+
+.join-view .login-wr .join_page_btn {
+	margin-bottom:0;
+}
+
+.join-view .join-input span {
+	display:none;
+}
+
+
+
+/* mypage */
+
+.myp-grid .myp-payment .cell1 ul li {
+	padding:0;
+}
+
+.myp-grid .myp-payment .cell1 ul li:nth-child(3) {
+	margin:0 0 60px;
+}
+
+.myp-grid .myp-payment .cell1 ul li span {
+	font-size:32px;
+	color:#00a6b6;
+	font-weight:800;
+	vertical-align:middle;
+}
+
+.myp-grid .myp-payment .cell1 ul li .mu_text {
+	display:inline-block;
+	vertical-align: middle;
+	margin-left:33px;
+	font-size:20px;
+	color:#333;
+}
+
+
+/* Musign familylist */
+
+.inner #listSize {
+	display:none;
+}
+
+.inner .sort_img {
+	display:none;
+}
+
+.inner .table_1 tr th:nth-child(2), .inner .table_1 tr td:nth-child(2) {
+	display:none;
+}
+
+.inner .table_1 tr th:nth-child(5), .inner .table_1 tr td:nth-child(5) {
+	text-align:center;
+}
+
+.inner .table_1 tr th:nth-child(6), .inner .table_1 tr td:nth-child(6) {
+	text-align:center;
+}
+
+/* .inner .table_1 tr th:nth-child(8), .inner .table_1 tr td:nth-child(8) {
+	text-align:center;
+} */
+
+.inner .table_1 tr td span {
+	display:block;
+	width:51px;
+	height:26px;
+	text-align:center;
+	/* text-indent:-9999px;
+	background:url(/img/btn_allow.png) no-repeat; */
+}
+
+/* Modify */
+
+.modify .join-box .join-intit {
+	color:#00a6b6 !important;
+}
+
+.login-wr .join-box div input {
+	padding: 10px 0;
+}
+
+.modify_btn .del-btn {
+	font-size: 20px;
+    color: #fff;
+    display: inline-block;
+	width:230px;
+    height: 90px;
+    line-height: 90px;
+    background-color: #adadad;
+    border: 1px solid #adadad;
+    text-align: center;
+    cursor: pointer;
+}
+
+.modify_btn .login-btn {
+	font-size: 20px;
+    color: #fff;
+    display: inline-block;
+	width:230px;
+    height: 90px;
+    line-height: 90px;
+    background-color: #00a6b6;
+    border: 1px solid #00a6b6;
+    text-align: center;
+    cursor: pointer;
+	margin-left: 16px;
+}
+
+.ser_info {
+	margin-top:20px;
+}
+
+.ser_info li {
+	font-size:16px;
+	color:#666;
+	margin:45px 0;
+}
+
+.ser_info li:last-child {
+	margin-bottom:100px;
+}
+
+.ser_info li:nth-child(3) span , .ser_info li:nth-child(4) span {
+	margin: 0 0 0 107px;
+}
+
+.ser_info li:nth-child(5) span {
+	margin: 0 0 0 65px;
+}
+
+.ser_info li:nth-child(6) span {
+	margin: 0 0 0 70px;
+}
+
+.ser_info li span {
+	font-weight:300;
+	margin:0 0 0 77px;
+}
+
+
+/* PRICE MANAGEMENT */
+
+#fncForm .text-center {
+	margin-bottom:100px;
+}
+
+
+.price_manage {
+	max-width: 1213px;
+    margin: 0 auto;
+    padding: 100px 30px 0;
+}
+
+#fncForm > div > input {
+    width: 1160px;
+    padding: 88px 0;
+    background: #fff;
+	border-radius:15px;
+	margin-bottom:30px;
+	font-size:40px;
+	color:#00a6b6;
+	font-weight:600;
+	border-bottom:none;
+	box-shadow: 5.5px 9.5px 20px 5px rgba(61, 61, 61, 0.19);
+}
+
+#fncForm > div > input:focus {
+	border: 5px solid #00a6b6;
+	background:url(/img/icon-check.png) no-repeat -15px center;
+}
+
+#fncForm > div > input:nth-child(6) {
+	display:none;
+}
+
+#fncForm > div > input:nth-child(7) {
+	display:none;
+}
+
+#fncForm > div > input:nth-child(8) {
+	display:none;
+}
+
+#server_info {
+	display:none;
+}
+
+.price_btn {
+	padding:80px 0 0;
+	text-align:center;
+}
+
+.price_btn .del-btn {
+	font-size: 20px;
+    color: #fff;
+    display: inline-block;
+	width:230px;
+    height: 90px;
+    line-height: 90px;
+    background-color: #adadad;
+    border: 1px solid #adadad;
+    text-align: center;
+    cursor: pointer;
+}
+
+.price_btn .login-btn {
+	font-size: 20px;
+    color: #fff;
+    display: inline-block;
+	width:230px;
+    height: 90px;
+    line-height: 90px;
+    background-color: #00a6b6;
+    border: 1px solid #00a6b6;
+    text-align: center;
+    cursor: pointer;
+	margin-left: 16px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

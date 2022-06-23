@@ -1,0 +1,716 @@
+@charset "utf-8";
+
+.info-page {
+    font-size:15px;
+    letter-spacing: -1px;
+    line-height: 1.7;
+}
+
+.info-page h3 {
+    padding-bottom:20px;
+    margin-bottom:20px;
+}
+.info-page h3:after {
+    content: '';
+    position:absolute;
+    bottom:0;
+    left:0;
+    width:30px;
+    height:0;
+    border-bottom:1px solid #012d9a;
+}
+
+ul li.title {
+    float:left;
+    color: #017BC8;
+} 
+ul li.message {
+    float:left;
+
+    margin-left: 13px;
+    font-size: 14px;
+}
+
+/***** layout *****/
+.lable {
+    display:inline-block;	
+	width:auto;
+	padding:5px;	
+	border-radius: 3px;
+	background-color:#e1e5e9;
+	font-family: Dotum, dotum, tahoma, sans-serif !important;
+	font-size:12px;
+	line-height:1 !important;
+    letter-spacing:-1px !important;
+    font-weight: normal !important;
+    vertical-align: middle;
+	text-align:center;
+    margin-bottom: 4px;
+}
+
+.lable.lable-purple {
+    background-color: #6362DA;
+    border: 1px solid #6362DA;
+    color: #ffffff;
+}
+
+.lable.lable-lightgreen {
+    background-color: #15BC9E;
+    border: 1px solid #15BC9E;
+    color: #FFFFFF;
+}
+
+.lable.lable-lightblue {
+    background-color: #34B7FF;
+    border: 1px solid #34B7FF;
+    color: #FFFFFF;
+}
+
+.lable.lable-deepblue {
+    background-color: #1B41A4;
+    border: 1px solid #1B41A4;
+    color: #FFFFFF;
+}
+
+.lable.lable-red {
+    background-color: #FB1738;
+    border: 1px solid #FB1738;
+    color: #ffffff;
+}
+
+.noto2 { font-family: 'Noto Sans CJK KR','malgun gothic','맑은 고딕',"Apple SD Gothic Neo" !important; }
+
+.bold {
+    font-weight: bold;
+}
+
+.left15 {left: 15%;}
+.left25 {left: 25%;}
+.left33 {left: 33%;}
+.left45 {left: 45%;}
+.left50 {left: 50%;}
+.left66 {left: 66%;}
+.left75 {left: 75%;}
+
+.inlineblock {
+    display: inline-block;
+}
+
+.btnCustom {
+    display:inline-block;
+    padding:10px 6px 0 6px;	
+	border:1px solid #c0c0c0;
+	border-radius: 3px;
+    background-color:#fff;
+    cursor:pointer;	
+    text-align: center;
+    font-size: 14px;
+}
+
+
+
+.newBtn {
+    display:inline-block;
+	padding:6px 6px 0 6px;	
+	border:1px solid #c0c0c0;
+	border-radius: 3px;
+	background-color:#fff;	
+	font-size:12px;
+	line-height:1 !important;
+	cursor:pointer;	
+}
+
+.btnCustom2 {
+    display:inline-block;
+	border:1px solid #c0c0c0;
+	border-radius: 3px;
+    background-color:#fff;
+    cursor:pointer;	
+    text-align: center;
+}
+
+.btn-blue {
+    background-color:#3366e2;
+    border-color:#3266e2;
+    color:#fff;
+}
+
+.bg-color-white {
+    background-color: #FFFFFF;
+}
+
+.bg-color-lightblue {
+    color: white;
+    background-color: #749FE4;
+}
+
+.white-border-right2 {
+    border-right: 2px solid #FFFFFF;
+}
+
+
+.li-clearb {
+    margin: 0;
+    padding:0;
+    clear: both;
+}
+
+
+
+.img-number {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 1px solid #77787A;
+    background-color: #77787A;
+    color: #FFFFFF;
+    font-size: 13px !important;
+}
+
+
+.btn-example {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    margin-top: -18px;
+    padding: 5px 0 0 0;
+    color: #4B77D0;
+    border-radius: 0;
+    border: 1px solid #4B77D0 !important;
+}
+
+/*****summary backgournd*****/
+
+.bg-corpstate {
+    min-height: 190px;
+    padding: 40px 40px;
+    background:#F0F3F8 url("https://image.barobill.co.kr/v7/content/bg-corpstate.png") no-repeat 500px center;
+}
+
+.bg-taxinvoice {
+    min-height: 190px;
+    padding: 40px 40px;
+    background:#F0F3F8 url("https://image.barobill.co.kr/v7/content/bg-taxinvoice.png") no-repeat 450px center;
+}
+
+.bg-edoc {
+    min-height: 190px;
+    padding: 40px 40px;
+    background:#F0F3F8 url("https://image.barobill.co.kr/v7/content/bg-edoc.png") no-repeat 470px center;
+}
+
+.bg-bank {
+    min-height: 190px;
+    padding: 40px 40px;
+    background:#F0F3F8 url("https://image.barobill.co.kr/v7/content/bg-bank.png") no-repeat 470px center;
+}
+
+.bg-card {
+    min-height: 190px;
+    padding: 40px 40px;
+    background:#F0F3F8 url("https://image.barobill.co.kr/v7/content/bg-card.png") no-repeat 470px center;
+}
+
+.bg-cash {
+    min-height: 190px;
+    padding: 40px 40px;
+    background:#F0F3F8 url("https://image.barobill.co.kr/v7/content/bg-cash.png") no-repeat 470px center;
+}
+
+.bg-hometax {
+    min-height: 190px;
+    padding: 40px 40px;
+    background:#F0F3F8 url("https://image.barobill.co.kr/v7/content/bg-hometax.png") no-repeat 530px center;
+}
+
+.bg-message {
+    min-height: 190px;
+    padding: 40px 40px;
+    background:#F0F3F8 url("https://image.barobill.co.kr/v7/content/bg-message.png") no-repeat 470px center;
+}
+
+.bg-fax {
+    min-height: 190px;
+    padding: 40px 40px;
+    background:#F0F3F8 url("https://image.barobill.co.kr/v7/content/bg-fax.png") no-repeat 500px center;
+}
+
+.bg-partner {
+    min-height: 190px;
+    padding: 40px 40px;
+    background:#F0F3F8 url("https://image.barobill.co.kr/v7/content/bg-partner.png") no-repeat 460px center;
+}
+
+.bg-table {
+
+}
+/*****function-basic*****/
+
+.bg-function {
+    min-height: 100px;
+    padding: 50px 20px 50px 180px;
+    /* background: #FFFFFF url("https://image.barobill.co.kr/main/service_03.png") no-repeat 40px center; */
+    border-bottom: 1px solid #efeff0;
+}
+
+.bg-function > h4 {
+}
+
+.bg-function > p {
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.bg-function-fix {
+    min-height: 100px;
+    padding: 50px 20px 50px 180px;
+    background: #FFFFFF url("https://image.barobill.co.kr/main/service_03.png") no-repeat 40px 50px;
+    border-bottom: 1px solid #efeff0;
+}
+
+.bg-function-fix > h4 {
+}
+
+.bg-function-fix > p {
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+/***function-edoc***/
+
+.bg-edoc-function1 {
+    background: #FFFFFF url("https://image.barobill.co.kr/v7/content/bg-edoc-function1.png") no-repeat 40px center;
+}
+
+.bg-edoc-function2 {
+    background: #FFFFFF url("https://image.barobill.co.kr/v7/content/bg-edoc-function2.png") no-repeat 40px center;
+}
+
+.bg-edoc-function3 {
+    background: #FFFFFF url("https://image.barobill.co.kr/v7/content/bg-edoc-function3.png") no-repeat 40px center;
+}
+
+.bg-edoc-function4 {
+    background: #FFFFFF url("https://image.barobill.co.kr/v7/content/bg-edoc-function3.png") no-repeat 40px center;
+}
+/*****function-cash*****/
+
+.bg-cash-function1 {
+    background: #FFFFFF url("https://image.barobill.co.kr/v7/content/bg-cash-function1.png") no-repeat 40px center;
+}
+
+.bg-cash-function2 {
+    background: #FFFFFF url("https://image.barobill.co.kr/v7/content/bg-cash-function2.png") no-repeat 40px center;
+}
+
+.bg-cash-function3 {
+    background: #FFFFFF url("https://image.barobill.co.kr/v7/content/bg-cash-function3.png") no-repeat 40px center;
+}
+
+/*****function-taxinvoice*****/
+
+
+/*****function-corpstate*****/
+
+.bg-corpstate-function1 {
+    background: #FFFFFF url("https://image.barobill.co.kr/v7/content/bg-corpstate-function1.png") no-repeat 40px center;
+}
+
+.bg-corpstate-function2 {
+    background: #FFFFFF url("https://image.barobill.co.kr/v7/content/bg-edoc-function3.png") no-repeat 40px center;
+}
+
+.bg-corpstate-function3 {
+    background: #FFFFFF url("https://image.barobill.co.kr/v7/content/bg-cash-function3.png") no-repeat 40px center;
+}
+
+/*****function-hometax*****/
+
+.bg-hometax-function1 {
+    
+    background: #FFFFFF url("https://image.barobill.co.kr/v7/content/bg-corpstate-function1.png") no-repeat 40px center;
+}
+
+.bg-hometax-function2 {
+    background: #FFFFFF url("https://image.barobill.co.kr/v7/content/bg-edoc-function3.png") no-repeat 40px center;
+}
+
+.bg-hometax-function3 {
+    background: #FFFFFF url("https://image.barobill.co.kr/v7/content/bg-hometax-function3.png") no-repeat 40px 50px;
+}
+
+/*****function-massage*****/
+
+.bg-message-function1 {
+    background: #FFFFFF url("https://image.barobill.co.kr/v7/content/bg-message-function1.png") no-repeat 40px center;
+}
+
+.bg-message-function2 {
+    background: #FFFFFF url("https://image.barobill.co.kr/v7/content/bg-edoc-function3.png") no-repeat 40px center;
+}
+
+.bg-message-function3 {
+    background: #FFFFFF url("https://image.barobill.co.kr/v7/content/bg-message-function3.png") no-repeat 40px center;
+}
+
+/*****function-fax*****/
+
+.bg-fax-function1 {
+    background: #FFFFFF url("https://image.barobill.co.kr/v7/content/bg-fax-function1.png") no-repeat 40px center;
+}
+
+.bg-fax-function2 {
+    background: #FFFFFF url("https://image.barobill.co.kr/v7/content/bg-edoc-function3.png") no-repeat 40px center;
+}
+
+.bg-fax-function3 {
+    background: #FFFFFF url("https://image.barobill.co.kr/v7/content/bg-cash-function1.png") no-repeat 40px center;
+}
+/*****function-bank*****/
+
+.bg-bank-function1 {
+    background: #FFFFFF url("https://image.barobill.co.kr/v7/content/bg-bank-function1.png") no-repeat 40px center;
+}
+
+.bg-bank-function2 {
+    background: #FFFFFF url("https://image.barobill.co.kr/v7/content/bg-bank-function2.png") no-repeat 40px center;
+}
+
+.bg-bank-function3 {
+    background: #FFFFFF url("https://image.barobill.co.kr/v7/content/bg-bank-function3.png") no-repeat 40px center;
+}
+
+/*****function-card*****/
+
+.bg-card-function1 {
+    background: #FFFFFF url("https://image.barobill.co.kr/v7/content/bg-bank-function1.png") no-repeat 40px center;
+}
+
+.bg-card-function2 {
+    background: #FFFFFF url("https://image.barobill.co.kr/v7/content/bg-bank-function2.png") no-repeat 40px center;
+}
+
+.bg-card-function3 {
+    background: #FFFFFF url("https://image.barobill.co.kr/v7/content/bg-edoc-function3.png") no-repeat 40px center;
+}
+
+
+/*****flowchart*****/
+.bg-flowchart {
+    background-color: #F0F3F8;
+    width: 100%;
+    min-height: 250px;
+    text-align: center;
+}
+
+.bg-edoc-flowchart {
+    background: #F0F3F8 url("https://image.barobill.co.kr/v7/content/bg-edoc-flowchart.jpg") no-repeat 15px center;
+}
+
+.bg-cash-flowchart {
+    height: 500px;
+    background: #F0F3F8 url("https://image.barobill.co.kr/v7/content/bg-cash-flowchart.jpg") no-repeat 15px center;
+}
+
+.bg-corpstate-flowchart {
+    background: #F0F3F8 url("https://image.barobill.co.kr/v7/content/bg-corpstate-flowchart.jpg") no-repeat 15px center;
+}
+
+.bg-hometax-flowchart {
+    background: #F0F3F8 url("https://image.barobill.co.kr/v7/content/bg-hometax-flowchart.jpg") no-repeat 15px center;
+}
+
+.bg-fax-flowchart {
+    background: #F0F3F8 url("https://image.barobill.co.kr/v7/content/bg-fax-flowchart.jpg") no-repeat 15px center;
+}
+
+.bg-partner-flowchart {
+    margin-top: 30px;
+    background: #F0F3F8 url("https://image.barobill.co.kr/v7/content/bg-partner-flowchart.jpg") no-repeat 15px center;
+    height: 550px;
+    
+}
+
+.bg-taxinvoice-flowchart {
+    margin-top: 30px;
+    background: #F0F3F8 url("https://image.barobill.co.kr/v7/content/bg-taxinvoice-flowchart.jpg") no-repeat 15px center;
+    height: 550px;
+}
+/*****procedure*****/
+
+.procedure-wrapper {
+    position: relative;
+    margin-top: 30px;
+    width: 100%;
+    min-height: 270px;
+    background: #F0F3F8;
+}
+
+.arrow1 {
+    background: #F0F3F8 url("https://image.barobill.co.kr/v7/content/procedure-arrow.png") no-repeat 180px 70px;
+}
+
+.procedure-arrow {
+    position: relative;
+    height: 100%;
+}
+
+.procedure-arrow:before {
+    content: ">";
+    position: absolute;
+    top: 22px;
+    left: -10px;
+    color: #999999;
+    font-family: 'dotum', sans-serif;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.contents25:first-child .procedure-arrow:before {
+    content: "";
+}
+
+.contents33:first-child .procedure-arrow:before {
+    content: "";
+}
+
+.contents50:first-child .procedure-arrow:before {
+    content: "";
+}
+
+.procedure-img {
+    display: inline-block;
+    width: 70px;
+    height: 70px;
+    border: 1px solid black;
+    border-radius: 50px;
+}
+
+.inlineBlock {
+    display: inline-block;
+}
+
+.procedure-contents {
+    position: absolute;
+    /* border: 1px solid black; */
+    width: 30%;
+    height: 200px;
+    text-align: center;
+    top: 50%;
+    margin-top: -100px;
+}
+
+.contents25 {
+    float: left;
+    width: 25%;
+    padding: 40px 0 40px 0;
+    text-align: center;
+}
+
+.contents33 {
+    float: left;
+    width: 33%;
+    padding: 40px 0 40px 0;
+    text-align: center;
+}
+
+.contents50 {
+    float: left;
+    width: 250px;
+    margin: 40px 0 40px 0;
+    text-align: center;
+}
+
+
+
+/*****available*****/
+
+.available-table {
+    min-height: 230px;
+    background-color: #F0F3F8;
+}
+
+
+.available-table .available-table-header {
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    background-color: #C6D7EB;
+}
+
+.available-table .available-table-header-inquiry {
+    min-height: 60px;
+    text-align: right;
+    background-color: #FFFFFF;
+}
+
+.available-table .available-table-header-inquiry .inquirynumber {
+    padding: 5px 10px;
+    background-color: #F0F3F8;
+    min-height: 60px;
+}
+
+.available-table .available-table-body {
+    text-align: center;
+}
+
+/*****dev-enviroment*****/
+
+.dev-enviroment {
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+
+
+/*****devlink*****/
+.bg-devlink {
+    position: relative;
+    padding: 30px 20px 30px 100px;
+    background: #F0F3F8 url("https://image.barobill.co.kr/v7/content/tip.png") no-repeat 20px center;
+}
+
+.bg-devlink > a {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    margin-top: -18px;
+    padding: 5px 0 0 0;
+}
+
+.devlink-btn {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    margin-top: -15px;
+}
+
+
+/* .box-container.box-style-tip .devlink-btn {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    margin-top: -18px;
+    padding: 5px 0 0 0;
+    color: blue;
+    border: 1px solid blue;
+} */
+
+
+.partner-box-style {
+    font-size: 40px;
+    text-align: center;
+    padding-left: 0px !important;
+    color: #6A7D96;
+}
+
+
+
+
+
+.service-title {
+    margin-top: 70px;
+    color: #017BC8;
+}
+
+.service-title::after {
+    content: "";
+    display: block;
+    width: 30px;
+    height: 10px;
+    border-bottom: 1px solid #017BC8;
+}
+
+
+
+.image {
+    position: absolute;
+    display: inline-block;
+    top: 50%;
+    left: 40px;
+    width: 90px;
+    height: 80px;
+    margin-top: -45px;
+    border: 1px solid black;
+    border-radius: 50px;
+}
+
+
+.service-contents20 {
+    float: left;
+    width: 20%;
+    min-height: 180px;
+    padding-top: 30px;
+    text-align: center;
+}
+
+.service-contents20 .imgAlter {
+    display: inline-block;
+    width: 90px;
+    height: 90px;
+    border: 1px solid black;
+    border-radius: 50px;
+}
+
+
+.s-wrapper {
+    width: 350px;
+    height: 150px;
+    border: 1px solid black;
+}
+
+.s-con-wrapper {
+    width: 310px;
+    height: 110px;
+    border: 1px solid blue;
+    padding: 20px 20px;
+}
+
+.s-seq {
+    float: left;
+    border: 1px solid gray;
+    width: 20%;
+    height: 100px;
+}
+
+.s-contents {
+    float: left;
+    border: 1px solid gray;
+    width: 78%;
+    height: 100px;
+}
+
+
+.box {
+    float: left;
+    position: relative;
+    background-color: #F0F3F8;
+    margin: 5px;
+    width: 48%;
+}
+
+.box h4 {
+    margin-bottom: 10px;
+    color: #2557D7;
+}
+
+.box .box-titlenumber {
+    position: absolute;
+    top: 20px;
+    bottom: 20px;
+    left: 20px;
+    width: 60px;
+    border-right: 1px solid #C9D1DC;
+}
+
+.box .box-titlenumber > span {
+    font-size: 45px;
+    color: #455C7E;
+    position: absolute;
+    display: block;
+    height: 80px;
+    top: 50%;
+    margin-top: -40px;
+}

@@ -1,0 +1,44 @@
+	<div class="container_wrap footer_color" id="footer">
+		<div class="container">
+			<div class="foo-wrtop">
+				<h1 class="en-txt03 txt-ani txt-aniload">musigned by musign</h1>
+			</div>
+			<div class="foo-wr">
+				<div class="fo-logo">
+					<a href="/">MUSIGN<br>
+					DIGITAL EXPERIENCE<br>
+					PLATFORM</a>
+					<p class="copy pc">© 2020 All copyright by musign.</p>
+				</div>
+				<div class="fo-box fo-box01">
+					<p class="fo-tit">㈜뮤자인</p>
+					<ul class="fo-ul">
+						<li>대표:이호걸</li>
+						<li>주소:서울특별시 강동구 성안로 156, 503, 902호(길동, 우주빌딩)</li><br>
+						<li>사업자 등록번호: 808-88-00950</li>
+						<li>개인정보관리책임자: 지한규</li><br>
+						<li>통신판매업신고번호: 제 2018-서울강동-1076호 <a href="">사업자 정보확인</a></li>
+					</ul>
+				</div>
+				<div class="fo-box fo-box02">
+					<p class="fo-tit">고객센터</p>
+					<p><b>T</b> 02 476 6740</p>
+					<p><b>T</b> 070 7763 6740</p>
+					<p><b>E</b> hi@musign.net</p>
+				</div>
+				<div class="fo-box fo-box04">
+					<div class="fo-family">
+						<a class="fa-tit" href="#">뮤자인 패밀리 바로가기 <img src="/img/fo-icon01.png" alt="바로가기"/></a>
+					</div>
+					<p><a href="/terms-of-service/">이용약관</a></p>
+					<p><a href="/privacy-cookie-policy/">개인정보처리방침</a></p>
+					
+				</div>
+			</div>
+			<p class="copy mo">© 2020 All copyright by musign.</p>
+		</div>
+	</div>
+
+</div><!-- //#wrap -->
+</body>
+</html>

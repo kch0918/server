@@ -1,0 +1,352 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i');
+@import url("https://use.typekit.net/san6fyo.css");
+@import url('https://fonts.googleapis.com/css?family=Crimson+Text:400,400i,600,600i,700,700i');
+@import url('https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900');
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,900&display=swap');
+
+@font-face {
+  font-family: 'Nanum Square light';
+  font-style: normal;
+  font-weight: 100;
+  src: url(/font/NanumSquareL.eot);
+  src: local('Nanum Square Light'),
+       local('NanumSquareL'),
+       url(/font/NanumSquareL.eot?#iefix) format('embedded-opentype'),
+       url(/font/NanumSquareL.woff2) format('woff2'),
+       url(/font/NanumSquareL.woff) format('woff'),
+       url(/font/NanumSquareL.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Nanum Square';
+  font-style: normal;
+  font-weight: 400;
+  src: url(/font/NanumSquareR.eot);
+  src: local('Nanum Square Regular'),
+       local('NanumSquareR'),
+       url(/font/NanumSquareR.eot?#iefix) format('embedded-opentype'),
+       url(/font/NanumSquareR.woff2) format('woff2'),
+       url(/font/NanumSquareR.woff) format('woff'),
+       url(/font/NanumSquareR.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Nanum Squaref bold';
+  font-style: bold;
+  font-weight: 700;
+  src: url(/font/NanumSquareB.eot);
+  src: local('Nanum Square Bold'),
+       local('NanumSquareB'),
+       url(/font/NanumSquareB.eot?#iefix) format('embedded-opentype'),
+       url(/font/NanumSquareB.woff2) format('woff2'),
+       url(/font/NanumSquareB.woff) format('woff'),
+       url(/font/NanumSquareB.ttf) format('truetype');
+}
+
+*{
+	font-family: 'Roboto', 'Nanum Square', sans-serif;
+	font-size:14px;
+	color:#7a7a7a;
+	letter-spacing:-0.5px;
+	line-height:1.6;
+	padding:0;
+	margin:0;
+	box-sizing:border-box;
+}
+img{
+	border:0;
+}
+a, a:hover, a:focus{
+	text-decoration:none;
+	-webkit-transition: all 0.5s ease;
+	-moz-transition: all 0.5s ease;
+	-o-transition: all 0.5s ease;
+	transition: all 0.5s ease;
+}
+span, em, strong, b{
+	font-size:100%;
+	color:inherit;
+	font-family:inherit;
+	line-height:inherit;
+	letter-spacing:inherit;
+}
+input, select{
+	outline: none;
+    border: 0;
+    border-bottom: 1px solid #e1e1e1;
+	padding:10px 0;
+}
+::-webkit-input-placeholder { /* Edge */
+	color:#adadad;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+	color:#adadad;
+}
+::placeholder {
+	color:#adadad;
+}
+input[type=submit], input[type=button], input[type=text] {
+	-webkit-appearance:none;
+}
+input[type=checkbox]{
+	display:none;
+}
+input[type=checkbox] + label:before, input[type=radio] + label:before {
+    content: "";
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
+    background: url(/img/chk-bg01.png) no-repeat center center;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    margin-top: -15px;
+	background-size:30px 30px;
+}
+input[type=checkbox] + label{
+    position: relative;
+    top: 0;
+    left: 0;
+    display: inline-block;
+    min-width: 30px;
+    min-height: 30px;
+    padding: 0 0 0 40px;
+	cursor:pointer;
+}
+input[type=checkbox]:checked + label:before {
+    background: url(/img/chk-bg02.png) no-repeat center center;
+	background-size:30px 30px;
+}
+.en-txt{
+	font-family: 'Roboto', sans-serif;
+	letter-spacing:0;
+}
+.en-txt02{
+	font-family: "Times New Roman", Times, serif;
+	letter-spacing:0;
+}
+.en-txt03, .cap-tit{
+	font-family: handel-gothic,sans-serif;
+	letter-spacing:0;
+	line-height:1.1;
+}
+*:focus { outline:none; }
+
+select::-ms-expand {
+   display: none;            /* í™”ì‚´í‘œ ì—†ì• ê¸° for IE10, 11*/
+}
+select{
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
+.text-center{
+	text-align:center;
+}
+.color-b{
+	color:#0057d0 !important;
+}
+.color-y{
+	color:#ffb500 !important;
+}
+.dis-no{
+	display:none !important;
+}
+ul, li{
+	margin:0;
+	list-style:none;
+}
+img{
+	max-width:100%;
+}
+.mo{
+	display:none;
+}
+.table{
+	display:Table;
+	width:100%;
+}
+.table > div{
+	display:table-cell;
+	vertical-align:middle;
+}
+.wid-4{
+	width:40%;
+}
+.dis-t{
+	display:table;
+	margin:0 auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+header
+*/
+.he-gnb li{
+	display:inline-block;
+}
+.he-gnb li a{
+	font-size:16px;
+	color:#adadad;
+	letter-spacing:0;
+	line-height:100px;
+	display:block;
+}
+.he-gnb li + li{
+	margin-left:40px;
+}
+.he-nav{
+	text-align:right;
+}
+.he-gnb a:hover {
+	color:#00a6b6;
+}
+.header-wr{
+	max-width:1780px;
+	margin:0 auto;
+	padding:0 30px;
+}
+.header-wr .table > div{
+	vertical-align:middle;
+}
+#header{
+	position:fixed;
+	top:0;
+	left:0;
+	width:100%;
+	z-index:100;
+}
+.fixed{
+	background:#fff;
+}
+
+/*
+footer
+*/
+#footer{
+	z-index:100;
+	max-width:1260px;
+	margin:0 auto;
+	padding:0 30px;
+}
+.foo-wrtop{
+	text-align:center;
+	padding:50px 30px 30px;
+}
+.foo-wr{
+	display:Table;
+	width:100%;
+}
+.foo-wr{
+	border-top:1px solid #ebebeb;
+	padding:50px 0;
+}
+.foo-wr > div{
+	display:table-cell;
+}
+.foo-wr > div{
+	vertical-align:top;
+}
+.foo-wr p, .foo-wr a, .fo-ul li{
+	font-size:13px;
+	color:#999;
+}
+.foo-wr p.fo-tit{
+	font-size:14px;
+	color:#333;
+	margin:10px 0;
+	font-weight:700;
+}
+.fo-box b{
+	color:#333;
+}
+.fo-box a{
+	text-decoration:underline;
+	color:#333;
+}
+.foo-wr > div.fo-logo{
+	width:30%;
+}
+#footer .fo-logo a{
+    font-size: 32px;
+    color: #000;
+    font-weight: 700;
+    line-height: 1;
+}
+.foo-wrtop h1{
+	font-size:72px;
+	color:#f0f0f0;
+}
+.fo-box a.fa-tit{
+	color:#999;
+	text-decoration:none;
+	bordeR:1px solid #ebebeb;
+	display:block;
+	padding:10px 15px;
+	position:relative;
+	margin-bottom:25px;
+}
+.fa-tit img{
+	position:absolute;
+	right:15px;
+	top:50%;
+	margin-top:-6px;
+}
+.fo-box04 p{
+	padding-left:15px;
+}
+.copy{
+	margin-top: 15px;
+}
+.fo-ul li{
+	display:inline-block;
+}
+.fo-ul a{
+	margin-left:15px;
+}
+.fo-ul li + li:before{
+	content:"";
+	display:inline-block;
+	width:1px;
+	height:10px;
+	background:#c6c6c6;
+	margin:0 7px;
+}
+.fo-box02 p:not(.fo-tit){
+	letter-spacing:0;
+}
+
+
+.btn{
+	font-size:20px;
+	color:#fff;
+	display:block;
+	height: 90px;
+	line-height: 90px;
+	background-color: #00a6b6;
+	border:1px solid #00a6b6;
+	text-align:center;
+}
+.btn02{
+	background-color: #fff;
+	border:1px solid #00a6b6;
+	color:#00a6b6;
+}

@@ -1,0 +1,118 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>KPI05 - 텍스트필드 한/영/숫자/특수문자 구분하는 정규식</title>
+
+    <script src="https://code.jquery.com/jquery-2.2.4.js"
+        integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+</head>
+
+<style>
+    body {
+        height: 950px;
+        padding:100px 100px;
+        text-align: center;
+    }
+
+    * {
+        padding: 0;
+        margin: 0;
+        border: 0;
+        outline: none;
+    }
+
+    img {
+        max-width: 100%;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    .file {
+        font-size: 16px;
+        color: #707070;
+        margin-bottom: 0;
+    }
+
+    .file input {
+        min-width: 356px;
+        padding: 15px 20px;
+        margin-left: 35px;
+        margin-right: 10px;
+        box-sizing: border-box;
+        vertical-align: middle;
+        font-size: 16px;
+        color: #c8c8c8;
+        border: 1px solid #ebebeb;
+        outline: none;
+    }
+
+    .file input::-ms-input-placeholder {
+        color: #c8c8c8;
+    }
+
+    .file input::-webkit-input-placeholder {
+        color: #c8c8c8;
+    }
+
+    .file input::-moz-placeholder {
+        color: #c8c8c8;
+    }
+
+    .file input[type="file"] {
+        display: none;
+    }
+
+    .file img {
+        vertical-align: middle;
+        cursor: pointer;
+    }
+</style>
+
+<body>
+    <div class="file">
+        <input type="text" placeholder="한글만 입력 가능합니다." onkeyup="Test(this.value);">
+    </div>
+
+
+
+    <script>
+        $(window).ready(function () {
+
+        })
+
+        function Test(inputText) {
+            var str = inputText;
+            console.log(str);
+
+            var check_num = /[0-9]/; // 숫자
+            var check_eng = /[a-zA-Z]/; // 문자
+            var check_spc = /[~!@#$%^&*()_+|<>?:{}]/; // 특수문자
+            var check_kor = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/; // 한글체크
+
+            check_num.test(str); //숫자 return 값 true / false
+            check_eng.test(str); //영문 return 값 true / false
+            check_spc.test(str); //특수 return 값 true / false
+            check_kor.test(str); //한글 return 값 true / false
+
+            if( check_kor.test(str) && !check_num.test(str) && !check_eng.test(str) && !check_spc.test(str) ) { 
+                return true;
+            }else{ alert("한글만 입력 가능합니다.");
+            return false; 
+            }
+        }
+
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>

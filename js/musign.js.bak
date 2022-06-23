@@ -1,0 +1,103 @@
+$(function(){
+	fix()
+	$(window).scroll(function(){
+		fix()
+	})
+	function fix(){
+		var chk = $(window).scrollTop();
+		if(chk > 100){
+			$("#header").addClass("fixed");
+		}else{
+			$("#header").removeClass("fixed");
+		}
+	}
+})
+$(function(){
+	$(".tab-wr").each(function(){
+		var btn = $(this).find(".tab-ul > li");
+		var cont = $(this).find(".tab-cont > div");
+		
+		btn.mouseenter(function(){
+			var ind = $(this).index();
+			btn.removeClass("active");
+			$(this).addClass("active");
+			cont.removeClass("active");
+			cont.eq(ind).addClass("active");
+		})
+	})
+})
+
+
+
+
+
+/* $(window).on('scroll',function(){
+    if($(window).scrollTop() > 900) {
+        $('#header_left').addClass('scroll');
+    } else {
+        $('#header_left').removeClass('scroll');
+    }
+});*/
+
+
+
+
+
+/*(function($) { 
+
+
+		$(window).ready(function(){
+			setTimeout(function(){
+			$("#m-v1").addClass("fix-text-active");			
+			},500);
+		});
+
+
+	$(window).load(function(){
+		$(".sche-wrap").remove();
+		$("#m-v5 + div ").remove();
+		$("#m-v1 ,#m-v2, #m-v3, #m-v4, #m-v5").addClass("main-v");
+		$("#m-v1").addClass("fix-active");
+		$("html").addClass("fix-active-0");
+	}); 	
+
+
+	
+
+$(function(){
+	classAdd();
+
+	$(window).on("scroll", function(){
+		
+		if($(".main-v").is(":animated")){
+			return false;
+		}else{
+			$(".main-v").each(function(i){
+				var object =  $(this).offset().top ;
+				var top =  $(window).scrollTop() + $(window).height();
+				
+				if (  top > object+400)
+				{
+					$("#main > div").removeClass("fix-active");
+					$(this).addClass("fix-active");
+					$(this).addClass("fix-text-active");
+				}
+			});
+		
+			var act = $("#main ").children(".fix-active").index();
+			$("html").removeClass("fix-active-"+(act-1));
+			$("html").removeClass("fix-active-"+(act+1));
+			$("html").addClass("fix-active-"+act);
+
+		}
+		
+	});
+	function classAdd(){
+		$(".main-v").each(function(i){
+				var ind = $(this).index();
+				$(this).addClass("fix-section" + (i +1) );
+				
+			});
+		$("#main > p").remove();
+	}
+})*/

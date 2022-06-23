@@ -1,0 +1,335 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>KPI06 - 리스트에서 선택한 값 새 리스트에 추가/삭제</title>
+
+    <script src="https://code.jquery.com/jquery-2.2.4.js"
+        integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+</head>
+
+<style>
+    body {
+        height: 950px;
+        padding: 100px 100px;
+    }
+
+    * {
+        padding: 0;
+        margin: 0;
+        border: 0;
+        outline: none;
+    }
+
+    img {
+        max-width: 100%;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    .paper_search {
+        position: relative;
+        padding-bottom: 172px;
+        background: #0f0f0f;
+    }
+
+    .paper_search * {
+        color: #fff;
+    }
+
+    .search_form {
+        position: relative;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding-top:100px;
+        text-align: center;
+    }
+
+    .search_form input {
+        display: block;
+        width: 100%;
+        height: 87px;
+        padding: 20px 45px;
+        font-size: 21px;
+        color: #c6c6c6;
+        border-radius: 43px;
+        box-shadow: 2.4px 5.5px 49px 8px rgba(0, 0, 0, 0.05);
+        box-sizing: border-box;
+        border: 0;
+        margin-bottom: 14px;
+    }
+
+    .search_form input::-ms-input-placeholder {
+        color: #c6c6c6 !important;
+    }
+
+    .search_form input::-webkit-input-placeholder {
+        color: #c6c6c6 !important;
+    }
+
+    .search_form input::-moz-placeholder {
+        color: #c6c6c6 !important;
+    }
+
+    .search_form>button {
+        position: absolute;
+        width: 73px;
+        height: 73px;
+        top: 8px;
+        right: 8px;
+        background: #0f0f0f url('/img/s_search.png')no-repeat center center;
+        border-radius: 100%;
+    }
+
+    .search_wr .option_list {}
+
+    .search_wr .option_list>li {
+        display: inline-block;
+        vertical-align: middle;
+        min-width: 127px;
+        font-size: 17px;
+        font-weight: 300;
+        line-height: 31px;
+        padding: 0 30px 0 15px;
+        margin-right: 5px;
+        margin-bottom: 5px;
+        box-sizing: border-box;
+        border: 1px solid #303030;
+        background: none;
+    }
+
+    .search_wr .search_option {
+        position: relative;
+        max-width: 1600px;
+        margin: 40px auto 100px;
+    }
+
+    .search_wr .op_box {
+        position: relative;
+        font-size: 0;
+        margin-bottom: 25px;
+    }
+
+    .search_wr .op_box>* {
+        position: relative;
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    .search_wr .op_box .slick-slide {
+        margin-right: 10px;
+    }
+
+    .search_wr .op_box .op_name {
+        width: 9%;
+        font-size: 20px;
+        padding-left: 15px;
+        text-align: left;
+        box-sizing: border-box;
+    }
+
+    .search_wr .op_box .op_name:before {
+        content: '';
+        position: absolute;
+        width: 4px;
+        height: 4px;
+        top: 50%;
+        margin-top: -2px;
+        left: 0;
+        background: #fff;
+        border-radius: 100%;
+    }
+
+    .search_wr .op_box ul {
+        width: 91%;
+        font-size: 0;
+    }
+
+    .search_wr .op_box ul li {
+        display: inline-block;
+        vertical-align: middle;
+        background: #1a1a1a;
+        font-size: 17px;
+        color: rgba(255, 255, 255, 0.2);
+        font-weight: 300;
+        min-width: 123px;
+        height: 55px;
+        line-height: 55px;
+        text-align: center;
+        padding: 0 5px;
+        margin-right: 5px;
+        margin-bottom: 10px;
+        box-sizing: border-box;
+        transition: all 0.5s;
+        cursor: pointer;
+    }
+
+    .search_wr .op_box ul li.chk {
+        border: 1px solid #fff;
+        color: #fff;
+    }
+
+    .search_paper {
+        display: block;
+        width: 310px;
+        height: 66px;
+        margin: 0 auto;
+        border: 2px solid #fff;
+        font-size: 16px;
+        font-weight: 700;
+        color:#000;
+        box-sizing: border-box;
+    }
+
+    .option_list {
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    .option_list>li {
+        position: relative;
+        display: inline-block;
+        vertical-align: middle;
+        border-radius: 18px;
+        background: #f4f4f4;
+        min-width: 115px;
+        height: 37px;
+        line-height: 37px;
+        font-size: 15px;
+        font-weight: 500;
+        margin: 0 2px;
+        padding: 0 10px;
+        box-sizing: border-box;
+    }
+
+    .option_list>li:last-child {
+        margin-right: 0;
+    }
+
+    .option_list>li .btn_del {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        top: 50%;
+        margin-top: -6px;
+        right: 10px;
+        background: url('/file/bora/img/s_delete.png')no-repeat center center;
+        cursor: pointer;
+    }
+</style>
+
+<body>
+    <div class="search_wr goods">
+
+        <div class="paper_search">
+            <form>
+                <div class="search_form">
+                    <ul class="option_list"></ul>
+                </div>
+
+                <div class="search_option">
+                    <div class="op_box scroll">
+                        <p class="op_name">분류</p>
+
+                        <ul>
+                            <li data-value="코티드" onclick="addOption(this)">코티드</li>
+                            <li data-value="언코티드" onclick="addOption(this)">언코티드</li>
+                            <li data-value="디지털용지" onclick="addOption(this)">디지털용지</li>
+                            <li data-value="보드" onclick="addOption(this)">보드</li>
+                            <li data-value="크라프트지" onclick="addOption(this)">크라프트지</li>
+                            <li data-value="골판지" onclick="addOption(this)">골판지</li>
+                            <li data-value="메탈" onclick="addOption(this)">메탈</li>
+                            <li data-value="흑지" onclick="addOption(this)">흑지</li>
+                            <li data-value="컬러플레인" onclick="addOption(this)">컬러플레인</li>
+                            <li data-value="컬러엠보스" onclick="addOption(this)">컬러엠보스</li>
+                            <li data-value="트래싱지" onclick="addOption(this)">트래싱지</li>
+                            <li data-value="펄지" onclick="addOption(this)">펄지</li>
+                            <li data-value="티슈페이퍼" onclick="addOption(this)">티슈페이퍼</li>
+                            <li data-value="기능지" onclick="addOption(this)">기능지</li>
+                            <li data-value="한지" onclick="addOption(this)">한지</li>
+                            <li data-value="롤바인딩" onclick="addOption(this)">롤바인딩</li>
+                            <li data-value="지제품" onclick="addOption(this)">지제품</li>
+                            <li data-value="디자인용품" onclick="addOption(this)">디자인용품</li>
+                        </ul>
+                    </div>
+
+                    <div class="op_box scroll">
+                        <p class="op_name">용도</p>
+
+                        <ul>
+                            <li data-value="명함" onclick="addOption(this)">명함</li>
+                            <li data-value="포스터" onclick="addOption(this)">포스터</li>
+                            <li data-value="카탈로그" onclick="addOption(this)">카탈로그</li>
+                            <li data-value="리플릿" onclick="addOption(this)">리플릿</li>
+                            <li data-value="도록" onclick="addOption(this)">도록</li>
+                            <li data-value="캘린더" onclick="addOption(this)">캘린더</li>
+                            <li data-value="택" onclick="addOption(this)">택</li>
+                            <li data-value="초대장" onclick="addOption(this)">초대장</li>
+                            <li data-value="홀더" onclick="addOption(this)">홀더</li>
+                            <li data-value="메뉴판" onclick="addOption(this)">메뉴판</li>
+                        </ul>
+                    </div>
+
+                </div>
+
+                <button class="search_paper">Search Paper</button>
+            </form>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <script>
+        $(window).ready(function () {
+
+        })
+
+        function showSelected() {
+            var chk_leng = $(".sel_box ul > li.chk").length;
+            if (chk_leng > 0) {
+                $(".option_wr").show();
+            } else {
+                $(".option_wr").hide();
+            }
+        }
+        // 리스트에 선택된 옵션 추가
+        function addOption(op) {
+            var chk_op = op.classList.contains("chk");
+            var chk_txt = op.innerText;
+
+            if (chk_op == true) {
+                op.classList.remove("chk");
+                $(".option_list").find("li[data-value=" + chk_txt + "]").remove();
+            } else {
+                op.className = "chk";
+                $(".option_list").append("<li data-value=" + chk_txt + " onclick='delOption(this);'>" + chk_txt + "<input type='hidden' name='" + op.getAttribute("data-name") + "' value='" + op.getAttribute("data-data") + "'><div class='btn_del'></div></li>");
+            }
+
+            showSelected();
+        }
+        // 리스트에서 선택된 옵션 삭제
+        function delOption(op) {
+            var chk_txt = op.getAttribute("data-value");
+
+            op.parentNode.removeChild(op);
+            $(".sel_box > ul, .op_box > ul").find("li[data-value=" + chk_txt + "]").removeClass("chk");
+
+            showSelected(); // 리스트 업데이트
+        }
+
+
+
+
+    </script>
+
+</body>
+
+</html>

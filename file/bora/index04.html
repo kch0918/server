@@ -1,0 +1,122 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>KPI04 - 첨부파일 용량제한 및 파일명 받아오기</title>
+
+    <script src="https://code.jquery.com/jquery-2.2.4.js"
+        integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+</head>
+
+<style>
+    body {
+        height: 950px;
+        padding:100px 100px;
+        text-align: center;
+    }
+
+    * {
+        padding: 0;
+        margin: 0;
+        border: 0;
+        outline: none;
+    }
+
+    img {
+        max-width: 100%;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    .file {
+        font-size: 16px;
+        color: #707070;
+        margin-bottom: 0;
+    }
+
+    .file input {
+        min-width: 356px;
+        padding: 15px 20px;
+        margin-left: 35px;
+        margin-right: 10px;
+        box-sizing: border-box;
+        vertical-align: middle;
+        font-size: 16px;
+        color: #c8c8c8;
+        border: 1px solid #ebebeb;
+        outline: none;
+    }
+
+    .file input::-ms-input-placeholder {
+        color: #c8c8c8;
+    }
+
+    .file input::-webkit-input-placeholder {
+        color: #c8c8c8;
+    }
+
+    .file input::-moz-placeholder {
+        color: #c8c8c8;
+    }
+
+    .file input[type="file"] {
+        display: none;
+    }
+
+    .file img {
+        vertical-align: middle;
+        cursor: pointer;
+    }
+</style>
+
+<body>
+    <div class="file">
+        FILE
+        <input type="file" class="upload" id="attach" name="attach[]">
+        <input type="text" class="filename" value="선택된 파일이 없습니다." readonly>
+        <label for="attach"><img src="http://comxi-partners.musign.co.kr/img/btn_attach.png"></label>
+    </div>
+
+
+
+    <script>
+        $(window).ready(function () {
+            $(".upload").on("change", function () {
+                if (!fileCheck()) {
+                    return false;
+                }
+                var filename = $(this)[0].files[0].name;
+                console.log(filename);
+
+                $(".filename").attr("value", filename);
+            })
+
+        })
+
+        function fileCheck(){
+            var result = true;
+            if(document.getElementById("attach").value!=""){
+                var fileSize = document.getElementById("attach").files[0].size;
+                var maxSize = (1 * 1024 * 1024) - 1;// 32MB - 1byte
+                
+                if(fileSize > maxSize){
+                alert("첨부파일 사이즈는 1MB 이내로 등록 가능합니다. ");
+                document.getElementById("attach").value = "";
+                result = false;
+                }
+            }
+            return result;
+        }
+
+
+
+
+    </script>
+
+</body>
+
+</html>

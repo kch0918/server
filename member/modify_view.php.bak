@@ -1,0 +1,233 @@
+<?php
+require_once($_SERVER['DOCUMENT_ROOT']."/include/init.php");
+require_once($_SERVER['DOCUMENT_ROOT']."/common/header.php");
+require_once($_SERVER['DOCUMENT_ROOT']."/include/login_check.php");
+
+$query = "select * from user where idx = '{$_REQUEST['idx']}'";
+$result = sql_query($query);
+$row = sql_fetch($result);
+
+$sv_query = "select server_type from server_info";
+$sv_result = sql_query($sv_query);
+?>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
+<script>
+	var dp = jQuery.noConflict();
+</script>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />
+<script>
+var chk_per_yn = "<?php echo $row['per_yn']?>",
+	chk_pay_yn = "<?php echo $row['pay_yn']?>",
+	server_name = "<?php echo $row['server_name']?>";
+var ad_mod = "<?php echo $_SESSION['login_id']?>";
+var phone_regExp = /^(01[016789]{1}|02|0[3-9]{1}[0-9]{1})[0-9]{3,4}[0-9]{4}$/;
+var email_regExp = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+var id_regExp = /^[a-zA-Z0-9]{4,20}$/;
+$(document).ready(function(){
+	//불러오기
+	$("input:radio[name='per_yn']:input[value='"+chk_per_yn+"']").attr("checked", true);
+	$("input:radio[name='pay_yn']:input[value='"+chk_pay_yn+"']").attr("checked", true);
+	$("#server_name").val(server_name);
+	console.log(window.navigator.userAgent);
+});
+$(function(){
+	$(".agree-bg").click(function(){
+		$(".agree-popup").hide();
+		$(".agree-div").html("");
+	});
+	dp.datepicker.setDefaults({
+		showButtonPanel: true,
+		currentText: "오늘 날짜",
+		closeText: "닫기",
+		nextText: "다음 달",
+		prevText: "이전 달",
+		changeYear: true,
+		changeMonth: true,
+        monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+        monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+        dayNames: ['일', '월', '화', '수', '목', '금', '토'],
+        dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
+        dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+        dateFormat: "yymmdd"
+	});
+	dp(".datepicker").datepicker();
+})
+function fncSubmit()
+{
+	var validationFlag = "Y";
+	if(($("#user_pw").val() == "" && $("#re_user_pw").val() == "") && ad_mod != 'musign'){
+		if(($("#past_pw").val().length < 4 || $("#past_pw").val().length > 20) && ad_mod != 'musign'){
+			alert("잘못된 비밀번호 형식입니다.");
+			$("#past_pw").focus();
+			validationFlag = "N";
+			return false;
+		}else{
+			$("#user_pw").val($("#past_pw").val());
+			$("#re_user_pw").val($("#past_pw").val());
+		}
+	}
+	if($("#user_id").val() != "" && !id_regExp.test($("#user_id").val())){
+		alert("잘못된 아이디형식 입니다.");
+		$("#user_id").focus();
+		validationFlag = "N";
+		return false;
+	}
+	if($("#user_phone").val() != "" && !phone_regExp.test($("#user_phone").val())){
+		alert("잘못된 번호형식 입니다.");
+		$("#user_phone").focus();
+		validationFlag = "N";
+		return false;
+	}
+	if($("#user_email").val() != "" && !email_regExp.test($("#user_email").val())){
+		alert("잘못된 이메일형식 입니다.");
+		$("#user_email").focus();
+		validationFlag = "N";
+		return false;
+	}
+	if(validationFlag == "Y" && ad_mod != 'musign')
+	{
+    	if($("#user_pw").val() != $("#re_user_pw").val()){
+    		alert("새 비밀번호를 확인해주세요");
+    		$("#re_user_pw").focus();
+    		validationFlag = "N";
+    		return false;
+    	}
+	}
+	$(".notEmpty").each(function()
+	{
+		if ($(this).val() == "" && ad_mod != 'musign')
+		{
+			alert(this.dataset.name+"을(를) 입력해주세요.");
+			$(this).focus();
+			validationFlag = "N";
+			return false;
+		}
+	});
+	if(validationFlag == "Y")
+	{
+		$("#fncForm").ajaxSubmit({
+			success: function(data)
+			{
+				console.log(data);
+				var result = JSON.parse(data);
+	    		if(result.isSuc == "success")
+	    		{
+	    			$(".agree-popup").show();
+	    		}
+	    		else
+	    		{
+	    			alert(result.msg);
+	    			$("#user_pw").val("");
+	    			$("#re_user_pw").val("");
+	    		}
+			}
+		});
+	}
+}
+</script>
+<div class="sub-top text-center">
+	<p class="mtit-sp">Digital Experience platform - musign</p>
+	<p class="mtit-big">musign<span class="color-g">care</span></p>
+</div>
+<div class="login-box join-view">
+	<form id="fncForm" action="modify_proc.php">
+	<input type="hidden" name="idx" value="<?php echo $row['idx']?>">
+	<h2 class="text-center">modify</h2>
+	<div class="login-wr">
+		<div class="join-box">
+			<p class="join-intit">비밀번호</p>
+			<div class="join-input">
+				<input data-name="현재 비밀번호" type="password" class="notEmpty" id="past_pw" name="past_pw" placeholder="현재 비밀번호 입력"/>
+			</div>
+			<div class="join-input">
+				<input data-name="새 비밀번호" type="password" class="notEmpty" id="user_pw" name="user_pw" placeholder="새 비밀번호 입력"/>
+			</div>
+			<div class="join-input">
+				<input data-name="비밀번호 확인" type="password" class="notEmpty" id="re_user_pw" name="re_user_pw" placeholder="비밀번호 재입력"/>
+			</div>
+		</div>
+		<div class="join-box">
+			<p class="join-intit">고객정보</p>
+			<div class="join-input">
+				<input data-name="회사명" type="text" class="notEmpty" id="user_co" name="user_co" placeholder="회사명" value="<?php echo $row['user_co']?>"/>
+			</div>
+			<div class="join-input">
+				<input data-name="담당자 성함" type="text" class="notEmpty" id="user_name" name="user_name" placeholder="담당자 성함" value="<?php echo $row['user_name']?>"/>
+			</div>
+			<div class="join-input">
+				<input data-name="담당자 연락처" type="tel" class="notEmpty" id="user_phone" name="user_phone" placeholder="담당자 연락처" value="<?php echo $row['user_phone']?>"/>
+				<br><span>' - ' 를 제외하고 입력해주세요</span>
+			</div>
+			<div class="join-input">
+				<input data-name="담당자 이메일" type="email" class="notEmpty" id="user_email" name="user_email" placeholder="담당자 이메일" value="<?php echo $row['user_email']?>"/>
+			</div>
+		</div>
+		<?php 
+		if($_SESSION['login_id'] == 'musign'){
+		    ?>
+    		<div class="join-box">
+    			<p class="join-intit">관리자입력</p>
+    			<div class="join-input">
+    				<select id="server_name" name="server_name">
+    					<option>---선택하세요---</option>
+    					<?php 
+    					for($i = 0; $i < sql_count($sv_result); $i++){
+    					    $sv_row = sql_fetch($sv_result);
+    					?>
+    					<option value="<?php echo $sv_row['server_type']?>"><?php echo $sv_row['server_type']?></option>
+    					<?php    
+    					}
+    					?>
+    				</select>
+    			</div>
+    			<div class="join-input">
+    				<input type="text" class="" id="server_root" name="server_root" placeholder="서버경로" value="<?php echo $row['server_root']?>"/>
+    			</div>
+    			<div class="join-input">
+    				<input type="text" class="datepicker" id="date_start" name="date_start" placeholder="시작일" value="<?php echo $row['date_start']?>" readonly="readonly"/>
+    			</div>
+    			<div class="join-input">
+    				<input type="text" class="datepicker" id="date_end" name="date_end" placeholder="종료일" value="<?php echo $row['date_end']?>" readonly="readonly"/>
+    			</div>
+    			<div class="join-input">
+    				<input type="text" class="" id="url" name="url" placeholder="URL" value="<?php echo $row['url']?>"/>
+    			</div>
+    			<div class="join-input">
+    				<input type="text" class="" id="url_test" name="url_test" placeholder="테스트 URL" value="<?php echo $row['url_test']?>"/>
+    			</div>
+    			<p class="join-intit">허가여부</p>
+    			<div class="join-input">
+    				<label><input type="radio" class="" id="" name="per_yn" value="Y"/>O</label>
+    				<label><input type="radio" class="" id="" name="per_yn" value="N"/>X</label>
+    			</div>
+    			<p class="join-intit">결제여부</p>
+    			<div class="join-input">
+    				<label><input type="radio" class="" id="" name="pay_yn" value="Y"/>O</label>
+    				<label><input type="radio" class="" id="" name="pay_yn" value="N"/>X</label>
+    			</div>
+    		</div>
+		    <?php
+		}
+		?>
+		<div>
+			<a class="login-btn" href="javascript:fncSubmit();">수정하기</a>
+		</div>
+	</div>
+	</form>
+</div>
+
+<div class="agree-popup joine-popup">
+	<div class="agree-bg"></div>
+	<div class="agree-cont">
+		<div class="joine-div">
+			<img src="/img/join-icon01.png" alt="회원수정 완료 아이콘"/>
+			<p class="color-g joine-tit">수정 되었습니다.</p>
+			<div><a href="/" class="login-btn">메인페이지 이동</a></div>
+		</div>
+	</div>
+</div>
+
+<?php 
+require_once($_SERVER['DOCUMENT_ROOT']."/common/footer.php");
+?>

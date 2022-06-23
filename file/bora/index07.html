@@ -1,0 +1,133 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>KPI06 - ul 셀렉트박스에서 선택한 값 받아오기</title>
+
+    <script src="https://code.jquery.com/jquery-2.2.4.js"
+        integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+</head>
+
+<style>
+    body {
+        height: 950px;
+        padding: 100px 100px;
+        background: #eee;
+    }
+
+    * {
+        padding: 0;
+        margin: 0;
+        border: 0;
+        outline: none;
+    }
+
+    img {
+        max-width: 100%;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    ul, li {
+        list-style: none;
+    }
+
+    .sort {
+        position: relative;
+        float: right;
+        width: 168px;
+        height: 58px;
+        background: #ffffff;
+        padding: 20px 20px;
+        box-sizing: border-box;
+        cursor: pointer;
+        z-index: 11;
+    }
+
+    .sort>p {
+        position: relative;
+        font-size: 15px;
+        color: #000;
+        font-weight: 500;
+    }
+
+    .sort>p:after {
+        content: '';
+        position: absolute;
+        width: 12px;
+        height: 9px;
+        top: 50%;
+        margin-top: -6px;
+        right: 0;
+        background: url('/file/bora/img/icon_color.png')no-repeat center center;
+        transform: rotate(180deg);
+        transition: all 0.5s;
+    }
+
+    .sort.on>p:after {
+        transform: rotate(0);
+    }
+
+    .sort>ul {
+        position: Absolute;
+        width: 100%;
+        top: 58px;
+        left: 0;
+        padding: 10px 20px;
+        background: #fff;
+        box-sizing: border-box;
+        display: none;
+    }
+
+    .sort>ul>li {
+        margin-bottom:5px;
+        cursor: pointer;
+    }
+</style>
+
+<body>
+
+    <div class="sort">
+        <p>20개씩 보기</p>
+        <ul>
+            <li>20개씩 보기</li>
+            <li>40개씩 보기</li>
+            <li>60개씩 보기</li>
+            <li>80개씩 보기</li>
+        </ul>
+    </div>
+
+
+    <script>
+        $(window).ready(function () {
+            /* sort */
+            $(".sort").click(function () {
+                var chk = $(this).hasClass("on");
+
+                if (chk == true) {
+                    $(this).find("ul").slideUp(300);
+                    $(this).removeClass("on");
+                } else {
+                    $(this).find("ul").slideDown(300);
+                    $(this).addClass("on");
+                }
+            })
+            $(".sort ul li").click(function () {
+                var chk_txt = $(this).text();
+                $(this).parents(".sort").find("p").text(chk_txt);
+            })
+
+        })
+
+
+
+
+    </script>
+
+</body>
+
+</html>

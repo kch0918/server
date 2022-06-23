@@ -1,0 +1,2899 @@
+{
+	"BAROBILL": {
+		"GetErrString": {
+			"description":"바로빌 오류코드의 내용을 확인합니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",			"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"ErrCode",			"description":"오류코드"}
+			],
+			"returnType":"string",
+			"returnValue": [
+				{"value":"문자열",	"description":"오류코드에 대한 내용"}
+			]
+		},
+		"CheckCorpIsMember": {
+			"description":"바로빌에 가입되어 있는 사업자인지 확인합니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",			"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",			"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CheckCorpNum",		"description":"확인할 사업자번호 ('-'제외)"}
+			],
+			"returnType":"int",
+			"returnValue": [
+				{"value":"0",		"description":"가입되어있지 않음"},
+				{"value":"1",		"description":"바로빌 회원"},
+				{"value":"음수",	"description":"오류코드"}
+			]
+		},
+		"RegistCorp": {
+			"description":"연동사의 고객을 바로빌에 회원가입 합니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",		"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",		"description":"사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"70",	"name":"CorpName",		"description":"회사명"},
+				{"required":"O",	"type":"string",	"length":"30",	"name":"CEOName",		"description":"대표자명"},
+				{"required":"O",	"type":"string",	"length":"40",	"name":"BizType",		"description":"업태"},
+				{"required":"O",	"type":"string",	"length":"40",	"name":"BizClass",		"description":"업종"},
+				{"required":"O",	"type":"string",	"length":"9",	"name":"PostNum",		"description":"우편번호"},
+				{"required":"O",	"type":"string",	"length":"200",	"name":"Addr1",			"description":"주소"},
+				{"required":"O",	"type":"string",	"length":"200",	"name":"Addr2",			"description":"상세주소"},
+				{"required":"O",	"type":"string",	"length":"30",	"name":"MemberName",	"description":"담당자명"},
+				{"required":"X",	"type":"string",	"length":"13",	"name":"JuminNum",		"description":"<span class='red'>더 이상 사용되지 않습니다. [빈 문자열로 처리]</span>"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"ID",			"description":"담당자 아이디 (6~20 자)"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"PWD",			"description":"담당자 비밀번호 (6~20 자)"},
+				{"required":"X",	"type":"string",	"length":"20",	"name":"Grade",			"description":"담당자 직급"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"TEL",			"description":"담당자 전화번호"},
+				{"required":"X",	"type":"string",	"length":"20",	"name":"HP",			"description":"담당자 휴대폰"},
+				{"required":"O",	"type":"string",	"length":"40",	"name":"Email",			"description":"담당자 이메일"}
+			],
+			"returnType":"int",
+			"returnValue": [
+				{"value":"1",		"description":"성공"},
+				{"value":"음수",	"description":"오류코드"}
+			]
+		},
+		"AddUserToCorp": {
+			"description":"바로빌 회원사에 담당자를 추가합니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",		"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",		"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"30",	"name":"MemberName",	"description":"담당자명"},
+				{"required":"X",	"type":"string",	"length":"13",	"name":"JuminNum",		"description":"<span class='red'>더 이상 사용되지 않습니다. [빈 문자열로 처리]</span>"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"ID",			"description":"담당자 아이디 (6~20 자)"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"PWD",			"description":"담당자 비밀번호 (6~20 자)"},
+				{"required":"X",	"type":"string",	"length":"20",	"name":"Grade",			"description":"담당자 직급"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"TEL",			"description":"담당자 전화번호"},
+				{"required":"X",	"type":"string",	"length":"20",	"name":"HP",			"description":"담당자 휴대폰"},
+				{"required":"O",	"type":"string",	"length":"40",	"name":"Email",			"description":"담당자 이메일"}
+			],
+			"returnType":"int",
+			"returnValue": [
+				{"value":"1",		"description":"성공"},
+				{"value":"음수",	"description":"오류코드"}
+			]
+		},
+
+		"UpdateCorpInfo": {
+			"description":"바로빌 회원사 정보를 수정합니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",		"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",		"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"70",	"name":"CorpName",		"description":"회사명"},
+				{"required":"O",	"type":"string",	"length":"30",	"name":"CEOName",		"description":"대표자명"},
+				{"required":"O",	"type":"string",	"length":"40",	"name":"BizType",		"description":"업태"},
+				{"required":"O",	"type":"string",	"length":"40",	"name":"BizClass",		"description":"업종"},
+				{"required":"O",	"type":"string",	"length":"9",	"name":"PostNum",		"description":"우편번호"},
+				{"required":"O",	"type":"string",	"length":"200",	"name":"Addr1",			"description":"주소"},
+				{"required":"O",	"type":"string",	"length":"200",	"name":"Addr2",			"description":"상세주소"}
+			],
+			"returnType":"int",
+			"returnValue": [
+				{"value":"1",		"description":"성공"},
+				{"value":"음수",	"description":"오류코드"}
+			]
+		},
+		"UpdateUserInfo": {
+			"description":"바로빌 회원사 담당자의 정보를 수정합니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",		"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",		"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"ID",			"description":"바로빌 회원사 담당자 아이디"},
+				{"required":"O",	"type":"string",	"length":"30",	"name":"MemberName",	"description":"담당자명"},
+				{"required":"X",	"type":"string",	"length":"13",	"name":"JuminNum",		"description":"<span class='red'>더 이상 사용되지 않습니다. [빈 문자열로 처리]</span>"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"TEL",			"description":"담당자 전화번호"},
+				{"required":"X",	"type":"string",	"length":"20",	"name":"HP",			"description":"담당자 휴대폰"},
+				{"required":"O",	"type":"string",	"length":"40",	"name":"Email",			"description":"담당자 이메일"},
+				{"required":"X",	"type":"string",	"length":"20",	"name":"Grade",			"description":"담당자 직급"}
+			],
+			"returnType":"int",
+			"returnValue": [
+				{"value":"1",		"description":"성공"},
+				{"value":"음수",	"description":"오류코드"}
+			]
+		},
+		"UpdateUserPWD": {
+			"description":"바로빌 회원사 담당자의 비밀번호를 변경합니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",	"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",	"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"ID",		"description":"바로빌 회원사 담당자 아이디"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"newPWD",	"description":"새 비밀번호 (6~20 자)"}
+			],
+			"returnType":"int",
+			"returnValue": [
+				{"value":"1",		"description":"성공"},
+				{"value":"음수",	"description":"오류코드"}
+			]
+		},
+		"ChangeCorpManager": {
+			"description":"바로빌 회원사의 관리자를 변경합니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",		"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",		"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"newManagerID",	"description":"관리자로 지정될 바로빌 회원사 담당자 아이디"}
+			],
+			"returnType":"int",
+			"returnValue": [
+				{"value":"1",		"description":"성공"},
+				{"value":"음수",	"description":"오류코드"}
+			]
+		},
+
+		"GetCorpMemberContacts": {
+			"description":"바로빌 회원사의 담당자 목록을 반환합니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",		"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",		"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CheckCorpNum",	"description":"확인할 사업자번호 ('-'제외)"}
+			],
+			"returnType":"Contact[]",
+			"returnValue": [
+				{"value":"빈 Contact 배열",	"description":"오류"}
+			]
+		},
+
+		"GetCashChargeURL": {
+			"description":"바로빌 포인트를 충전할 수 있는 URL을 반환합니다.<br><span class='red'>반환된 URL은 60초까지만 유효합니다.</span>",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",	"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",	"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"ID",		"description":"바로빌 회원사 담당자 아이디"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"PWD",		"description":"바로빌 회원사 담당자 비밀번호"}
+			],
+			"returnType":"string",
+			"returnValue": [
+				{"value":"URL 형식",				"description":"성공"},
+				{"value":"음수 값 형식의 문자열",	"description":"오류코드"}
+			]
+		},
+		"GetBalanceCostAmount": {
+			"description":"바로빌 회원사의 잔여포인트를 확인합니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",	"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",	"description":"바로빌 회원사 사업자번호 ('-'제외)"}
+			],
+			"returnType":"long",
+			"returnValue": [
+				{"value":"양수",	"description":"잔여포인트"},
+				{"value":"음수",	"description":"오류코드"}
+			]
+		},
+		"GetBalanceCostAmountOfInterOP": {
+			"description":"연동사의 잔여포인트를 확인합니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",		"description":"바로빌 연동인증키"}
+			],
+			"returnType":"long",
+			"returnValue": [
+				{"value":"양수",	"description":"잔여포인트"},
+				{"value":"음수",	"description":"오류코드"}
+			]
+		},
+		"GetChargeUnitCost": {
+			"description":"각 서비스 별 단가를 확인합니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",		"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",		"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"ChargeCode",	"description":"품목코드<br><br>1:세금계산서<br>2:계산서<br>3:거래명세서<br>4:입금표<br>5:청구서<br>6:견적서<br>7:영수증<br>8:발주서<br>11:SMS<br>12:FAX<br>13:LMS<br>14:MMS"}
+			],
+			"returnType":"int",
+			"returnValue": [
+				{"value":"양수",	"description":"해당 품목의 발행단가"},
+				{"value":"음수",	"description":"오류코드"}
+			]
+		},
+		"CheckChargeable": {
+			"description":"각 서비스 별 과금 가능여부를 확인합니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",	"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",	"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"CType",		"description":"과금형태<br><br>1:DocType 발행<br>2:DocType 발행+SMS 전송<br>5:SMS 전송<br>6:FAX 전송<br>7:LMS 전송<br>8:MMS 전송"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"DocType",	"description":"과금문서<br><br>1:세금계산서<br>2:계산서<br>3:거래명세서<br>4:입금표<br>5:청구서<br>6:견적서<br>7:영수증<br>8:발주서<br><br>CType 이 5나 6인 경우에는 0을 입력합니다."}
+			],
+			"returnType":"int",
+			"returnValue": [
+				{"value":"1",		"description":"성공"},
+				{"value":"음수",	"description":"오류코드"}
+			]
+		},
+
+		"GetCertificateRegistURL": {
+			"description":"바로빌에 공인인증서를 등록할 수 있는 URL을 반환합니다.<br><span class='red'>반환된 URL은 60초까지만 유효합니다.</span>",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",	"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",	"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"ID",		"description":"바로빌 회원사 담당자 아이디"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"PWD",		"description":"바로빌 회원사 담당자 비밀번호"}
+			],
+			"returnType":"string",
+			"returnValue": [
+				{"value":"URL 형식",				"description":"성공"},
+				{"value":"음수 값 형식의 문자열",	"description":"오류코드"}
+			]
+		},
+		"GetCertificateExpireDate": {
+			"description":"바로빌에 등록된 공인인증서의 만료일자를 확인합니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",	"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",	"description":"바로빌 회원사 사업자번호 ('-'제외)"}
+			],
+			"returnType":"string",
+			"returnValue": [
+				{"value":"yyyy-MM-dd",				"description":"만료일자"},
+				{"value":"음수 값 형식의 문자열",	"description":"오류코드"}
+			]
+		},
+		"CheckCERTIsValid": {
+			"description":"바로빌에 등록된 공인인증서의 유효성을 확인합니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",	"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",	"description":"바로빌 회원사 사업자번호 ('-'제외)"}
+			],
+			"returnType":"int",
+			"returnValue": [
+				{"value":"1",		"description":"유효함"},
+				{"value":"음수",	"description":"오류코드"}
+			]
+		},
+
+		"GetBaroBillURL": {
+			"description":"바로빌 사이트의 특정 메뉴의 URL을 반환합니다.<br><span class='red'>반환된 URL은 60초까지만 유효합니다.</span><br>반환된 URL을 팝업 또는 Iframe 등을 이용하여 활용할 수 있습니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",	"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",	"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"ID",		"description":"바로빌 회원사 담당자 아이디"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"PWD",		"description":"바로빌 회원사 담당자 비밀번호"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"TOGO",		"code":"ToGo"}
+			],
+			"returnType":"string",
+			"returnValue": [
+				{"value":"URL 형식",				"description":"성공"},
+				{"value":"음수 값 형식의 문자열",	"description":"오류코드"}
+			]
+		},
+		"GetLoginURL": {
+			"description":"바로빌에 공인인증서를 등록할 수 있는 URL을 반환합니다.<br><span class='red'>반환된 URL은 60초까지만 유효합니다.</span>",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",	"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",	"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"ID",		"description":"바로빌 회원사 담당자 아이디"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"PWD",		"description":"바로빌 회원사 담당자 비밀번호"}
+			],
+			"returnType":"string",
+			"returnValue": [
+				{"value":"URL 형식",				"description":"성공"},
+				{"value":"음수 값 형식의 문자열",	"description":"오류코드"}
+			]
+		},
+		"RegistSMSFromNumber": {
+			"description":"문자 발신번호를 추가합니다.<br><span class='blue'>정보통신산업법 제 84조의 2(전화번호의 거짓표시 금지 및 이용자 보호)에 의거 발신번호 사전등록제가 시행됨에 따라 사전 등록된 발신번호만 사용할 수 있습니다.</span>",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",	"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",	"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"FromNumber","description":"문자 발신번호"}
+			],
+			"returnType":"string",
+			"returnValue": [
+				{"value":"1",		"description":"성공"},
+				{"value":"음수",	"description":"오류코드"}
+			]
+		},
+		"CheckSMSFromNumber": {
+			"description":"문자 발신번호 등록여부를 확인합니다.<br><span class='blue'>정보통신산업법 제 84조의 2(전화번호의 거짓표시 금지 및 이용자 보호)에 의거 발신번호 사전등록제가 시행됨에 따라 사전 등록된 발신번호만 사용할 수 있습니다.</span>",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",	"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",	"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"FromNumber","description":"문자 발신번호"}
+			],
+			"returnType":"string",
+			"returnValue": [
+				{"value":"1",		"description":"이미 등록되어 있음"},
+				{"value":"2",		"description":"등록되어 있지 않음"},
+				{"value":"음수",	"description":"오류코드"}
+			]
+		},
+		"GetSMSFromNumberURL": {
+			"description":"문자 발신번호를 등록/수정/삭제 할 수 있는 URL을 반환합니다.<br><span class='blue'>정보통신산업법 제 84조의 2(전화번호의 거짓표시 금지 및 이용자 보호)에 의거 발신번호 사전등록제가 시행됨에 따라 사전 등록된 발신번호만 사용할 수 있습니다.</span><br><br><span class='red'>반환된 URL은 60초까지만 유효합니다.</span>",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",	"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",	"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"ID",		"description":"바로빌 회원사 담당자 아이디"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"PWD",		"description":"바로빌 회원사 담당자 비밀번호"}
+			],
+			"returnType":"string",
+			"returnValue": [
+				{"value":"URL 형식",				"description":"성공"},
+				{"value":"음수 값 형식의 문자열",	"description":"오류코드"}
+			]
+		}
+	},
+	"TI": {
+		"RegistAndIssueTaxInvoice": {
+			"title":"<span class='red'>포인트 차감</span>",
+			"description":"(세금)계산서의 '임시저장'과 '발행'을 한번에 처리합니다. <span class='red'>(RegistTaxInvoice 함수 + IssueTaxInvoice 함수)</span><br>발행을 위해서는 공급자의 공인인증서가 바로빌에 등록되어야 합니다.<br><span class='blue'>발행이 완료된 (세금)계산서는 자동으로 국세청으로 전송됩니다.</span>",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",		"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",		"description":"바로빌 회원사 사업자번호 ('-'제외) <span class='blue'>(공급자의 사업자번호)</span>"},
+				{"required":"O",	"type":"object",	"length":"",	"name":"Invoice",		"object":"TaxInvoice"},
+				{"required":"O",	"type":"bool",		"length":"",	"name":"SendSMS",		"description":"문자메세지 전송여부<br><br>true 로 설정되더라도, (세금)계산서 내의 공급받는자의 휴대폰이 저장되지 않은 경우 전송되지 않습니다.<br><br><b class='red'>별도 포인트가 차감됨.</b>"},
+				{"required":"O",	"type":"bool",		"length":"",	"name":"ForceIssue",	"description":"가산세가 예상되는 (세금)계산서(작성일자 기준, 익월 10일이 지나서 발행하는 경우)는 true 로 설정한 경우에만 발행 가능합니다.<br><br><span class='red'>true 로 설정되었더라도 '지연발행' 설정이 '제한'으로 되어있는 경우에는 발행되지 않습니다.</span><br>ChangeNTSSendOption 함수를 통해 지연발행 여부를 설정할 수 있습니다."},
+				{"required":"X",	"type":"string",	"length":"200",	"name":"MailTitle",		"description":"발행 시 공급받는자에게 전송되는 이메일의 제목<br><br>'빈 문자열'로 입력한 경우 바로빌에서 지정한 기본 이메일 제목으로 전송됩니다."}
+			],
+			"returnType":"int",
+			"returnValue": [
+				{"value":"1",		"description":"성공"},
+				{"value":"음수",	"description":"오류코드"}
+			]
+		},
+		"RegistAndIssueBrokerTaxInvoice": {
+			"title":"<span class='red'>포인트 차감</span>",
+			"description":"위수탁 (세금)계산서의 '임시저장'과 '발행'을 한번에 처리합니다. <span class='red'>(RegistBrokerTaxInvoice 함수 + IssueTaxInvoice 함수)</span><br>발행을 위해서는 공급자의 공인인증서가 바로빌에 등록되어야 합니다.<br><span class='blue'>발행이 완료된 (세금)계산서는 자동으로 국세청으로 전송됩니다.</span>",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",		"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",		"description":"바로빌 회원사 사업자번호 ('-'제외) <span class='blue'>(수탁자의 사업자번호)</span>"},
+				{"required":"O",	"type":"object",	"length":"",	"name":"Invoice",		"object":"TaxInvoice"},
+				{"required":"O",	"type":"bool",		"length":"",	"name":"SendSMS",		"description":"문자메세지 전송여부<br><br>true 로 설정되더라도, (세금)계산서 내의 공급받는자의 휴대폰이 저장되지 않은 경우 전송되지 않습니다.<br><br><b class='red'>별도 포인트가 차감됨.</b>"},
+				{"required":"O",	"type":"bool",		"length":"",	"name":"ForceIssue",	"description":"가산세가 예상되는 (세금)계산서(작성일자 기준, 익월 10일이 지나서 발행하는 경우)는 true 로 설정한 경우에만 발행 가능합니다.<br><br><span class='red'>true 로 설정되었더라도 '지연발행' 설정이 '제한'으로 되어있는 경우에는 발행되지 않습니다.</span><br>ChangeNTSSendOption 함수를 통해 지연발행 여부를 설정할 수 있습니다."},
+				{"required":"X",	"type":"string",	"length":"200",	"name":"MailTitle",		"description":"발행 시 공급받는자에게 전송되는 이메일의 제목<br><br>'빈 문자열'로 입력한 경우 바로빌에서 지정한 기본 이메일 제목으로 전송됩니다."}
+			],
+			"returnType":"int",
+			"returnValue": [
+				{"value":"1",		"description":"성공"},
+				{"value":"음수",	"description":"오류코드"}
+			]
+		},
+		"RegistAndPreIssueTaxInvoice": {
+			"title":"<span class='red'>포인트 차감</span>",
+			"description":"(세금)계산서의 '임시저장'과 '발행예정'을 한번에 처리합니다. <span class='red'>(RegistTaxInvoice 함수 + PreIssueTaxInvoice 함수)</span>",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",		"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",		"description":"바로빌 회원사 사업자번호 ('-'제외) <span class='blue'>(공급자의 사업자번호)</span>"},
+				{"required":"O",	"type":"object",	"length":"",	"name":"Invoice",		"object":"TaxInvoice"},
+				{"required":"O",	"type":"bool",		"length":"",	"name":"SendSMS",		"description":"문자메세지 전송여부<br><br>true 로 설정되더라도, (세금)계산서 내의 공급받는자의 휴대폰이 저장되지 않은 경우 전송되지 않습니다.<br><br><b class='red'>별도 포인트가 차감됨.</b>"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"IssueTiming",	"description":"발행시점<br><br>1:공급자 수동발행<br>2:공급받는자 승인 시 자동발행 (단, 공급자의 공인인증서가 등록되어 있어야합니다.)"},
+				{"required":"X",	"type":"string",	"length":"200",	"name":"MailTitle",		"description":"발행예정 시 공급받는자에게 전송되는 이메일의 제목<br><br>'빈 문자열'로 입력한 경우 바로빌에서 지정한 기본 이메일 제목으로 전송됩니다."}
+			],
+			"returnType":"int",
+			"returnValue": [
+				{"value":"1",		"description":"성공"},
+				{"value":"음수",	"description":"오류코드"}
+			]
+		},
+		"RegistAndPreIssueBrokerTaxInvoice": {
+			"title":"<span class='red'>포인트 차감</span>",
+			"description":"위수탁 (세금)계산서의 '임시저장'과 '발행예정'을 한번에 처리합니다. <span class='red'>(RegistBrokerTaxInvoice 함수 + PreIssueTaxInvoice 함수)</span>",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",		"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",		"description":"바로빌 회원사 사업자번호 ('-'제외) <span class='blue'>(수탁자의 사업자번호)</span>"},
+				{"required":"O",	"type":"object",	"length":"",	"name":"Invoice",		"object":"TaxInvoice"},
+				{"required":"O",	"type":"bool",		"length":"",	"name":"SendSMS",		"description":"문자메세지 전송여부<br><br>true 로 설정되더라도, (세금)계산서 내의 공급받는자의 휴대폰이 저장되지 않은 경우 전송되지 않습니다.<br><br><b class='red'>별도 포인트가 차감됨.</b>"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"IssueTiming",	"description":"발행시점<br><br>1:공급자 수동발행<br>2:공급받는자 승인 시 자동발행 (단, 공급자의 공인인증서가 등록되어 있어야합니다.)"},
+				{"required":"X",	"type":"string",	"length":"200",	"name":"MailTitle",		"description":"발행예정 시 공급받는자에게 전송되는 이메일의 제목<br><br>'빈 문자열'로 입력한 경우 바로빌에서 지정한 기본 이메일 제목으로 전송됩니다."}
+			],
+			"returnType":"int",
+			"returnValue": [
+				{"value":"1",		"description":"성공"},
+				{"value":"음수",	"description":"오류코드"}
+			]
+		},
+		"RegistAndReverseIssueTaxInvoice": {
+			"description":"역발행 (세금)계산서의 '임시저장'과 '역발행 요청'을 한번에 처리합니다. <span class='red'>(RegistTaxInvoiceReverse 함수 + ReverseIssueTaxInvoice 함수)</span>",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",		"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",		"description":"바로빌 회원사 사업자번호 ('-'제외) <span class='blue'>(공급받는자의 사업자번호)</span>"},
+				{"required":"O",	"type":"object",	"length":"",	"name":"Invoice",		"object":"TaxInvoice"},
+				{"required":"O",	"type":"bool",		"length":"",	"name":"SendSMS",		"description":"문자메세지 전송여부<br><br>true 로 설정되더라도, (세금)계산서 내의 공급자의 휴대폰이 저장되지 않은 경우 전송되지 않습니다.<br><br><b class='red'>별도 포인트가 차감됨.</b>"},
+				{"required":"O",	"type":"bool",		"length":"",	"name":"ForceIssue",	"description":"가산세가 예상되는 (세금)계산서(작성일자 기준, 익월 10일이 지나서 발행하는 경우)는 true 로 설정한 경우에만 발행 가능합니다.<br><br><span class='red'>true 로 설정되었더라도 '지연발행' 설정이 '제한'으로 되어있는 경우에는 발행되지 않습니다.</span><br>ChangeNTSSendOption 함수를 통해 지연발행 여부를 설정할 수 있습니다."},
+				{"required":"X",	"type":"string",	"length":"200",	"name":"MailTitle",		"description":"역발행 요청 시 공급자에게 전송되는 이메일의 제목<br><br>'빈 문자열'로 입력한 경우 바로빌에서 지정한 기본 이메일 제목으로 전송됩니다."}
+			],
+			"returnType":"int",
+			"returnValue": [
+				{"value":"1",		"description":"성공"},
+				{"value":"음수",	"description":"오류코드"}
+			]
+		},
+
+		"CheckMgtNumIsExists": {
+			"description":"연동사에서 부여한 관리키가 바로빌에 등록되어 있는지 확인합니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",	"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",	"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"24",	"name":"MgtKey",	"description":"확인할 (세금)계산서의 연동사부여 문서키"}
+			],
+			"returnType":"int",
+			"returnValue": [
+				{"value":"1",		"description":"이미 등록되어 있음"},
+				{"value":"2",		"description":"등록되어 있지 않음"},
+				{"value":"음수",	"description":"오류코드"}
+			]
+		},
+		"CheckIsValidTaxInvoice": {
+			"description":"(세금)계산서 정보의 유효성을 확인합니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",	"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",	"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"object",	"length":"",	"name":"Invoice",	"object":"TaxInvoice"}
+			],
+			"returnType":"int",
+			"returnValue": [
+				{"value":"1",		"description":"유효함"},
+				{"value":"음수",	"description":"오류코드"}
+			]
+		},
+		"RegistTaxInvoice": {
+			"description":"(세금)계산서를 임시저장합니다.<br>저장 후 바로빌 사이트의 '전자세금계산서 > 임시저장(연동)함' 에서 조회할 수 있슶니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",	"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",	"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"object",	"length":"",	"name":"Invoice",	"object":"TaxInvoice"}
+			],
+			"returnType":"int",
+			"returnValue": [
+				{"value":"1",		"description":"성공"},
+				{"value":"음수",	"description":"오류코드"}
+			]
+		},
+		"RegistTaxInvoiceEX": {
+			"description":"(세금)계산서를 임시저장합니다. <span class='blue'>(승인 시 자동발행 옵션 추가)</span><br>저장 후 바로빌 사이트의 '전자세금계산서 > 임시저장(연동)함' 에서 조회할 수 있습니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",		"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",		"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"object",	"length":"",	"name":"Invoice",		"object":"TaxInvoice"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"IssueTiming",	"description":"발행시점 (발행예정을 사용하는 경우에만 적용됨)<br><br>1:공급자 수동발행<br>2:공급받는자 승인 시 자동발행 (단, 공급자의 공인인증서가 등록되어 있어야함.)"}
+			],
+			"returnType":"int",
+			"returnValue": [
+				{"value":"1",		"description":"성공"},
+				{"value":"음수",	"description":"오류코드"}
+			]
+		},
+		"RegistTaxInvoiceReverse": {
+			"description":"역발행 (세금)계산서를 임시저장합니다.<br>저장 후 바로빌 사이트의 '전자세금계산서 > 임시저장(연동)함' 에서 조회할 수 있습니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",	"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",	"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"object",	"length":"",	"name":"Invoice",	"object":"TaxInvoice"}
+			],
+			"returnType":"int",
+			"returnValue": [
+				{"value":"1",		"description":"성공"},
+				{"value":"음수",	"description":"오류코드"}
+			]
+		},
+		"RegistTaxInvoiceReverseEX": {
+			"description":"역발행 (세금)계산서를 임시저장합니다. <span class='blue'>(과금대상 옵션 추가)</span><br>저장 후 바로빌 사이트의 '전자세금계산서 > 임시저장(연동)함' 에서 조회할 수 있습니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",			"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",			"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"object",	"length":"",	"name":"Invoice",			"object":"TaxInvoice"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"ChargeDirection",	"description":"역발행 요청된 (세금)계산서를 발행할 때 과금대상<br><br>1:공급자 과금<br>2:공급받는자 과금"}
+			],
+			"returnType":"int",
+			"returnValue": [
+				{"value":"1",		"description":"성공"},
+				{"value":"음수",	"description":"오류코드"}
+			]
+		},
+		"RegistBrokerTaxInvoice": {
+			"description":"위수탁 (세금)계산서를 임시저장합니다.<br>저장 후 바로빌 사이트의 '전자세금계산서 > 임시저장(연동)함' 에서 조회할 수 있습니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",	"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",	"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"object",	"length":"",	"name":"Invoice",	"object":"TaxInvoice"}
+			],
+			"returnType":"int",
+			"returnValue": [
+				{"value":"1",		"description":"성공"},
+				{"value":"음수",	"description":"오류코드"}
+			]
+		},
+		"RegistBrokerTaxInvoiceEX": {
+			"description":"위수탁 (세금)계산서를 임시저장합니다. <span class='blue'>(승인 시 자동발행 옵션 추가)</span><br>저장 후 바로빌 사이트의 '전자세금계산서 > 임시저장(연동)함' 에서 조회할 수 있습니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",		"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",		"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"object",	"length":"",	"name":"Invoice",		"object":"TaxInvoice"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"IssueTiming",	"description":"발행시점 (발행예정을 사용하는 경우에만 적용됩니다.)<br><br>1:공급자 수동발행<br>2:공급받는자 승인 시 자동발행 (단, 공급자의 공인인증서가 등록되어 있어야합니다.)"}
+			],
+			"returnType":"int",
+			"returnValue": [
+				{"value":"1",		"description":"성공"},
+				{"value":"음수",	"description":"오류코드"}
+			]
+		},
+		"RegistModifyTaxInvoice": {
+			"description":"수정 (세금)계산서를 임시저장합니다.<br>저장 후 바로빌 사이트의 '전자세금계산서 > 임시저장(연동)함' 에서 조회할 수 있습니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",				"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",				"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"object",	"length":"",	"name":"Invoice",				"object":"TaxInvoice"},
+				{"required":"O",	"type":"string",	"length":"24",	"name":"OriginalNTSSendKey",	"description":"당초 (세금)계산서의 국세청 승인번호<br>(GetTaxInvoiceState 함수를 통해 확인할 수 있습니다.)"}
+			],
+			"returnType":"int",
+			"returnValue": [
+				{"value":"1",		"description":"성공"},
+				{"value":"음수",	"description":"오류코드"}
+			]
+		},
+		"RegistModifyTaxInvoiceEX": {
+			"description":"수정 (세금)계산서를 임시저장합니다. <span class='blue'>(승인 시 자동발행 옵션 추가)</span><br>저장 후 바로빌 사이트의 '전자세금계산서 > 임시저장(연동)함' 에서 조회할 수 있습니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",				"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",				"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"object",	"length":"",	"name":"Invoice",				"object":"TaxInvoice"},
+				{"required":"O",	"type":"string",	"length":"24",	"name":"OriginalNTSSendKey",	"description":"당초 (세금)계산서의 국세청 승인번호<br>(GetTaxInvoiceState 함수를 통해 확인할 수 있습니다.)"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"IssueTiming",			"description":"발행시점 (발행예정을 사용하는 경우에만 적용됩니다.)<br><br>1:공급자 수동발행<br>2:공급받는자 승인 시 자동발행 (단, 공급자의 공인인증서가 등록되어 있어야합니다.)"}
+			],
+			"returnType":"int",
+			"returnValue": [
+				{"value":"1",		"description":"성공"},
+				{"value":"음수",	"description":"오류코드"}
+			]
+		},
+		"RegistModifyBrokerTaxInvoice": {
+			"description":"위수탁 수정 (세금)계산서를 임시저장합니다.<br>저장 후 바로빌 사이트의 '전자세금계산서 > 임시저장(연동)함' 에서 조회할 수 있습니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",				"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",				"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"object",	"length":"",	"name":"Invoice",				"object":"TaxInvoice"},
+				{"required":"O",	"type":"string",	"length":"24",	"name":"OriginalNTSSendKey",	"description":"당초 (세금)계산서의 국세청 승인번호<br>(GetTaxInvoiceState 함수를 통해 확인할 수 있습니다.)"}
+			],
+			"returnType":"int",
+			"returnValue": [
+				{"value":"1",		"description":"성공"},
+				{"value":"음수",	"description":"오류코드"}
+			]
+		},
+		"RegistModifyBrokerTaxInvoiceEX": {
+			"description":"위수탁 수정 (세금)계산서를 임시저장합니다. <span class='blue'>(승인 시 자동발행 옵션 추가)</span><br>저장 후 바로빌 사이트의 '전자세금계산서 > 임시저장(연동)함' 에서 조회할 수 있습니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",				"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",				"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"object",	"length":"",	"name":"Invoice",				"object":"TaxInvoice"},
+				{"required":"O",	"type":"string",	"length":"24",	"name":"OriginalNTSSendKey",	"description":"당초 (세금)계산서의 국세청 승인번호<br>(GetTaxInvoiceState 함수를 통해 통해 확인할 수 있습니다.)"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"IssueTiming",			"description":"발행시점 (발행예정을 사용하는 경우에만 적용됩니다.)<br><br>1:공급자 수동발행<br>2:공급받는자 승인 시 자동발행 (단, 공급자의 공인인증서가 등록되어 있어야합니다.)"}
+			],
+			"returnType":"int",
+			"returnValue": [
+				{"value":"1",		"description":"성공"},
+				{"value":"음수",	"description":"오류코드"}
+			]
+		},
+		"UpdateTaxInvoice": {
+			"description":"임시저장 된 (세금)계산서의 내용을 수정합니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",	"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",	"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"object",	"length":"",	"name":"Invoice",	"object":"TaxInvoice"}
+			],
+			"returnType":"int",
+			"returnValue": [
+				{"value":"1",		"description":"성공"},
+				{"value":"음수",	"description":"오류코드"}
+			]
+		},
+		"UpdateTaxInvoiceEX": {
+			"description":"임시저장 된 (세금)계산서의 내용을 수정합니다. <span class='blue'>(승인 시 자동발행 옵션 추가)</span>",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",		"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",		"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"object",	"length":"",	"name":"Invoice",		"object":"TaxInvoice"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"IssueTiming",	"description":"발행시점 (발행예정을 사용하는 경우에만 적용됩니다.)<br><br>1:공급자 수동발행<br>2:공급받는자 승인 시 자동발행 (단, 공급자의 공인인증서가 등록되어 있어야합니다.)"}
+			],
+			"returnType":"int",
+			"returnValue": [
+				{"value":"1",		"description":"성공"},
+				{"value":"음수",	"description":"오류코드"}
+			]
+		},
+		"UpdateBrokerTaxInvoice": {
+			"description":"임시저장 된 위수탁 (세금)계산서의 내용을 수정합니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",	"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",	"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"object",	"length":"",	"name":"Invoice",	"object":"TaxInvoice"}
+			],
+			"returnType":"int",
+			"returnValue": [
+				{"value":"1",		"description":"성공"},
+				{"value":"음수",	"description":"오류코드"}
+			]
+		},
+		"UpdateBrokerTaxInvoiceEX": {
+			"description":"임시저장 된 위수탁 (세금)계산서의 내용을 수정합니다. <span class='blue'>(승인 시 자동발행 옵션 추가)</span>",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",		"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",		"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"object",	"length":"",	"name":"Invoice",		"object":"TaxInvoice"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"IssueTiming",	"description":"발행시점 (발행예정을 사용하는 경우에만 적용됩니다.)<br><br>1:공급자 수동발행<br>2:공급받는자 승인 시 자동발행 (단, 공급자의 공인인증서가 등록되어 있어야합니다.)"}
+			],
+			"returnType":"int",
+			"returnValue": [
+				{"value":"1",		"description":"성공"},
+				{"value":"음수",	"description":"오류코드"}
+			]
+		},
+		"UpdateTaxInvoiceFooterString": {
+			"description":"임시저장 된 (세금)계산서 하단의 \"주의 : ...\" 로 시작되는 문구 부분을 수정합니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",		"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",		"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"24",	"name":"MgtKey",		"description":"연동사부여 문서키"},
+				{"required":"O",	"type":"string",	"length":"200",	"name":"FooterString",	"description":"하단 문구"}
+			],
+			"returnType":"int",
+			"returnValue": [
+				{"value":"1",		"description":"성공"},
+				{"value":"음수",	"description":"오류코드"}
+			]
+		},
+		"DeleteTaxInvoice": {
+			"description":"(세금)계산서를 삭제합니다.<br>'임시저장', '취소', '거부' 인 상태의 (세금)계산서만 삭제 가능합니다.<br>삭제된 (세금)계산서는 '전자세금계산서 > 보관함 > 삭제 보관함' 에서 조회할 수 있습니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",	"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",	"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"24",	"name":"MgtKey",	"description":"연동사부여 문서키"}
+			],
+			"returnType":"int",
+			"returnValue": [
+				{"value":"1",		"description":"성공 - 임시저장 상태에서 삭제된 경우"},
+				{"value":"2",		"description":"성공 - 거부, 취소 상태에서 삭제된 경우"},
+				{"value":"음수",	"description":"오류코드"}
+			]
+		},
+
+		"IssueTaxInvoice": {
+			"title":"<span class='red'>포인트 차감 (단, 발행예정을 수행한 건은 차감되지 않음.)</span>",
+			"description":"임시저장 된 (세금)계산서를 발행합니다.<br>발행을 위해서는 공급자의 공인인증서가 바로빌에 등록되어야 합니다.<br><span class='blue'>발행이 완료된 (세금)계산서는 자동으로 국세청으로 전송됩니다.</span>",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",		"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",		"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"24",	"name":"MgtKey",		"description":"연동사부여 문서키"},
+				{"required":"O",	"type":"bool",		"length":"",	"name":"SendSMS",		"description":"문자메세지 전송여부<br><br>true 로 설정되더라도, (세금)계산서 내의 공급받는자의 휴대폰이 저장되지 않은 경우 전송되지 않습니다.<br><br><b class='red'>별도 포인트가 차감됨.</b>"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"NTSSendOption",	"description":"국세청 전송방법<br><br><span class='red'>현재 사용되지 않는 항목으로, 1을 입력.</span><br>ChangeNTSSendOption 함수를 통해 전송방법을 설정할 수 있습니다."},
+				{"required":"O",	"type":"bool",		"length":"",	"name":"ForceIssue",	"description":"가산세가 예상되는 (세금)계산서(작성일자 기준, 익월 10일이 지나서 발행하는 경우)는 true 로 설정한 경우에만 발행 가능합니다.<br><br><span class='red'>true 로 설정되었더라도 '지연발행' 설정이 '제한'으로 되어있는 경우에는 발행되지 않습니다.</span><br>ChangeNTSSendOption 함수를 통해 지연발행 여부를 설정할 수 있습니다."},
+				{"required":"X",	"type":"string",	"length":"200",	"name":"MailTitle",		"description":"발행 시 공급받는자에게 전송되는 이메일의 제목<br><br>'빈 문자열'로 입력한 경우 바로빌에서 지정한 기본 이메일 제목으로 전송됩니다."}
+			],
+			"returnType":"int",
+			"returnValue": [
+				{"value":"1",		"description":"성공"},
+				{"value":"음수",	"description":"오류코드"}
+			]
+		},
+		"PreIssueTaxInvoice": {
+			"title":"<span class='red'>포인트 차감</span>",
+			"description":"임시저장 된 (세금)계산서를 발행하기 전, 공급받는자에게 발행예정 사실을 통보합니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",	"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",	"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"24",	"name":"MgtKey",	"description":"연동사부여 문서키"},
+				{"required":"O",	"type":"bool",		"length":"",	"name":"SendSMS",	"description":"문자메세지 전송여부<br><br>true 로 설정되더라도, (세금)계산서 내의 공급받는자의 휴대폰이 저장되지 않은 경우 전송되지 않습니다.<br><br><b class='red'>별도 포인트가 차감됨.</b>"},
+				{"required":"X",	"type":"string",	"length":"200",	"name":"MailTitle",	"description":"발행예정 시 공급받는자에게 전송되는 이메일의 제목<br><br>'빈 문자열'로 입력한 경우 바로빌에서 지정한 기본 이메일 제목으로 전송됩니다."}
+			],
+			"returnType":"int",
+			"returnValue": [
+				{"value":"1",		"description":"성공"},
+				{"value":"음수",	"description":"오류코드"}
+			]
+		},
+		"ReverseIssueTaxInvoice": {
+			"description":"임시저장 된 역발행 (세금)계산서를 공급자에게 통보하고 발행을 요청합니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",		"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",		"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"24",	"name":"MgtKey",		"description":"연동사부여 문서키"},
+				{"required":"O",	"type":"bool",		"length":"",	"name":"SendSMS",		"description":"문자메세지 전송여부<br><br>true 로 설정되더라도, (세금)계산서 내의 공급자의 휴대폰이 저장되지 않은 경우 전송되지 않습니다.<br><br><b class='red'>별도 포인트가 차감됨.</b>"},
+				{"required":"O",	"type":"bool",		"length":"",	"name":"ForceIssue",	"description":"가산세가 예상되는 (세금)계산서(작성일자 기준, 익월 10일이 지나서 발행하는 경우)는 true 로 설정한 경우에만 발행 가능합니다.<br><br><span class='red'>true 로 설정되었더라도 '지연발행' 설정이 '제한'으로 되어있는 경우에는 발행되지 않습니다.</span><br>ChangeNTSSendOption 함수를 통해 지연발행 여부를 설정할 수 있습니다."},
+				{"required":"X",	"type":"string",	"length":"200",	"name":"MailTitle",		"description":"역발행 요청 시 공급자에게 전송되는 이메일의 제목<br><br>'빈 문자열'로 입력한 경우 바로빌에서 지정한 기본 이메일 제목으로 전송됩니다."}
+			],
+			"returnType":"int",
+			"returnValue": [
+				{"value":"1",		"description":"성공"},
+				{"value":"음수",	"description":"오류코드"}
+			]
+		},
+		"ProcTaxInvoice": {
+			"description":"(세금)계산서를 승인/거부/취소 처리합니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",	"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",	"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"24",	"name":"MgtKey",	"description":"연동사부여 문서키"},
+				{"required":"O",	"type":"string",	"length":"30",	"name":"ProcType",	"code":"TI_ProcType"},
+				{"required":"X",	"type":"string",	"length":"200",	"name":"Memo",		"description":"상대방에게 전달할 메모"}
+			],
+			"returnType":"int",
+			"returnValue": [
+				{"value":"1",		"description":"성공"},
+				{"value":"음수",	"description":"오류코드"}
+			]
+		},
+		"SendToNTS": {
+			"description":"발행 된 (세금)계산서를 국세청으로 즉시 전송하기를 원하는 경우 사용합니다.<br>이 함수를 사용하지 않더라도, 지정된 '국세청 전송설정'에 따라 바로빌에서 국세청으로 전송합니다.<br><span class='red'>테스트베드에서는 실제로 국세청으로 전송되지 않습니다.</span>",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",	"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",	"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"24",	"name":"MgtKey",	"description":"연동사부여 문서키"}
+			],
+			"returnType":"int",
+			"returnValue": [
+				{"value":"1",		"description":"성공"},
+				{"value":"음수",	"description":"오류코드"}
+			]
+		},
+
+		"AttachFileByFTP": {
+			"description":"임시저장 된 (세금)계산서에 파일을 첨부합니다.<br><br>FTP 계정정보<br>- 테스트베드 : <span class='blue'>testftp.barobill.co.kr:9031</span> / 테스트베드 회원 아이디 / 테스트베드 회원 비밀번호<br>- 실서버 : <span class='blue'>ftp.barobill.co.kr:9030</span> / 바로빌 회원 아이디 / 바로빌 회원 비밀번호",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",			"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",			"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"24",	"name":"MgtKey",			"description":"연동사부여 문서키"},
+				{"required":"O",	"type":"string",	"length":"300",	"name":"FileName",			"description":"FTP 에 업로드 한 파일명"},
+				{"required":"O",	"type":"string",	"length":"300",	"name":"DisplayFileName",	"description":"화면상에 표시되거나, 다운로드 시 저장 될 파일명"}
+			],
+			"returnType":"int",
+			"returnValue": [
+				{"value":"1",		"description":"성공"},
+				{"value":"음수",	"description":"오류코드"}
+			]
+		},
+		"DeleteAttachFileWithFileIndex": {
+			"description":"(세금)계산서에 첨부된 파일 1개를 삭제합니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",	"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",	"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"24",	"name":"MgtKey",	"description":"연동사부여 문서키"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"FileIndex",	"description":"삭제할 첨부파일의 인덱스<br><br>GetAttachedFileList 함수를 통해 확인할 수 있습니다."}
+			],
+			"returnType":"int",
+			"returnValue": [
+				{"value":"0",		"description":"해당 첨부파일이 없음"},
+				{"value":"1",		"description":"성공"},
+				{"value":"음수",	"description":"오류코드"}
+			]
+		},
+		"DeleteAttachFile": {
+			"description":"(세금)계산서에 첨부된 파일을 모두 삭제합니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",	"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",	"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"24",	"name":"MgtKey",	"description":"연동사부여 문서키"}
+			],
+			"returnType":"int",
+			"returnValue": [
+				{"value":"0",		"description":"첨부파일이 없음"},
+				{"value":"1",		"description":"성공"},
+				{"value":"음수",	"description":"오류코드"}
+			]
+		},
+		"GetAttachedFileList": {
+			"description":"(세금)계산서에 첨부된 파일의 목록을 반환합니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",	"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",	"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"24",	"name":"MgtKey",	"description":"연동사부여 문서키"}
+			],
+			"returnType":"AttachedFile[]",
+			"returnValue": [
+				{"value":"빈 AttachedFile 배열",	"description":"오류"}
+			]
+		},
+
+		"MakeDocLinkage": {
+			"description":"바로빌 (세금)계산서, 전자문서(거래명세서,청구서,견적서,발주서,입금표,영수증) 간 연결을 설정합니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",		"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",		"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"int",		"length":"0",	"name":"FromDocType",	"description":"연결할 주 문서의 타입<br><br>1:세금계산서<br>2:계산서<br>3:거래명세서<br>4:입금표<br>5:청구서<br>6:견적서<br>7:영수증<br>8:발주서"},
+				{"required":"O",	"type":"string",	"length":"24",	"name":"FromMgtKey",	"description":"연결할 주 문서의 연동사부여 문서키"},
+				{"required":"O",	"type":"int",		"length":"0",	"name":"ToDocType",		"description":"연결할 부 문서의 타입<br><br>1:세금계산서<br>2:계산서<br>3:거래명세서<br>4:입금표<br>5:청구서<br>6:견적서<br>7:영수증<br>8:발주서"},
+				{"required":"O",	"type":"string",	"length":"24",	"name":"ToMgtKey",		"description":"연결할 부 문서의 연동사부여 문서키"}
+			],
+			"returnType":"int",
+			"returnValue": [
+				{"value":"0",		"description":"이미 연결되어 있음"},
+				{"value":"1",		"description":"성공"},
+				{"value":"음수",	"description":"오류코드"}
+			]
+		},
+		"RemoveDocLinkage": {
+			"description":"바로빌 (세금)계산서, 전자문서(거래명세서,청구서,견적서,발주서,입금표,영수증) 간 연결을 해제합니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",		"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",		"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"int",		"length":"0",	"name":"FromDocType",	"description":"연결을 해제할 주 문서의 타입<br><br>1:세금계산서<br>2:계산서<br>3:거래명세서<br>4:입금표<br>5:청구서<br>6:견적서<br>7:영수증<br>8:발주서"},
+				{"required":"O",	"type":"string",	"length":"24",	"name":"FromMgtKey",	"description":"연결을 해제할 주 문서의 연동사부여 문서키"},
+				{"required":"O",	"type":"int",		"length":"0",	"name":"ToDocType",		"description":"연결을 해제할 부 문서의 타입<br><br>1:세금계산서<br>2:계산서<br>3:거래명세서<br>4:입금표<br>5:청구서<br>6:견적서<br>7:영수증<br>8:발주서"},
+				{"required":"O",	"type":"string",	"length":"24",	"name":"ToMgtKey",		"description":"연결을 해제할 부 문서의 연동사부여 문서키"}
+			],
+			"returnType":"int",
+			"returnValue": [
+				{"value":"0",		"description":"연결되어 있지 않음"},
+				{"value":"1",		"description":"성공"},
+				{"value":"음수",	"description":"오류코드"}
+			]
+		},
+		"GetLinkedDocs": {
+			"description":"해당 문서와 연결된 문서의 목록을 반환합니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",	"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",	"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"int",		"length":"0",	"name":"FromDocType",	"description":"확인할 문서의 타입<br><br>1:세금계산서<br>2:계산서<br>3:거래명세서<br>4:입금표<br>5:청구서<br>6:견적서<br>7:영수증<br>8:발주서"},
+				{"required":"O",	"type":"string",	"length":"24",	"name":"FromMgtKey",	"description":"확인할 문서의 연동사부여 문서키"}
+			],
+			"returnType":"LinkedDoc[]",
+			"returnValue": [
+				{"value":"빈 LinkedDoc 배열",	"description":"오류"}
+			]
+		},
+
+		"GetTaxInvoice": {
+			"description":"(세금)계산서의 내용을 확인합니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",	"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",	"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"24",	"name":"MgtKey",	"description":"연동사부여 문서키"}
+			],
+			"returnType":"TaxInvoice",
+			"returnValue": [
+				{"value":"TaxInvoice.TaxInvoiceType 이 양수인 경우",	"description":"성공"},
+				{"value":"TaxInvoice.TaxInvoiceType 이 음수인 경우",	"description":"오류코드"}
+			]
+		},
+		"GetTaxInvoiceState": {
+			"description":"(세금)계산서의 상태를 확인합니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",	"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",	"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"24",	"name":"MgtKey",	"description":"연동사부여 문서키"}
+			],
+			"returnType":"TaxInvoiceState",
+			"returnValue": [
+				{"value":"TaxInvoiceState.BarobillState 가 양수인 경우",	"description":"성공"},
+				{"value":"TaxInvoiceState.BarobillState 가 음수인 경우",	"description":"오류코드"}
+			]
+		},
+		"GetTaxInvoiceStateEX": {
+			"description":"(세금)계산서의 상태를 확인합니다. <span class='blue'>(반환하는 상태정보 확장)</span>",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",	"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",	"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"24",	"name":"MgtKey",	"description":"연동사부여 문서키"}
+			],
+			"returnType":"TaxInvoiceStateEX",
+			"returnValue": [
+				{"value":"TaxInvoiceStateEX.BarobillState 가 양수인 경우",	"description":"성공"},
+				{"value":"TaxInvoiceStateEX.BarobillState 가 음수인 경우",	"description":"오류코드"}
+			]
+		},
+		"GetTaxInvoiceStates": {
+			"description":"여러건의 (세금)계산서의 상태를 확인합니다. <span class='red'>(100 건 이내 권장)</span>",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",		"name":"CERTKEY",		"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",		"name":"CorpNum",		"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string[]",	"length":"24[]",	"name":"MgtKeyList",	"description":"연동사부여 문서키 배열"}
+			],
+			"returnType":"TaxInvoiceState[]",
+			"returnValue": [
+				{"value":"빈 TaxInvoiceState 배열",	"description":"오류"},
+				{"value":"배열 항목의 TaxInvoiceState.BarobillState 가 양수인 경우",	"description":"성공"},
+				{"value":"배열 항목의 TaxInvoiceState.BarobillState 가 음수인 경우",	"description":"오류코드"}
+			]
+		},
+		"GetTaxInvoiceStatesEX": {
+			"description":"여러건의 (세금)계산서의 상태를 확인합니다. <span class='blue'>(반환하는 상태정보 확장)</span> <span class='red'>(100 건 이내 권장)</span>",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",		"name":"CERTKEY",		"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",		"name":"CorpNum",		"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string[]",	"length":"24[]",	"name":"MgtKeyList",	"description":"연동사부여 문서키 배열"}
+			],
+			"returnType":"TaxInvoiceStateEX[]",
+			"returnValue": [
+				{"value":"빈 TaxInvoiceStateEX 배열",	"description":"오류"},
+				{"value":"배열 항목의 TaxInvoiceStateEX.BarobillState 가 양수인 경우",	"description":"성공"},
+				{"value":"배열 항목의 TaxInvoiceStateEX.BarobillState 가 음수인 경우",	"description":"오류코드"}
+			]
+		},
+		"GetTaxInvoiceLog": {
+			"description":"(세금)계산서의 처리이력을 반환합니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",	"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",	"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"24",	"name":"MgtKey",	"description":"연동사부여 문서키"}
+			],
+			"returnType":"InvoiceLog[]",
+			"returnValue": [
+				{"value":"빈 InvoiceLog 배열",	"description":"오류"}
+			]
+		},
+
+		"GetTaxInvoicePopUpURL": {
+			"description":"(세금)계산서의 정보를 양식 형태로 볼 수 있는 URL을 반환합니다.<br><span class='red'>반환된 URL은 60초까지만 유효합니다.</span>",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",	"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",	"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"24",	"name":"MgtKey",	"description":"연동사부여 문서키"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"ID",		"description":"바로빌 회원사 담당자 아이디"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"PWD",		"description":"바로빌 회원사 담당자 비밀번호"}
+			],
+			"returnType":"string",
+			"returnValue": [
+				{"value":"URL 형식",				"description":"성공"},
+				{"value":"음수 값 형식의 문자열",	"description":"오류코드"}
+			]
+		},
+		"GetTaxInvoicePrintURL": {
+			"description":"(세금)계산서를 인쇄할 수 있는 URL을 반환합니다.<br><span class='red'>반환된 URL은 60초까지만 유효합니다.</span>",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",	"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",	"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"24",	"name":"MgtKey",	"description":"연동사부여 문서키"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"ID",		"description":"바로빌 회원사 담당자 아이디"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"PWD",		"description":"바로빌 회원사 담당자 비밀번호"}
+			],
+			"returnType":"string",
+			"returnValue": [
+				{"value":"URL 형식",				"description":"성공"},
+				{"value":"음수 값 형식의 문자열",	"description":"오류코드"}
+			]
+		},
+		"GetTaxInvoicesPrintURL": {
+			"description":"여러건의 (세금)계산서를 인쇄할 수 있는 URL을 반환합니다.<br><span class='red'>반환된 URL은 60초까지만 유효합니다.</span> <span class='red'>(최대 50 건)</span>",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",		"name":"CERTKEY",		"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",		"name":"CorpNum",		"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string[]",	"length":"24[]",	"name":"MgtKeyList",	"description":"연동사부여 문서키 배열"},
+				{"required":"O",	"type":"string",	"length":"20",		"name":"ID",			"description":"바로빌 회원사 담당자 아이디"},
+				{"required":"O",	"type":"string",	"length":"20",		"name":"PWD",			"description":"바로빌 회원사 담당자 비밀번호"}
+			],
+			"returnType":"string",
+			"returnValue": [
+				{"value":"URL 형식",				"description":"성공"},
+				{"value":"음수 값 형식의 문자열",	"description":"오류코드"}
+			]
+		},
+		"GetTaxinvoiceMailURL": {
+			"description":"(세금)계산서를 이메일 수신자가 보는 관점에서, 양식 형태로 볼 수 있는 URL을 반환합니다.<br><span class='red'>반환된 URL은 60초까지만 유효합니다.</span>",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",	"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",	"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"24",	"name":"MgtKey",	"description":"연동사부여 문서키"}
+			],
+			"returnType":"string",
+			"returnValue": [
+				{"value":"URL 형식",				"description":"성공"},
+				{"value":"음수 값 형식의 문자열",	"description":"오류코드"}
+			]
+		},
+
+		"ReSendEmail": {
+			"description":"(세금)계산서 프로세스 처리 시 발송되는 이메일을 재전송합니다. (수신자가 이메일을 받지 못한 경우 사용)<br>(세금)계산서의 상태에 따라 적절한 이메일 내용으로 구성됩니다.<br><br>재전송한 내역이 (세금)계산서의 이력으로 기록됩니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",			"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",			"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"24",	"name":"MgtKey",			"description":"연동사부여 문서키"},
+				{"required":"O",	"type":"string",	"length":"40",	"name":"ToEmailAddress",	"description":"재전송 할 이메일 주소"}
+			],
+			"returnType":"int",
+			"returnValue": [
+				{"value":"1",		"description":"성공"},
+				{"value":"음수",	"description":"오류코드"}
+			]
+		},
+		"ReSendSMS": {
+			"title":"<span class='red'>포인트 차감</span>",
+			"description":"문자메세지를 재전송합니다.<br><br>재전송한 내역이 (세금)계산서의 이력으로 기록되지 않습니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",		"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",		"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"SenderID",		"description":"바로빌 회원사 담당자 아이디"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"FromNumber",	"description":"발신번호"},
+				{"required":"X",	"type":"string",	"length":"10",	"name":"ToCorpNum",		"description":"수신자 사업자번호"},
+				{"required":"X",	"type":"string",	"length":"10",	"name":"ToName",		"description":"수신자명"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"ToNumber",		"description":"수신번호"},
+				{"required":"O",	"type":"string",	"length":"90",	"name":"Contents",		"description":"문자메세지 내용 (90 byte 제한)"}
+			],
+			"returnType":"int",
+			"returnValue": [
+				{"value":"1",		"description":"성공"},
+				{"value":"음수",	"description":"오류코드"}
+			]
+		},
+		"SendInvoiceSMS": {
+			"title":"<span class='red'>포인트 차감</span>",
+			"description":"문자메세지를 재전송합니다.<br><br>재전송한 내역이 (세금)계산서의 이력으로 기록됩니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",		"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",		"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"SenderID",		"description":"바로빌 회원사 담당자 아이디"},
+				{"required":"O",	"type":"string",	"length":"24",	"name":"MgtKey",		"description":"연동사부여 문서키"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"FromNumber",	"description":"발신번호"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"ToNumber",		"description":"수신번호"},
+				{"required":"O",	"type":"string",	"length":"90",	"name":"Contents",		"description":"문자메세지 내용 (90 byte 제한)"}
+			],
+			"returnType":"int",
+			"returnValue": [
+				{"value":"1",		"description":"성공"},
+				{"value":"음수",	"description":"오류코드"}
+			]
+		},
+		"SendInvoiceFax": {
+			"title":"<span class='red'>포인트 차감</span>",
+			"description":"(세금)계산서 내용을 팩스로 재전송합니다.<br>(세금)계산서의 상태에 따라 적절한 팩스 내용으로 구성됩니다.<br><br>재전송한 내역이 (세금)계산서의 이력으로 기록됩니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",		"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",		"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"24",	"name":"MgtKey",		"description":"연동사부여 문서키"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"SenderID",		"description":"바로빌 회원사 담당자 아이디"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"FromFaxNumber",	"description":"발신번호"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"ToFaxNumber",	"description":"수신번호"}
+			],
+			"returnType":"int",
+			"returnValue": [
+				{"value":"1",		"description":"성공"},
+				{"value":"음수",	"description":"오류코드"}
+			]
+		},
+
+		"GetNTSSendOption": {
+			"description":"바로빌 회원사의 국세청 전송설정 값을 반환합니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",	"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",	"description":"바로빌 회원사 사업자번호 ('-'제외)"}
+			],
+			"returnType":"NTSSendOption",
+			"returnValue": [
+				{"value":"NTSSendOption.TaxationOption 이 양수인 경우",		"description":"성공"},
+				{"value":"NTSSendOption.TaxationOption 이 음수인 경우",		"description":"오류코드"}
+			]
+		},
+		"ChangeNTSSendOption": {
+			"description":"바로빌 회원사의 국세청 전송설정 값을 변경합니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",		"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",		"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"SenderID",		"description":"바로빌 회원사 담당자 아이디"},
+				{"required":"O",	"type":"object",	"length":"20",	"name":"NTSSendOption",	"object":"NTSSendOption"}
+			],
+			"returnType":"int",
+			"returnValue": [
+				{"value":"1",		"description":"성공"},
+				{"value":"음수",	"description":"오류코드"}
+			]
+		},
+		"GetTaxInvoiceScrapRequestURL": {
+			"description":"홈텍스 (세금)계산서 연동 서비스를 신청할 수 있는 URL을 반환합니다.<br><span class='red'>반환된 URL은 60초까지만 유효합니다.</span><br><br><span class='blue'>'국세청 홈택스'의 매출/매입 (세금)계산서를 수집하여 바로빌에서 통합관리하는 서비스.</span>",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",	"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",	"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"UserID",	"description":"바로빌 회원사 담당자 아이디"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"PWD",		"description":"바로빌 회원사 담당자 비밀번호"}
+			],
+			"returnType":"string",
+			"returnValue": [
+				{"value":"URL 형식",				"description":"성공"},
+				{"value":"음수 값 형식의 문자열",	"description":"오류코드"}
+			]
+		},
+		"GetDailyTaxInvoiceSalesList": {
+			"description":"매출 (세금)계산서를 1일분씩 조회합니다.<br><br><span class='blue'>단, 국세청에 전송완료된 (세금)계산서만 조회됩니다.</span>",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",		"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",		"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"UserID",		"description":"바로빌 회원사 담당자 아이디"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"TaxType",		"description":"1:과세+영세<br>3:면세"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"DateType",		"description":"1:작성일자<br>2:발행일자"},
+				{"required":"O",	"type":"string",	"length":"8",	"name":"BaseDate",		"description":"조회기준일자. yyyyMMdd 형식"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"CountPerPage",	"description":"한 페이지 당 조회 건 수"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"CurrentPage",	"description":"조회할 페이지 번호"}
+			],
+			"returnType":"PagedTaxInvoiceEx",
+			"returnValue": [
+				{"value":"PagedTaxInvoiceEx.CurrentPage 가 양수인 경우",	"description":"성공"},
+				{"value":"PagedTaxInvoiceEx.CurrentPage 가 음수인 경우",	"description":"오류코드"}
+			]
+		},
+		"GetDailyTaxInvoicePurchaseList": {
+			"description":"매입 (세금)계산서를 1일분씩 조회합니다.<br><br><span class='blue'>단, 국세청에 전송완료된 (세금)계산서만 조회됩니다.</span>",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",		"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",		"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"UserID",		"description":"바로빌 회원사 담당자 아이디"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"TaxType",		"description":"1:과세+영세<br>3:면세"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"DateType",		"description":"1:작성일자<br>2:발행일자"},
+				{"required":"O",	"type":"string",	"length":"8",	"name":"BaseDate",		"description":"조회기준일자. yyyyMMdd 형식"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"CountPerPage",	"description":"한 페이지 당 조회 건 수"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"CurrentPage",	"description":"조회할 페이지 번호"}
+			],
+			"returnType":"PagedTaxInvoiceEx",
+			"returnValue": [
+				{"value":"PagedTaxInvoiceEx.CurrentPage 가 양수인 경우",	"description":"성공"},
+				{"value":"PagedTaxInvoiceEx.CurrentPage 가 음수인 경우",	"description":"오류코드"}
+			]
+		},
+		"GetMonthlyTaxInvoiceSalesList": {
+			"description":"매출 (세금)계산서를 1개월분씩 조회합니다.<br><br><span class='blue'>단, 국세청에 전송완료된 (세금)계산서만 조회됩니다.</span>",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",		"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",		"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"UserID",		"description":"바로빌 회원사 담당자 아이디"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"TaxType",		"description":"1:과세+영세<br>3:면세"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"DateType",		"description":"1:작성일자<br>2:발행일자"},
+				{"required":"O",	"type":"string",	"length":"6",	"name":"BaseMonth",		"description":"조회기준월. yyyyMM 형식"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"CountPerPage",	"description":"한 페이지 당 조회 건 수"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"CurrentPage",	"description":"조회할 페이지 번호"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"OrderDirection","description":"정렬방향<br><br>1:ASC<br>2:DESC"}
+			],
+			"returnType":"PagedTaxInvoiceEx",
+			"returnValue": [
+				{"value":"PagedTaxInvoiceEx.CurrentPage 가 양수인 경우",	"description":"성공"},
+				{"value":"PagedTaxInvoiceEx.CurrentPage 가 음수인 경우",	"description":"오류코드"}
+			]
+		},
+		"GetMonthlyTaxInvoicePurchaseList": {
+			"description":"매입 (세금)계산서를 1개월분씩 조회합니다.<br><br><span class='blue'>단, 국세청에 전송완료된 (세금)계산서만 조회됩니다.</span>",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",		"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",		"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"UserID",		"description":"바로빌 회원사 담당자 아이디"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"TaxType",		"description":"1:과세+영세<br>3:면세"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"DateType",		"description":"1:작성일자<br>2:발행일자"},
+				{"required":"O",	"type":"string",	"length":"6",	"name":"BaseMonth",		"description":"조회기준월. yyyyMM 형식"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"CountPerPage",	"description":"한 페이지 당 조회 건 수"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"CurrentPage",	"description":"조회할 페이지 번호"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"OrderDirection","description":"정렬방향<br><br>1:ASC<br>2:DESC"}
+			],
+			"returnType":"PagedTaxInvoiceEx",
+			"returnValue": [
+				{"value":"PagedTaxInvoiceEx.CurrentPage 가 양수인 경우",	"description":"성공"},
+				{"value":"PagedTaxInvoiceEx.CurrentPage 가 음수인 경우",	"description":"오류코드"}
+			]
+		},
+		"GetTaxInvoiceSalesList": {
+			"deprecatedBy":"GetDailyTaxInvoiceSalesList",
+			"description":"매출 (세금)계산서를 요약된 형태로 1일분씩 조회합니다.<br><br><span class='blue'>단, 국세청에 전송완료된 (세금)계산서만 조회됩니다.</span>",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",		"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",		"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"UserID",		"description":"바로빌 회원사 담당자 아이디"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"TaxType",		"description":"1:과세+영세<br>3:면세"},
+				{"required":"O",	"type":"string",	"length":"8",	"name":"BaseDate",		"description":"조회기준일자. yyyyMMdd 형식"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"CountPerPage",	"description":"한 페이지 당 조회 건 수"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"CurrentPage",	"description":"조회할 페이지 번호"}
+			],
+			"returnType":"PagedTaxInvoice",
+			"returnValue": [
+				{"value":"PagedTaxInvoice.CurrentPage 가 양수인 경우",	"description":"성공"},
+				{"value":"PagedTaxInvoice.CurrentPage 가 음수인 경우",	"description":"오류코드"}
+			]
+		},
+		"GetTaxInvoiceSalesListEx": {
+			"deprecatedBy":"GetDailyTaxInvoiceSalesList",
+			"description":"매출 (세금)계산서를 1일분씩 조회합니다.<br><br><span class='blue'>단, 국세청에 전송완료된 (세금)계산서만 조회됩니다.</span>",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",		"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",		"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"UserID",		"description":"바로빌 회원사 담당자 아이디"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"TaxType",		"description":"1:과세+영세<br>3:면세"},
+				{"required":"O",	"type":"string",	"length":"8",	"name":"BaseDate",		"description":"조회기준일자. yyyyMMdd 형식"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"CountPerPage",	"description":"한 페이지 당 조회 건 수"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"CurrentPage",	"description":"조회할 페이지 번호"}
+			],
+			"returnType":"PagedTaxInvoiceEx",
+			"returnValue": [
+				{"value":"PagedTaxInvoiceEx.CurrentPage 가 양수인 경우",	"description":"성공"},
+				{"value":"PagedTaxInvoiceEx.CurrentPage 가 음수인 경우",	"description":"오류코드"}
+			]
+		},
+		"GetTaxInvoicePurchaseList": {
+			"deprecatedBy":"GetDailyTaxInvoicePurchaseList",
+			"description":"매입 (세금)계산서를 요약된 형태로 1일분씩 조회합니다.<br><br><span class='blue'>단, 국세청에 전송완료된 (세금)계산서만 조회됩니다.</span>",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",		"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",		"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"UserID",		"description":"바로빌 회원사 담당자 아이디"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"TaxType",		"description":"1:과세+영세<br>3:면세"},
+				{"required":"O",	"type":"string",	"length":"8",	"name":"BaseDate",		"description":"조회기준일자. yyyyMMdd 형식"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"CountPerPage",	"description":"한 페이지 당 조회 건 수"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"CurrentPage",	"description":"조회할 페이지 번호"}
+			],
+			"returnType":"PagedTaxInvoice",
+			"returnValue": [
+				{"value":"PagedTaxInvoice.CurrentPage 가 양수인 경우",	"description":"성공"},
+				{"value":"PagedTaxInvoice.CurrentPage 가 음수인 경우",	"description":"오류코드"}
+			]
+		},
+		"GetTaxInvoicePurchaseListEx": {
+			"deprecatedBy":"GetDailyTaxInvoicePurchaseList",
+			"description":"매입 (세금)계산서를 1일분씩 조회합니다.<br><br><span class='blue'>단, 국세청에 전송완료된 (세금)계산서만 조회됩니다.</span>",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",		"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",		"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"UserID",		"description":"바로빌 회원사 담당자 아이디"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"TaxType",		"description":"1:과세+영세<br>3:면세"},
+				{"required":"O",	"type":"string",	"length":"8",	"name":"BaseDate",		"description":"조회기준일자. yyyyMMdd 형식"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"CountPerPage",	"description":"한 페이지 당 조회 건 수"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"CurrentPage",	"description":"조회할 페이지 번호"}
+			],
+			"returnType":"PagedTaxInvoiceEx",
+			"returnValue": [
+				{"value":"PagedTaxInvoiceEx.CurrentPage 가 양수인 경우",	"description":"성공"},
+				{"value":"PagedTaxInvoiceEx.CurrentPage 가 음수인 경우",	"description":"오류코드"}
+			]
+		}
+	},
+	"EDOC": {
+		"CheckMgtKeyIsExists": {
+			"description":"연동사에서 부여한 관리키가 바로빌에 등록되어 있는지 확인합니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",	"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",	"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"UserID",	"description":"바로빌 회원사 담당자 아이디"},
+				{"required":"O",	"type":"string",	"length":"24",	"name":"MgtKey",	"description":"확인할 전자문서의 연동사부여 문서키"}
+			],
+			"returnType":"int",
+			"returnValue": [
+				{"value":"1",		"description":"이미 등록되어 있음"},
+				{"value":"2",		"description":"등록되어 있지 않음"},
+				{"value":"음수",	"description":"오류코드"}
+			]
+		},
+		"CheckIsValidEDoc": {
+			"description":"전자문서 정보의 유효성을 확인합니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",	"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",	"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"object",	"length":"",	"name":"Invoice",	"object":"EDoc"}
+			],
+			"returnType":"int",
+			"returnValue": [
+				{"value":"1",		"description":"유효함"},
+				{"value":"음수",	"description":"오류코드"}
+			]
+		},
+		"RegistEDoc": {
+			"description":"전자문서를 임시저장합니다.<br>저장 후 바로빌 사이트의 '전자문서 > 임시저장(연동)함' 에서 조회할 수 있슶니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",	"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",	"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"UserID",	"description":"바로빌 회원사 담당자 아이디"},
+				{"required":"O",	"type":"object",	"length":"",	"name":"Invoice",	"object":"EDoc"}
+			],
+			"returnType":"int",
+			"returnValue": [
+				{"value":"1",		"description":"성공"},
+				{"value":"음수",	"description":"오류코드"}
+			]
+		},
+		"UpdateEDoc": {
+			"description":"임시저장 된 전자문서의 내용을 수정합니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",	"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",	"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"UserID",	"description":"바로빌 회원사 담당자 아이디"},
+				{"required":"O",	"type":"object",	"length":"",	"name":"Invoice",	"object":"EDoc"}
+			],
+			"returnType":"int",
+			"returnValue": [
+				{"value":"1",		"description":"성공"},
+				{"value":"음수",	"description":"오류코드"}
+			]
+		},
+		"DeleteEDoc": {
+			"description":"전자문서를 삭제합니다.<br>'임시저장', '취소' 인 상태의 전자문서만 삭제 가능합니다.<br>삭제된 전자문서는 '전자문서 > 보관함 > 삭제 보관함' 에서 조회할 수 있습니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",	"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",	"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"UserID",	"description":"바로빌 회원사 담당자 아이디"},
+				{"required":"O",	"type":"string",	"length":"24",	"name":"MgtKey",	"description":"연동사부여 문서키"}
+			],
+			"returnType":"int",
+			"returnValue": [
+				{"value":"1",		"description":"성공 - 임시저장 상태에서 삭제된 경우"},
+				{"value":"2",		"description":"성공 - 취소 상태에서 삭제된 경우"},
+				{"value":"음수",	"description":"오류코드"}
+			]
+		},
+
+		"IssueEDoc": {
+			"title":"<span class='red'>포인트 차감</span>",
+			"description":"임시저장 된 전자문서를 발행합니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",		"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",		"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"UserID",		"description":"바로빌 회원사 담당자 아이디"},
+				{"required":"O",	"type":"string",	"length":"24",	"name":"MgtKey",		"description":"연동사부여 문서키"},
+				{"required":"O",	"type":"bool",		"length":"",	"name":"SMSSendYN",		"description":"문자메세지 전송여부<br><br>true 로 설정되더라도, 전자문서 내의 공급받는자의 휴대폰이 저장되지 않은 경우 전송되지 않습니다.<br><br><b class='red'>별도 포인트가 차감됨.</b>"},
+				{"required":"X",	"type":"string",	"length":"200",	"name":"Memo",			"description":"발행 시 공급받는자에게 전달할 메모"},
+				{"required":"X",	"type":"string",	"length":"200",	"name":"MailTitle",		"description":"발행 시 공급받는자에게 전송되는 이메일의 제목<br><br>'빈 문자열'로 입력한 경우 바로빌에서 지정한 기본 이메일 제목으로 전송됩니다."}
+			],
+			"returnType":"int",
+			"returnValue": [
+				{"value":"1",		"description":"성공"},
+				{"value":"음수",	"description":"오류코드"}
+			]
+		},
+		"CancelEDoc": {
+			"description":"발행된 전자문서를 취소합니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",	"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",	"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"UserID",	"description":"바로빌 회원사 담당자 아이디"},
+				{"required":"O",	"type":"string",	"length":"24",	"name":"MgtKey",	"description":"연동사부여 문서키"},
+				{"required":"X",	"type":"string",	"length":"200",	"name":"Memo",		"description":"취소 시 공급받는자에게 전달할 메모"}
+			],
+			"returnType":"int",
+			"returnValue": [
+				{"value":"1",		"description":"성공"},
+				{"value":"음수",	"description":"오류코드"}
+			]
+		},
+
+		"AttachFileByFTP": {
+			"description":"임시저장 된 전자문서에 파일을 첨부합니다.<br><br>FTP 계정정보<br>- 테스트베드 : <span class='blue'>testftp.barobill.co.kr:9031</span> / 테스트베드 회원 아이디 / 테스트베드 회원 비밀번호<br>- 실서버 : <span class='blue'>ftp.barobill.co.kr:9030</span> / 바로빌 회원 아이디 / 바로빌 회원 비밀번호",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",			"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",			"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"UserID",			"description":"바로빌 회원사 담당자 아이디"},
+				{"required":"O",	"type":"string",	"length":"24",	"name":"MgtKey",			"description":"연동사부여 문서키"},
+				{"required":"O",	"type":"string",	"length":"300",	"name":"FileName",			"description":"FTP 에 업로드 한 파일명"},
+				{"required":"O",	"type":"string",	"length":"300",	"name":"DisplayFileName",	"description":"화면상에 표시되거나, 다운로드 시 저장 될 파일명"}
+			],
+			"returnType":"int",
+			"returnValue": [
+				{"value":"1",		"description":"성공"},
+				{"value":"음수",	"description":"오류코드"}
+			]
+		},
+
+		"DeleteAttachFileWithFileIndex": {
+			"description":"전자문서에 첨부된 파일 1개를 삭제합니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",	"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",	"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"UserID",	"description":"바로빌 회원사 담당자 아이디"},
+				{"required":"O",	"type":"string",	"length":"24",	"name":"MgtKey",	"description":"연동사부여 문서키"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"FileIndex",	"description":"삭제할 첨부파일의 인덱스<br><br>GetAttachedFileList 함수를 통해 확인할 수 있습니다."}
+			],
+			"returnType":"int",
+			"returnValue": [
+				{"value":"0",		"description":"해당 첨부파일이 없음"},
+				{"value":"1",		"description":"성공"},
+				{"value":"음수",	"description":"오류코드"}
+			]
+		},
+		"DeleteAttachFile": {
+			"description":"전자문서에  첨부된 파일을 모두 삭제합니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",	"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",	"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"UserID",	"description":"바로빌 회원사 담당자 아이디"},
+				{"required":"O",	"type":"string",	"length":"24",	"name":"MgtKey",	"description":"연동사부여 문서키"}
+			],
+			"returnType":"int",
+			"returnValue": [
+				{"value":"0",		"description":"첨부파일이 없음"},
+				{"value":"1",		"description":"성공"},
+				{"value":"음수",	"description":"오류코드"}
+			]
+		},
+		"GetAttachedFileList": {
+			"description":"전자문서에  첨부된 파일의 목록을 반환합니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",	"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",	"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"UserID",	"description":"바로빌 회원사 담당자 아이디"},
+				{"required":"O",	"type":"string",	"length":"24",	"name":"MgtKey",	"description":"연동사부여 문서키"}
+			],
+			"returnType":"AttachedFile[]",
+			"returnValue": [
+				{"value":"빈 AttachedFile 배열",	"description":"오류"}
+			]
+		},
+
+		"MakeDocLinkage": {
+			"description":"바로빌 (세금)계산서, 전자문서(거래명세서,청구서,견적서,발주서,입금표,영수증) 간 연결을 설정합니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",		"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",		"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"int",		"length":"0",	"name":"FromDocType",	"description":"연결할 주 문서의 타입<br><br>1:세금계산서<br>2:계산서<br>3:거래명세서<br>4:입금표<br>5:청구서<br>6:견적서<br>7:영수증<br>8:발주서"},
+				{"required":"O",	"type":"string",	"length":"24",	"name":"FromMgtKey",	"description":"연결할 주 문서의 연동사부여 문서키"},
+				{"required":"O",	"type":"int",		"length":"0",	"name":"ToDocType",		"description":"연결할 부 문서의 타입<br><br>1:세금계산서<br>2:계산서<br>3:거래명세서<br>4:입금표<br>5:청구서<br>6:견적서<br>7:영수증<br>8:발주서"},
+				{"required":"O",	"type":"string",	"length":"24",	"name":"ToMgtKey",		"description":"연결할 부 문서의 연동사부여 문서키"}
+			],
+			"returnType":"int",
+			"returnValue": [
+				{"value":"0",		"description":"이미 연결되어 있음"},
+				{"value":"1",		"description":"성공"},
+				{"value":"음수",	"description":"오류코드"}
+			]
+		},
+		"RemoveDocLinkage": {
+			"description":"바로빌 (세금)계산서, 전자문서(거래명세서,청구서,견적서,발주서,입금표,영수증) 간 연결을 해제합니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",		"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",		"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"int",		"length":"0",	"name":"FromDocType",	"description":"연결을 해제할 주 문서의 타입<br><br>1:세금계산서<br>2:계산서<br>3:거래명세서<br>4:입금표<br>5:청구서<br>6:견적서<br>7:영수증<br>8:발주서"},
+				{"required":"O",	"type":"string",	"length":"24",	"name":"FromMgtKey",	"description":"연결을 해제할 주 문서의 연동사부여 문서키"},
+				{"required":"O",	"type":"int",		"length":"0",	"name":"ToDocType",		"description":"연결을 해제할 부 문서의 타입<br><br>1:세금계산서<br>2:계산서<br>3:거래명세서<br>4:입금표<br>5:청구서<br>6:견적서<br>7:영수증<br>8:발주서"},
+				{"required":"O",	"type":"string",	"length":"24",	"name":"ToMgtKey",		"description":"연결을 해제할 부 문서의 연동사부여 문서키"}
+			],
+			"returnType":"int",
+			"returnValue": [
+				{"value":"0",		"description":"연결되어 있지 않음"},
+				{"value":"1",		"description":"성공"},
+				{"value":"음수",	"description":"오류코드"}
+			]
+		},
+		"GetLinkedDocs": {
+			"description":"해당 문서와 연결된 문서의 목록을 반환합니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",	"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",	"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"int",		"length":"0",	"name":"FromDocType",	"description":"확인할 문서의 타입<br><br>1:세금계산서<br>2:계산서<br>3:거래명세서<br>4:입금표<br>5:청구서<br>6:견적서<br>7:영수증<br>8:발주서"},
+				{"required":"O",	"type":"string",	"length":"24",	"name":"FromMgtKey",	"description":"확인할 문서의 연동사부여 문서키"}
+			],
+			"returnType":"LinkedDoc[]",
+			"returnValue": [
+				{"value":"빈 LinkedDoc 배열",	"description":"오류"}
+			]
+		},
+
+		"GetEDoc": {
+			"description":"전자문서의 내용을 확인합니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",	"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",	"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"UserID",	"description":"바로빌 회원사 담당자 아이디"},
+				{"required":"O",	"type":"string",	"length":"24",	"name":"MgtKey",	"description":"연동사부여 문서키"}
+			],
+			"returnType":"EDoc",
+			"returnValue": [
+				{"value":"EDoc.EDocInvoiceType 이 양수인 경우",	"description":"성공"},
+				{"value":"EDoc.EDocInvoiceType 이 음수인 경우",	"description":"오류코드"}
+			]
+		},
+		"GetEDocState": {
+			"description":"전자문서의 상태를 확인합니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",	"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",	"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"UserID",	"description":"바로빌 회원사 담당자 아이디"},
+				{"required":"O",	"type":"string",	"length":"24",	"name":"MgtKey",	"description":"연동사부여 문서키"}
+			],
+			"returnType":"EDocState",
+			"returnValue": [
+				{"value":"EDocState.BarobillState 가 양수인 경우",	"description":"성공"},
+				{"value":"EDocState.BarobillState 가 음수인 경우",	"description":"오류코드"}
+			]
+		},
+		"GetEDocStates": {
+			"description":"여러건의 전자문서의 상태를 확인합니다. <span class='red'>(100 건 이내 권장)</span>",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",		"name":"CERTKEY",		"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",		"name":"CorpNum",		"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",		"name":"UserID",		"description":"바로빌 회원사 담당자 아이디"},
+				{"required":"O",	"type":"string[]",	"length":"24[]",	"name":"MgtKeyList",	"description":"연동사부여 문서키 배열"}
+			],
+			"returnType":"EDocState[]",
+			"returnValue": [
+				{"value":"빈 EDocState 배열",	"description":"오류"},
+				{"value":"배열 항목의 EDocState.BarobillState 가 양수인 경우",	"description":"성공"},
+				{"value":"배열 항목의 EDocState.BarobillState 가 음수인 경우",	"description":"오류코드"}
+			]
+		},
+		"GetEDocLog": {
+			"description":"전자문서의 처리이력을 반환합니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",	"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",	"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"UserID",	"description":"바로빌 회원사 담당자 아이디"},
+				{"required":"O",	"type":"string",	"length":"24",	"name":"MgtKey",	"description":"연동사부여 문서키"}
+			],
+			"returnType":"InvoiceLog[]",
+			"returnValue": [
+				{"value":"빈 InvoiceLog 배열",	"description":"오류"}
+			]
+		},
+
+		"GetEDocPopUpURL": {
+			"description":"전자문서의 정보를 양식 형태로 볼 수 있는 URL을 반환합니다.<br><span class='red'>반환된 URL은 60초까지만 유효합니다.</span>",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",	"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",	"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"UserID",	"description":"바로빌 회원사 담당자 아이디"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"PWD",		"description":"바로빌 회원사 담당자 비밀번호"},
+				{"required":"O",	"type":"string",	"length":"24",	"name":"MgtKey",	"description":"연동사부여 문서키"}
+			],
+			"returnType":"string",
+			"returnValue": [
+				{"value":"URL 형식",				"description":"성공"},
+				{"value":"음수 값 형식의 문자열",	"description":"오류코드"}
+			]
+		},
+		"GetEDocPrintURL": {
+			"description":"전자문서를 인쇄할 수 있는 URL을 반환합니다.<br><span class='red'>반환된 URL은 60초까지만 유효합니다.</span>",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",	"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",	"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"UserID",	"description":"바로빌 회원사 담당자 아이디"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"PWD",		"description":"바로빌 회원사 담당자 비밀번호"},
+				{"required":"O",	"type":"string",	"length":"24",	"name":"MgtKey",	"description":"연동사부여 문서키"}
+			],
+			"returnType":"string",
+			"returnValue": [
+				{"value":"URL 형식",				"description":"성공"},
+				{"value":"음수 값 형식의 문자열",	"description":"오류코드"}
+			]
+		},
+		"GetEDocsPrintURL": {
+			"description":"여러건의 전자문서를 인쇄할 수 있는 URL을 반환합니다.<br><span class='red'>반환된 URL은 60초까지만 유효합니다.</span> <span class='red'>(최대 50 건)</span>",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",		"name":"CERTKEY",		"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",		"name":"CorpNum",		"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",		"name":"UserID",		"description":"바로빌 회원사 담당자 아이디"},
+				{"required":"O",	"type":"string",	"length":"20",		"name":"PWD",			"description":"바로빌 회원사 담당자 비밀번호"},
+				{"required":"O",	"type":"string[]",	"length":"24[]",	"name":"MgtKeyList",	"description":"연동사부여 문서키 배열"}
+			],
+			"returnType":"string",
+			"returnValue": [
+				{"value":"URL 형식",				"description":"성공"},
+				{"value":"음수 값 형식의 문자열",	"description":"오류코드"}
+			]
+		},
+		"GetEDocMailURL": {
+			"description":"전자문서를 공급받는자가 보는 관점에서, 양식 형태로 볼 수 있는 URL을 반환합니다.<br><span class='red'>반환된 URL은 60초까지만 유효합니다.</span>",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",	"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",	"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"UserID",	"description":"바로빌 회원사 담당자 아이디"},
+				{"required":"O",	"type":"string",	"length":"24",	"name":"MgtKey",	"description":"연동사부여 문서키"}
+			],
+			"returnType":"string",
+			"returnValue": [
+				{"value":"URL 형식",				"description":"성공"},
+				{"value":"음수 값 형식의 문자열",	"description":"오류코드"}
+			]
+		},
+
+		"SendEmail": {
+			"description":"전자문서 프로세스 처리 시 발송되는 이메일을 재전송합니다. (공급받는자가 이메일을 받지 못한 경우 사용)<br>전자문서의 상태에 따라 적절한 이메일 내용으로 구성됩니다.<br><br>재전송한 내역이 전자문서의 이력으로 기록됩니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",			"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",			"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"UserID",			"description":"바로빌 회원사 담당자 아이디"},
+				{"required":"O",	"type":"string",	"length":"24",	"name":"MgtKey",			"description":"연동사부여 문서키"},
+				{"required":"O",	"type":"string",	"length":"40",	"name":"ToEmailAddress",	"description":"재전송 할 이메일 주소"}
+			],
+			"returnType":"int",
+			"returnValue": [
+				{"value":"1",		"description":"성공"},
+				{"value":"음수",	"description":"오류코드"}
+			]
+		},
+		"SendSMS": {
+			"title":"<span class='red'>포인트 차감</span>",
+			"description":"문자메세지를 재전송합니다.<br><br>재전송한 내역이 전자문서의 이력으로 기록됩니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",		"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",		"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"UserID",		"description":"바로빌 회원사 담당자 아이디"},
+				{"required":"O",	"type":"string",	"length":"24",	"name":"MgtKey",		"description":"연동사부여 문서키"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"FromNumber",	"description":"발신번호"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"ToNumber",		"description":"수신번호"},
+				{"required":"O",	"type":"string",	"length":"90",	"name":"Contents",		"description":"문자메세지 내용 (90 byte 제한)"}
+			],
+			"returnType":"int",
+			"returnValue": [
+				{"value":"1",		"description":"성공"},
+				{"value":"음수",	"description":"오류코드"}
+			]
+		},
+		"SendFax": {
+			"title":"<span class='red'>포인트 차감</span>",
+			"description":"전자문서 내용을 팩스로 재전송합니다.<br>전자문서의 상태에 따라 적절한 팩스 내용으로 구성됩니다.<br><br>재전송한 내역이 전자문서의 이력으로 기록됩니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",		"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",		"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"UserID",		"description":"바로빌 회원사 담당자 아이디"},
+				{"required":"O",	"type":"string",	"length":"24",	"name":"MgtKey",		"description":"연동사부여 문서키"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"FromFaxNumber",	"description":"발신번호"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"ToFaxNumber",	"description":"수신번호"}
+			],
+			"returnType":"int",
+			"returnValue": [
+				{"value":"1",		"description":"성공"},
+				{"value":"음수",	"description":"오류코드"}
+			]
+		}
+	},
+	"CASHBILL": {
+		"CheckMgtKeyIsExists": {
+			"description":"연동사에서 부여한 관리키가 바로빌에 등록되어 있는지 확인합니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",	"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",	"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"UserID",	"description":"바로빌 회원사 담당자 아이디"},
+				{"required":"O",	"type":"string",	"length":"24",	"name":"MgtKey",	"description":"확인할 전자문서의 연동사부여 문서키"}
+			],
+			"returnType":"int",
+			"returnValue": [
+				{"value":"1",		"description":"이미 등록되어 있음"},
+				{"value":"2",		"description":"등록되어 있지 않음"},
+				{"value":"음수",	"description":"오류코드"}
+			]
+		},
+		"CheckIsValidCashBill": {
+			"description":"현금영수증 정보의 유효성을 확인합니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",	"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",	"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"object",	"length":"",	"name":"Invoice",	"object":"CashBill"}
+			],
+			"returnType":"int",
+			"returnValue": [
+				{"value":"1",		"description":"유효함"},
+				{"value":"음수",	"description":"오류코드"}
+			]
+		},
+		"RegistCashBill": {
+			"description":"현금영수증을 임시저장합니다.<br>저장 후 바로빌 사이트의 '현금영수증 > 임시저장(연동)함' 에서 조회할 수 있슶니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",	"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",	"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"UserID",	"description":"바로빌 회원사 담당자 아이디"},
+				{"required":"O",	"type":"object",	"length":"",	"name":"Invoice",	"object":"CashBill"}
+			],
+			"returnType":"int",
+			"returnValue": [
+				{"value":"1",		"description":"성공"},
+				{"value":"음수",	"description":"오류코드"}
+			]
+		},
+		"UpdateCashBill": {
+			"description":"임시저장 된 현금영수증의 내용을 수정합니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",	"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",	"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"UserID",	"description":"바로빌 회원사 담당자 아이디"},
+				{"required":"O",	"type":"object",	"length":"",	"name":"Invoice",	"object":"CashBill"}
+			],
+			"returnType":"int",
+			"returnValue": [
+				{"value":"1",		"description":"성공"},
+				{"value":"음수",	"description":"오류코드"}
+			]
+		},
+		"DeleteCashBill": {
+			"description":"현금영수증를 삭제합니다.<br>'임시저장', '취소' 인 상태의 현금영수증만 삭제 가능합니다.<br>삭제된 현금영수증은 '현금영수증 > 보관함 > 삭제 보관함' 에서 조회할 수 있습니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",	"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",	"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"UserID",	"description":"바로빌 회원사 담당자 아이디"},
+				{"required":"O",	"type":"string",	"length":"24",	"name":"MgtKey",	"description":"연동사부여 문서키"}
+			],
+			"returnType":"int",
+			"returnValue": [
+				{"value":"1",		"description":"성공 - 임시저장 상태에서 삭제된 경우"},
+				{"value":"2",		"description":"성공 - 취소 상태에서 삭제된 경우"},
+				{"value":"음수",	"description":"오류코드"}
+			]
+		},
+
+		"IssueCashBill": {
+			"description":"임시저장 된 현금영수증을 발행합니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",		"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",		"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"UserID",		"description":"바로빌 회원사 담당자 아이디"},
+				{"required":"O",	"type":"string",	"length":"24",	"name":"MgtKey",		"description":"연동사부여 문서키"},
+				{"required":"O",	"type":"bool",		"length":"",	"name":"SMSSendYN",		"description":"문자메세지 전송여부<br><br>true 로 설정되더라도, 현금영수증 내의 소비자의 휴대폰이 저장되지 않은 경우 전송되지 않습니다.<br><br><b class='red'>별도 포인트가 차감됨.</b>"},
+				{"required":"X",	"type":"string",	"length":"200",	"name":"MailTitle",		"description":"발행 시 소비자에게 전송되는 이메일의 제목<br><br>'빈 문자열'로 입력한 경우 바로빌에서 지정한 기본 이메일 제목으로 전송됩니다."}
+			],
+			"returnType":"int",
+			"returnValue": [
+				{"value":"1",		"description":"성공"},
+				{"value":"음수",	"description":"오류코드"}
+			]
+		},
+		"CancelCashBillBeforeNTSSend": {
+			"description":"발행된 현금영수증이 국세청으로 전송되기 전에 취소합니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",	"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",	"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"UserID",	"description":"바로빌 회원사 담당자 아이디"},
+				{"required":"O",	"type":"string",	"length":"24",	"name":"MgtKey",	"description":"연동사부여 문서키"}
+			],
+			"returnType":"int",
+			"returnValue": [
+				{"value":"1",		"description":"성공"},
+				{"value":"음수",	"description":"오류코드"}
+			]
+		},
+		"CancelCashBill": {
+			"description":"발행된 현금영수증이 국세청으로 전송된 후에 취소합니다.<br><span class='blue'>'취소거래' 건이 신규로 작성됩니다.</span>",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",		"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",		"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"UserID",		"description":"바로빌 회원사 담당자 아이디"},
+				{"required":"O",	"type":"string",	"length":"24",	"name":"MgtKey",		"description":"연동사부여 문서키"},
+				{"required":"O",	"type":"string",	"length":"1",	"name":"CancelType",		"description":"1:거래취소 2:오류발급 3:기타"},
+				{"required":"O",	"type":"bool",		"length":"",	"name":"SMSSendYN",		"description":"문자메세지 전송여부<br><br>true 로 설정되더라도, 현금영수증 내의 소비자의 휴대폰이 저장되지 않은 경우 전송되지 않습니다.<br><br><b class='red'>별도 포인트가 차감됨.</b>"},
+				{"required":"X",	"type":"string",	"length":"200",	"name":"MailTitle",		"description":"취소 시 소비자에게 전송되는 이메일의 제목<br><br>'빈 문자열'로 입력한 경우 바로빌에서 지정한 기본 이메일 제목으로 전송됩니다."}
+			],
+			"returnType":"int",
+			"returnValue": [
+				{"value":"1",		"description":"성공"},
+				{"value":"음수",	"description":"오류코드"}
+			]
+		},
+		"CancelCashBillPartial": {
+			"description":"발행된 현금영수증이 국세청으로 전송된 후에 <span class='red'>일부 금액만 부분취소</span>합니다.<br><span class='blue'>취소한 금액만큼의 '취소거래' 건이 신규로 작성됩니다.</span>",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",		"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",		"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"UserID",		"description":"바로빌 회원사 담당자 아이디"},
+				{"required":"O",	"type":"string",	"length":"24",	"name":"MgtKey",		"description":"연동사부여 문서키"},
+				{"required":"O",	"type":"string",	"length":"1",	"name":"CancelType",		"description":"1:거래취소 2:오류발급 3:기타"},
+				{"required":"O",	"type":"string",	"length":"9",	"name":"CancelAmount",		"description":"취소할 공급가액"},
+				{"required":"O",	"type":"string",	"length":"9",	"name":"CancelTax",		"description":"취소할 부가세"},
+				{"required":"O",	"type":"string",	"length":"9",	"name":"CancelServiceCharge",	"description":"취소할 봉사료"},
+				{"required":"O",	"type":"bool",		"length":"",	"name":"SMSSendYN",		"description":"문자메세지 전송여부<br><br>true 로 설정되더라도, 현금영수증 내의 소비자의 휴대폰이 저장되지 않은 경우 전송되지 않습니다.<br><br><b class='red'>별도 포인트가 차감됨.</b>"},
+				{"required":"X",	"type":"string",	"length":"200",	"name":"MailTitle",		"description":"취소 시 소비자에게 전송되는 이메일의 제목<br><br>'빈 문자열'로 입력한 경우 바로빌에서 지정한 기본 이메일 제목으로 전송됩니다."}
+			],
+			"returnType":"int",
+			"returnValue": [
+				{"value":"1",		"description":"성공"},
+				{"value":"음수",	"description":"오류코드"}
+			]
+		},
+
+		"GetCashBill": {
+			"description":"현금영수증의 내용을 확인합니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",	"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",	"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"UserID",	"description":"바로빌 회원사 담당자 아이디"},
+				{"required":"O",	"type":"string",	"length":"24",	"name":"MgtKey",	"description":"연동사부여 문서키"}
+			],
+			"returnType":"CashBill",
+			"returnValue": [
+				{"value":"CashBill.TradeType 이 'N' 또는 'D' 인 경우",			"description":"성공"},
+				{"value":"CashBill.TradeType 이 음수값을 가진 문자열인 경우",	"description":"오류코드"}
+			]
+		},
+		"GetCashBillState": {
+			"description":"현금영수증의 상태를 확인합니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",	"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",	"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"UserID",	"description":"바로빌 회원사 담당자 아이디"},
+				{"required":"O",	"type":"string",	"length":"24",	"name":"MgtKey",	"description":"연동사부여 문서키"}
+			],
+			"returnType":"CashBillState",
+			"returnValue": [
+				{"value":"CashBillState.BarobillState 가 양수인 경우",	"description":"성공"},
+				{"value":"CashBillState.BarobillState 가 음수인 경우",	"description":"오류코드"}
+			]
+		},
+		"GetCashBillStates": {
+			"description":"여러건의 현금영수증의 상태를 확인합니다. <span class='red'>(100 건 이내 권장)</span>",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",		"name":"CERTKEY",		"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",		"name":"CorpNum",		"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",		"name":"UserID",		"description":"바로빌 회원사 담당자 아이디"},
+				{"required":"O",	"type":"string[]",	"length":"24[]",	"name":"MgtKeyList",	"description":"연동사부여 문서키 배열"}
+			],
+			"returnType":"CashBillState[]",
+			"returnValue": [
+				{"value":"빈 CashBillState 배열",	"description":"오류"},
+				{"value":"배열 항목의 CashBillState.BarobillState 가 양수인 경우",	"description":"성공"},
+				{"value":"배열 항목의 CashBillState.BarobillState 가 음수인 경우",	"description":"오류코드"}
+			]
+		},
+		"GetCashBillLog": {
+			"description":"현금영수증의 처리이력을 반환합니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",	"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",	"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"UserID",	"description":"바로빌 회원사 담당자 아이디"},
+				{"required":"O",	"type":"string",	"length":"24",	"name":"MgtKey",	"description":"연동사부여 문서키"}
+			],
+			"returnType":"CashBillLog[]",
+			"returnValue": [
+				{"value":"빈 CashBillLog 배열",	"description":"오류"}
+			]
+		},
+
+		"GetCashBillPopUpURL": {
+			"description":"현금영수증의 정보를 양식 형태로 볼 수 있는 URL을 반환합니다.<br><span class='red'>반환된 URL은 60초까지만 유효합니다.</span>",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",	"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",	"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"UserID",	"description":"바로빌 회원사 담당자 아이디"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"PWD",		"description":"바로빌 회원사 담당자 비밀번호"},
+				{"required":"O",	"type":"string",	"length":"24",	"name":"MgtKey",	"description":"연동사부여 문서키"}
+			],
+			"returnType":"string",
+			"returnValue": [
+				{"value":"URL 형식",				"description":"성공"},
+				{"value":"음수 값 형식의 문자열",	"description":"오류코드"}
+			]
+		},
+		"GetCashBillPrintURL": {
+			"description":"현금영수증을 인쇄할 수 있는 URL을 반환합니다.<br><span class='red'>반환된 URL은 60초까지만 유효합니다.</span>",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",	"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",	"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"UserID",	"description":"바로빌 회원사 담당자 아이디"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"PWD",		"description":"바로빌 회원사 담당자 비밀번호"},
+				{"required":"O",	"type":"string",	"length":"24",	"name":"MgtKey",	"description":"연동사부여 문서키"}
+			],
+			"returnType":"string",
+			"returnValue": [
+				{"value":"URL 형식",				"description":"성공"},
+				{"value":"음수 값 형식의 문자열",	"description":"오류코드"}
+			]
+		},
+		"GetCashBillsPrintURL": {
+			"description":"여러건의 현금영수증을 인쇄할 수 있는 URL을 반환합니다.<br><span class='red'>반환된 URL은 60초까지만 유효합니다.</span> <span class='red'>(최대 50 건)</span>",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",		"name":"CERTKEY",		"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",		"name":"CorpNum",		"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",		"name":"UserID",		"description":"바로빌 회원사 담당자 아이디"},
+				{"required":"O",	"type":"string",	"length":"20",		"name":"PWD",			"description":"바로빌 회원사 담당자 비밀번호"},
+				{"required":"O",	"type":"string[]",	"length":"24[]",	"name":"MgtKeyList",	"description":"연동사부여 문서키 배열"}
+			],
+			"returnType":"string",
+			"returnValue": [
+				{"value":"URL 형식",				"description":"성공"},
+				{"value":"음수 값 형식의 문자열",	"description":"오류코드"}
+			]
+		},
+
+		"SendEmail": {
+			"description":"현금영수증 프로세스 처리 시 발송되는 이메일을 재전송합니다. (소비자가 이메일을 받지 못한 경우 사용)<br>현금영수증의 상태에 따라 적절한 이메일 내용으로 구성됩니다.<br><br>재전송한 내역이 현금영수증의 이력으로 기록됩니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",			"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",			"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"UserID",			"description":"바로빌 회원사 담당자 아이디"},
+				{"required":"O",	"type":"string",	"length":"24",	"name":"MgtKey",			"description":"연동사부여 문서키"},
+				{"required":"O",	"type":"string",	"length":"40",	"name":"ToEmailAddress",	"description":"재전송 할 이메일 주소"}
+			],
+			"returnType":"int",
+			"returnValue": [
+				{"value":"1",		"description":"성공"},
+				{"value":"음수",	"description":"오류코드"}
+			]
+		},
+		"SendSMS": {
+			"title":"<span class='red'>포인트 차감</span>",
+			"description":"문자메세지를 재전송합니다.<br><br>재전송한 내역이 현금영수증의 이력으로 기록됩니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",		"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",		"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"UserID",		"description":"바로빌 회원사 담당자 아이디"},
+				{"required":"O",	"type":"string",	"length":"24",	"name":"MgtKey",		"description":"연동사부여 문서키"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"FromNumber",	"description":"발신번호"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"ToNumber",		"description":"수신번호"},
+				{"required":"O",	"type":"string",	"length":"90",	"name":"Contents",		"description":"문자메세지 내용 (90 byte 제한)"}
+			],
+			"returnType":"int",
+			"returnValue": [
+				{"value":"1",		"description":"성공"},
+				{"value":"음수",	"description":"오류코드"}
+			]
+		},
+		"SendFax": {
+			"title":"<span class='red'>포인트 차감</span>",
+			"description":"현금영수증 내용을 팩스로 재전송합니다.<br>현금영수증의 상태에 따라 적절한 팩스 내용으로 구성됩니다.<br><br>재전송한 내역이 현금영수증의 이력으로 기록됩니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",		"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",		"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"UserID",		"description":"바로빌 회원사 담당자 아이디"},
+				{"required":"O",	"type":"string",	"length":"24",	"name":"MgtKey",		"description":"연동사부여 문서키"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"FromFaxNumber",	"description":"발신번호"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"ToFaxNumber",	"description":"수신번호"}
+			],
+			"returnType":"int",
+			"returnValue": [
+				{"value":"1",		"description":"성공"},
+				{"value":"음수",	"description":"오류코드"}
+			]
+		},
+
+		"GetCashBillScrapRequestURL": {
+			"description":"홈텍스 현금영수증 연동 서비스를 신청할 수 있는 URL을 반환합니다.<br><span class='red'>반환된 URL은 60초까지만 유효합니다.</span><br><br><span class='blue'>'국세청 홈택스'의 매입 현금영수증을 수집하여 바로빌에서 통합관리하는 서비스.</span>",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",	"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",	"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"UserID",	"description":"바로빌 회원사 담당자 아이디"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"PWD",		"description":"바로빌 회원사 담당자 비밀번호"}
+			],
+			"returnType":"string",
+			"returnValue": [
+				{"value":"URL 형식",				"description":"성공"},
+				{"value":"음수 값 형식의 문자열",	"description":"오류코드"}
+			]
+		},
+		"GetDailyCashBillSalesList": {
+			"description":"매출 현금영수증을 요약된 형태로 1일분씩 조회합니다.<br><br><span class='blue'>단, 국세청에 전송완료된 현금영수증만 조회됩니다.</span>",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",		"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",		"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"UserID",		"description":"바로빌 회원사 담당자 아이디"},
+				{"required":"O",	"type":"string",	"length":"8",	"name":"BaseDate",		"description":"조회기준일자. yyyyMMdd 형식"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"CountPerPage",	"description":"한 페이지 당 조회 건 수"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"CurrentPage",	"description":"조회할 페이지 번호"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"OrderDirection","description":"정렬방향<br><br>1:ASC<br>2:DESC"}
+			],
+			"returnType":"PagedCashBill",
+			"returnValue": [
+				{"value":"PagedCashBill.CurrentPage 가 양수인 경우",	"description":"성공"},
+				{"value":"PagedCashBill.CurrentPage 가 음수인 경우",	"description":"오류코드"}
+			]
+		},
+		"GetDailyCashBillPurchaseList": {
+			"description":"매입 현금영수증을 요약된 형태로 1일분씩 조회합니다.<br><br><span class='blue'>단, 국세청에 전송완료된 현금영수증만 조회됩니다.</span>",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",		"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",		"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"UserID",		"description":"바로빌 회원사 담당자 아이디"},
+				{"required":"O",	"type":"string",	"length":"8",	"name":"BaseDate",		"description":"조회기준일자. yyyyMMdd 형식"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"CountPerPage",	"description":"한 페이지 당 조회 건 수"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"CurrentPage",	"description":"조회할 페이지 번호"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"OrderDirection","description":"정렬방향<br><br>1:ASC<br>2:DESC"}
+			],
+			"returnType":"PagedCashBill",
+			"returnValue": [
+				{"value":"PagedCashBill.CurrentPage 가 양수인 경우",	"description":"성공"},
+				{"value":"PagedCashBill.CurrentPage 가 음수인 경우",	"description":"오류코드"}
+			]
+		},
+		"GetMonthlyCashBillSalesList": {
+			"description":"매출 현금영수증을 요약된 형태로 1개월분씩 조회합니다.<br><br><span class='blue'>단, 국세청에 전송완료된 현금영수증만 조회됩니다.</span>",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",		"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",		"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"UserID",		"description":"바로빌 회원사 담당자 아이디"},
+				{"required":"O",	"type":"string",	"length":"6",	"name":"BaseMonth",		"description":"조회기준월. yyyyMM 형식"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"CountPerPage",	"description":"한 페이지 당 조회 건 수"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"CurrentPage",	"description":"조회할 페이지 번호"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"OrderDirection","description":"정렬방향<br><br>1:ASC<br>2:DESC"}
+			],
+			"returnType":"PagedCashBill",
+			"returnValue": [
+				{"value":"PagedCashBill.CurrentPage 가 양수인 경우",	"description":"성공"},
+				{"value":"PagedCashBill.CurrentPage 가 음수인 경우",	"description":"오류코드"}
+			]
+		},
+		"GetMonthlyCashBillPurchaseList": {
+			"description":"매입 현금영수증을 요약된 형태로 1개월분씩 조회합니다.<br><br><span class='blue'>단, 국세청에 전송완료된 현금영수증만 조회됩니다.</span>",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",		"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",		"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"UserID",		"description":"바로빌 회원사 담당자 아이디"},
+				{"required":"O",	"type":"string",	"length":"6",	"name":"BaseMonth",		"description":"조회기준월. yyyyMM 형식"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"CountPerPage",	"description":"한 페이지 당 조회 건 수"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"CurrentPage",	"description":"조회할 페이지 번호"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"OrderDirection","description":"정렬방향<br><br>1:ASC<br>2:DESC"}
+			],
+			"returnType":"PagedCashBill",
+			"returnValue": [
+				{"value":"PagedCashBill.CurrentPage 가 양수인 경우",	"description":"성공"},
+				{"value":"PagedCashBill.CurrentPage 가 음수인 경우",	"description":"오류코드"}
+			]
+		},
+		"GetCashBillSalesList": {
+			"deprecatedBy":"GetDailyCashBillSalesList",
+			"description":"매출 현금영수증을 요약된 형태로 1일분씩 조회합니다.<br><br><span class='blue'>단, 국세청에 전송완료된 현금영수증만 조회됩니다.</span>",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",		"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",		"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"UserID",		"description":"바로빌 회원사 담당자 아이디"},
+				{"required":"O",	"type":"string",	"length":"8",	"name":"BaseDate",		"description":"조회기준일자. yyyyMMdd 형식"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"CountPerPage",	"description":"한 페이지 당 조회 건 수"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"CurrentPage",	"description":"조회할 페이지 번호"}
+			],
+			"returnType":"PagedCashBill",
+			"returnValue": [
+				{"value":"PagedCashBill.CurrentPage 가 양수인 경우",	"description":"성공"},
+				{"value":"PagedCashBill.CurrentPage 가 음수인 경우",	"description":"오류코드"}
+			]
+		},
+		"GetCashBillPurchaseList": {
+			"deprecatedBy":"GetDailyCashBillPurchaseList",
+			"description":"매입 현금영수증을 요약된 형태로 1일분씩 조회합니다.<br><br><span class='blue'>단, 국세청에 전송완료된 현금영수증만 조회됩니다.</span>",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",		"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",		"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"UserID",		"description":"바로빌 회원사 담당자 아이디"},
+				{"required":"O",	"type":"string",	"length":"8",	"name":"BaseDate",		"description":"조회기준일자. yyyyMMdd 형식"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"CountPerPage",	"description":"한 페이지 당 조회 건 수"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"CurrentPage",	"description":"조회할 페이지 번호"}
+			],
+			"returnType":"PagedCashBill",
+			"returnValue": [
+				{"value":"PagedCashBill.CurrentPage 가 양수인 경우",	"description":"성공"},
+				{"value":"PagedCashBill.CurrentPage 가 음수인 경우",	"description":"오류코드"}
+			]
+		}
+	},
+	"SMS": {
+		"SendMessage": {
+			"title":"<span class='red'>포인트 차감</span>",
+			"description":"단문(90 byte)/장문(2000 byte) 문자메세지를 전송합니다.<br>문자메세지의 길이에 따라 자동으로 단문/장문 으로 전송됩니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",		"name":"CERTKEY",		"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",		"name":"CorpNum",		"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",		"name":"SenderID",		"description":"바로빌 회원사 담당자 아이디"},
+				{"required":"O",	"type":"string",	"length":"13",		"name":"FromNumber",	"description":"발신번호"},
+				{"required":"X",	"type":"string",	"length":"20",		"name":"ToName",		"description":"수신자명"},
+				{"required":"O",	"type":"string",	"length":"13",		"name":"ToNumber",		"description":"수신번호"},
+				{"required":"O",	"type":"string",	"length":"2000",	"name":"Contents",		"description":"문자메세지 내용"},
+				{"required":"X",	"type":"string",	"length":"14",		"name":"SendDT",		"description":"전송일시, yyyyMMddHHmmss 형식<br><br>- '빈 문자열' 입력 시 즉시 전송<br>- 미래일자로 입력하는 경우 예약전송"},
+				{"required":"X",	"type":"string",	"length":"20",		"name":"RefKey",		"description":"연동사부여 전송키"}
+			],
+			"returnType":"string",
+			"returnValue": [
+				{"value":"숫자형식이 아닌 문자열",	"description":"성공 - 바로빌부여 전송키"},
+				{"value":"음수 값 형식의 문자열",	"description":"오류코드"}
+			]
+		},
+		"SendMessages": {
+			"title":"<span class='red'>포인트 차감</span>",
+			"description":"여러건의 단문(90 byte)/장문(2000 byte) 문자메세지를 전송합니다. <span class='red'>(최대 1,000 건)</span>",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",		"name":"CERTKEY",		"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",		"name":"CorpNum",		"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",		"name":"SenderID",		"description":"바로빌 회원사 담당자 아이디"},
+				{"required":"O",	"type":"int",		"length":"",		"name":"SendCount",		"description":"전송건수"},
+				{"required":"O",	"type":"bool",		"length":"",		"name":"CutToSMS",		"description":"true:문자메세지를 90 byte 로 잘라서 전송합니다.<br>false:문자메세지의 길이에 따라 자동으로 단문/장문 으로 전송됩니다."},
+				{"required":"O",	"type":"object[]",	"length":"",		"name":"Messages",		"object":"XMSMessage[]"},
+				{"required":"X",	"type":"string",	"length":"14",		"name":"SendDT",		"description":"전송일시, yyyyMMddHHmmss 형식<br><br>- '빈 문자열' 입력 시 즉시 전송<br>- 미래일자로 입력하는 경우 예약전송"}
+			],
+			"returnType":"string",
+			"returnValue": [
+				{"value":"숫자형식이 아닌 문자열",	"description":"성공 - 바로빌부여 다량전송키"},
+				{"value":"음수 값 형식의 문자열",	"description":"오류코드"}
+			]
+		},
+		"SendSMSMessage": {
+			"title":"<span class='red'>포인트 차감</span>",
+			"description":"단문(90 byte) 문자메세지를 전송합니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",		"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",		"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"SenderID",		"description":"바로빌 회원사 담당자 아이디"},
+				{"required":"O",	"type":"string",	"length":"13",	"name":"FromNumber",	"description":"발신번호"},
+				{"required":"X",	"type":"string",	"length":"20",	"name":"ToName",		"description":"수신자명"},
+				{"required":"O",	"type":"string",	"length":"13",	"name":"ToNumber",		"description":"수신번호"},
+				{"required":"O",	"type":"string",	"length":"90",	"name":"Contents",		"description":"문자메세지 내용"},
+				{"required":"X",	"type":"string",	"length":"14",	"name":"SendDT",		"description":"전송일시, yyyyMMddHHmmss 형식<br><br>- '빈 문자열' 입력 시 즉시 전송<br>- 미래일자로 입력하는 경우 예약전송"},
+				{"required":"X",	"type":"string",	"length":"20",	"name":"RefKey",		"description":"연동사부여 전송키"}
+			],
+			"returnType":"string",
+			"returnValue": [
+				{"value":"숫자형식이 아닌 문자열",	"description":"성공 - 바로빌부여 전송키"},
+				{"value":"음수 값 형식의 문자열",	"description":"오류코드"}
+			]
+		},
+		"SendLMSMessage": {
+			"title":"<span class='red'>포인트 차감</span>",
+			"description":"장문(2000 byte) 문자메세지를 전송합니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",		"name":"CERTKEY",		"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",		"name":"CorpNum",		"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",		"name":"SenderID",		"description":"바로빌 회원사 담당자 아이디"},
+				{"required":"O",	"type":"string",	"length":"13",		"name":"FromNumber",	"description":"발신번호"},
+				{"required":"X",	"type":"string",	"length":"20",		"name":"ToName",		"description":"수신자명"},
+				{"required":"O",	"type":"string",	"length":"13",		"name":"ToNumber",		"description":"수신번호"},
+				{"required":"O",	"type":"string",	"length":"40",		"name":"Subject",		"description":"문자메세지 제목"},
+				{"required":"O",	"type":"string",	"length":"2000",	"name":"Contents",		"description":"문자메세지 내용"},
+				{"required":"X",	"type":"string",	"length":"14",		"name":"SendDT",		"description":"전송일시, yyyyMMddHHmmss 형식<br><br>- '빈 문자열' 입력 시 즉시 전송<br>- 미래일자로 입력하는 경우 예약전송"},
+				{"required":"X",	"type":"string",	"length":"20",		"name":"RefKey",		"description":"연동사부여 전송키"}
+			],
+			"returnType":"string",
+			"returnValue": [
+				{"value":"숫자형식이 아닌 문자열",	"description":"성공 - 바로빌부여 전송키"},
+				{"value":"음수 값 형식의 문자열",	"description":"오류코드"}
+			]
+		},
+		"SendMMSMessage": {
+			"title":"<span class='red'>포인트 차감</span>",
+			"description":"포토(MMS) 문자메세지를 전송합니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",		"name":"CERTKEY",		"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",		"name":"CorpNum",		"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",		"name":"SenderID",		"description":"바로빌 회원사 담당자 아이디"},
+				{"required":"O",	"type":"string",	"length":"13",		"name":"FromNumber",	"description":"발신번호"},
+				{"required":"X",	"type":"string",	"length":"20",		"name":"ToName",		"description":"수신자명"},
+				{"required":"O",	"type":"string",	"length":"13",		"name":"ToNumber",		"description":"수신번호"},
+				{"required":"O",	"type":"string",	"length":"40",		"name":"TXTSubject",	"description":"문자메세지 제목"},
+				{"required":"O",	"type":"string",	"length":"2000",	"name":"TXTMESSAGE",	"description":"문자메세지 내용"},
+				{"required":"O",	"type":"byte[]",	"length":"",		"name":"ImageFile",		"description":"포토 이미지<br><br><span class='red'>1MB 이하, 1280x1024 픽셀 이하의 JPG 파일을 byte 배열 또는 BASE64BINARY 입력하세요.</span>"},
+				{"required":"X",	"type":"string",	"length":"14",		"name":"SendDT",		"description":"전송일시, yyyyMMddHHmmss 형식<br><br>- '빈 문자열' 입력 시 즉시 전송<br>- 미래일자로 입력하는 경우 예약전송"},
+				{"required":"X",	"type":"string",	"length":"20",		"name":"RefKey",		"description":"연동사부여 전송키"}
+			],
+			"returnType":"string",
+			"returnValue": [
+				{"value":"숫자형식이 아닌 문자열",	"description":"성공 - 바로빌부여 전송키"},
+				{"value":"음수 값 형식의 문자열",	"description":"오류코드"}
+			]
+		},
+		"SendMMSMessageFromFTP": {
+			"title":"<span class='red'>포인트 차감</span>",
+			"description":"포토(MMS) 문자메세지를 전송합니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",		"name":"CERTKEY",		"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",		"name":"CorpNum",		"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",		"name":"SenderID",		"description":"바로빌 회원사 담당자 아이디"},
+				{"required":"O",	"type":"string",	"length":"13",		"name":"FromNumber",	"description":"발신번호"},
+				{"required":"X",	"type":"string",	"length":"20",		"name":"ToName",		"description":"수신자명"},
+				{"required":"O",	"type":"string",	"length":"13",		"name":"ToNumber",		"description":"수신번호"},
+				{"required":"O",	"type":"string",	"length":"40",		"name":"TXTSubject",	"description":"문자메세지 제목"},
+				{"required":"O",	"type":"string",	"length":"2000",	"name":"TXTMESSAGE",	"description":"문자메세지 내용"},
+				{"required":"O",	"type":"string",	"length":"",		"name":"ImageFileName",	"description":"FTP 에 업로드 한 파일명"},
+				{"required":"X",	"type":"string",	"length":"14",		"name":"SendDT",		"description":"전송일시, yyyyMMddHHmmss 형식<br><br>- '빈 문자열' 입력 시 즉시 전송<br>- 미래일자로 입력하는 경우 예약전송"},
+				{"required":"X",	"type":"string",	"length":"20",		"name":"RefKey",		"description":"연동사부여 전송키"}
+			],
+			"returnType":"string",
+			"returnValue": [
+				{"value":"숫자형식이 아닌 문자열",	"description":"성공 - 바로빌부여 전송키"},
+				{"value":"음수 값 형식의 문자열",	"description":"오류코드"}
+			]
+		},
+
+		"CancelReservedSMSMessage": {
+			"title":"<span class='red'>포인트 환불</span>",
+			"description":"예약 전송 대기중인 문자메세지를 취소합니다. <span class='red'>전송 30분전까지만 취소할 수 있습니다.</span>",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",	"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",	"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"30",	"name":"SendKey",	"description":"바로빌부여 전송키<br>(SendMessage, SendSMSMessage, SendLMSMessage, SendMMSMessage, SendMMSMessageFromFTP 함수의 결과값)"}
+			],
+			"returnType":"int",
+			"returnValue": [
+				{"value":"1",		"description":"성공"},
+				{"value":"음수",	"description":"오류코드"}
+			]
+		},
+		"CancelReservedSMSMessageByReceiptNum": {
+			"title":"<span class='red'>포인트 환불</span>",
+			"description":"예약 전송 대기중인 다량 문자메세지를 취소합니다. <span class='red'>전송 30분전까지만 취소할 수 있습니다.</span>",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",		"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",		"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"30",	"name":"ReceiptNum",	"description":"바로빌부여 다량전송키<br>(SendMessages 함수의 결과값)"}
+			],
+			"returnType":"int",
+			"returnValue": [
+				{"value":"1",		"description":"성공"},
+				{"value":"음수",	"description":"오류코드"}
+			]
+		},
+
+		"GetSMSSendState": {
+			"description":"전송한 문자메세지의 상태를 확인합니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",	"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",	"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"30",	"name":"SendKey",	"description":"바로빌부여 전송키<br>(SendMessage, SendSMSMessage, SendLMSMessage, SendMMSMessage, SendMMSMessageFromFTP 함수의 결과값)"}
+			],
+			"returnType":"int",
+			"returnValue": [
+				{"value":"0",		"description":"전송대기"},
+				{"value":"1",		"description":"전송완료"},
+				{"value":"음수",	"description":"오류코드"}
+			]
+		},
+		"GetSMSSendMessage": {
+			"description":"전송한 문자메세지의 상태 및 상세내역을 확인합니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",	"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",	"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"30",	"name":"SendKey",	"description":"바로빌부여 전송키<br>(SendMessage, SendSMSMessage, SendLMSMessage, SendMMSMessage, SendMMSMessageFromFTP 함수의 결과값)"}
+			],
+			"returnType":"SMSMessage",
+			"returnValue": [
+				{"value":"SMSMessage.SendState 가 양수인 경우",	"description":"성공"},
+				{"value":"SMSMessage.SendState 가 음수인 경우",	"description":"전송실패 또는 오류코드"}
+			]
+		},
+		"GetSMSSendMessages": {
+			"description":"전송한 문자메세지의 상태 및 상세내역을 확인합니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",		"name":"CERTKEY",		"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",		"name":"CorpNum",		"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string[]",	"length":"30[]",	"name":"SendKeyList",	"description":"바로빌부여 전송키 배열<br>(SendMessage, SendSMSMessage, SendLMSMessage, SendMMSMessage, SendMMSMessageFromFTP 함수의 결과값)"}
+			],
+			"returnType":"SMSMessage[]",
+			"returnValue": [
+				{"value":"배열 항목의 SMSMessage.SendState 가 양수인 경우",	"description":"성공"},
+				{"value":"배열 항목의 SMSMessage.SendState 가 음수인 경우",	"description":"전송실패 또는 오류코드"}
+			]
+		},
+		"GetSMSSendMessagesByRefKey": {
+			"description":"전송한 문자메세지의 상태 및 상세내역을 연동사부여 전송키로 확인합니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",	"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",	"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"30",	"name":"RefKey",	"description":"연동사부여 전송키"}
+			],
+			"returnType":"SMSMessage[]",
+			"returnValue": [
+				{"value":"배열 항목의 SMSMessage.SendState 가 양수인 경우",	"description":"성공"},
+				{"value":"배열 항목의 SMSMessage.SendState 가 음수인 경우",	"description":"전송실패 또는 오류코드"}
+			]
+		},
+		"GetMessagesByReceiptNum": {
+			"description":"다량 전송한 문자메세지의 상태 및 상세내역을 확인합니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",	"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",	"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"30",	"name":"RefKey",	"description":"바로빌부여 다량전송키<br>(SendMessages 함수의 결과값)"}
+			],
+			"returnType":"SMSMessage[]",
+			"returnValue": [
+				{"value":"배열 항목의 SMSMessage.SendState 가 양수인 경우",	"description":"성공"},
+				{"value":"배열 항목의 SMSMessage.SendState 가 음수인 경우",	"description":"전송실패 또는 오류코드"}
+			]
+		},
+
+		"GetSMSHistoryURL": {
+			"description":"문자메세지 전송내역을 조회할 수 있는 URL을 반환합니다.<br><span class='red'>반환된 URL은 60초까지만 유효합니다.</span>",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",	"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",	"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"ID",		"description":"바로빌 회원사 담당자 아이디"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"PWD",		"description":"바로빌 회원사 담당자 비밀번호"}
+			],
+			"returnType":"string",
+			"returnValue": [
+				{"value":"URL 형식",				"description":"성공"},
+				{"value":"음수 값 형식의 문자열",	"description":"오류코드"}
+			]
+		}
+	},
+	"FAX": {
+		"SendFaxFromFTP": {
+			"title":"<span class='red'>포인트 차감</span>",
+			"description":"팩스를 전송합니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",		"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",		"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"SenderID",		"description":"바로빌 회원사 담당자 아이디"},
+				{"required":"O",	"type":"string",	"length":"255",	"name":"FileName",		"description":"FTP 에 업로드 한 파일명"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"FromNumber",	"description":"발신번호"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"ToNumber",		"description":"수신번호"},
+				{"required":"X",	"type":"string",	"length":"80",	"name":"ReceiveCorp",	"description":"수신자 회사명"},
+				{"required":"X",	"type":"string",	"length":"80",	"name":"ReceiveName",	"description":"수신자명"},
+				{"required":"X",	"type":"string",	"length":"14",	"name":"SendDT",		"description":"전송일시, yyyyMMddHHmmss 형식<br><br>- '빈 문자열' 입력 시 즉시 전송<br>- 미래일자로 입력하는 경우 예약전송"},
+				{"required":"X",	"type":"string",	"length":"20",	"name":"RefKey",		"description":"연동사부여 전송키"}
+			],
+			"returnType":"string",
+			"returnValue": [
+				{"value":"숫자형식이 아닌 문자열",	"description":"성공 - 바로빌부여 전송키"},
+				{"value":"음수 값 형식의 문자열",	"description":"오류코드"}
+			]
+		},
+		"SendFaxFromFTPEx": {
+			"title":"<span class='red'>포인트 차감</span>",
+			"description":"팩스를 전송합니다. <span class='red'>(한번에 최대 10개까지의 파일을 전송하실 수 있습니다.)</span>",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",		"name":"CERTKEY",		"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",		"name":"CorpNum",		"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",		"name":"SenderID",		"description":"바로빌 회원사 담당자 아이디"},
+				{"required":"O",	"type":"int",		"length":"",		"name":"FileCount",		"description":"전송할 파일 수"},
+				{"required":"O",	"type":"string[]",	"length":"255[]",	"name":"FileNames",		"description":"FTP 에 업로드 한 파일명 배열"},
+				{"required":"O",	"type":"string",	"length":"20",		"name":"FromNumber",	"description":"발신번호"},
+				{"required":"O",	"type":"string",	"length":"20",		"name":"ToNumber",		"description":"수신번호"},
+				{"required":"X",	"type":"string",	"length":"80",		"name":"ReceiveCorp",	"description":"수신자 회사명"},
+				{"required":"X",	"type":"string",	"length":"80",		"name":"ReceiveName",	"description":"수신자명"},
+				{"required":"X",	"type":"string",	"length":"14",		"name":"SendDT",		"description":"전송일시, yyyyMMddHHmmss 형식<br><br>- '빈 문자열' 입력 시 즉시 전송<br>- 미래일자로 입력하는 경우 예약전송"},
+				{"required":"X",	"type":"string",	"length":"20",		"name":"RefKey",		"description":"연동사부여 전송키"}
+			],
+			"returnType":"string",
+			"returnValue": [
+				{"value":"숫자형식이 아닌 문자열",	"description":"성공 - 바로빌부여 전송키"},
+				{"value":"음수 값 형식의 문자열",	"description":"오류코드"}
+			]
+		},
+		"SendFaxesFromFTP": {
+			"title":"<span class='red'>포인트 차감</span>",
+			"description":"여러건의 팩스를 전송합니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",		"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",		"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"SenderID",		"description":"바로빌 회원사 담당자 아이디"},
+				{"required":"O",	"type":"string",	"length":"255",	"name":"FileName",		"description":"FTP 에 업로드 한 파일명"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"SendCount",		"description":"전송할 대상 수"},
+				{"required":"O",	"type":"object[]",	"length":"",	"name":"Messages",		"object":"FaxMessage[]"},
+				{"required":"X",	"type":"string",	"length":"14",	"name":"SendDT",		"description":"전송일시, yyyyMMddHHmmss 형식<br><br>- '빈 문자열' 입력 시 즉시 전송<br>- 미래일자로 입력하는 경우 예약전송"}
+			],
+			"returnType":"string[]",
+			"returnValue": [
+				{"value":"숫자형식이 아닌 문자열",	"description":"성공 - 바로빌부여 전송키"},
+				{"value":"음수 값 형식의 문자열",	"description":"오류코드"}
+			]
+		},
+		"SendFaxesFromFTPEx": {
+			"title":"<span class='red'>포인트 차감</span>",
+			"description":"여러건의 팩스를 전송합니다. <span class='red'>(한번에 최대 10개까지의 파일을 전송하실 수 있습니다.)</span>",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",		"name":"CERTKEY",		"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",		"name":"CorpNum",		"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",		"name":"SenderID",		"description":"바로빌 회원사 담당자 아이디"},
+				{"required":"O",	"type":"int",		"length":"",		"name":"FileCount",		"description":"전송할 파일 수"},
+				{"required":"O",	"type":"string[]",	"length":"255[]",	"name":"FileNames",		"description":"FTP 에 업로드 한 파일명 배열"},
+				{"required":"O",	"type":"int",		"length":"",		"name":"SendCount",		"description":"전송할 대상 수"},
+				{"required":"O",	"type":"object[]",	"length":"",		"name":"Messages",		"object":"FaxMessage[]"},
+				{"required":"X",	"type":"string",	"length":"14",		"name":"SendDT",		"description":"전송일시, yyyyMMddHHmmss 형식<br><br>- '빈 문자열' 입력 시 즉시 전송<br>- 미래일자로 입력하는 경우 예약전송"}
+			],
+			"returnType":"string[]",
+			"returnValue": [
+				{"value":"숫자형식이 아닌 문자열",	"description":"성공 - 바로빌부여 전송키"},
+				{"value":"음수 값 형식의 문자열",	"description":"오류코드"}
+			]
+		},
+		"ReSendFax": {
+			"title":"<span class='red'>포인트 차감</span>",
+			"description":"팩스를 재전송합니다. <span class='red'>(90일이 경과되지 않은 건만 재전송 가능합니다.)</span>",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",	"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",	"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"SenderID",	"description":"바로빌 회원사 담당자 아이디"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"SendKey",	"description":"바로빌부여 전송키"},
+				{"required":"X",	"type":"string",	"length":"20",	"name":"RefKey",	"description":"연동사부여 전송키"}
+			],
+			"returnType":"string",
+			"returnValue": [
+				{"value":"숫자형식이 아닌 문자열",	"description":"성공 - 바로빌부여 전송키"},
+				{"value":"음수 값 형식의 문자열",	"description":"오류코드"}
+			]
+		},
+
+		"CancelReservedFaxMessage": {
+			"title":"<span class='red'>포인트 환불</span>",
+			"description":"예약 전송 대기중인 팩스를 취소합니다. <span class='red'>전송 30분전까지만 취소할 수 있습니다.</span>",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",	"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",	"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"30",	"name":"SendKey",	"description":"바로빌부여 전송키"}
+			],
+			"returnType":"int",
+			"returnValue": [
+				{"value":"1",		"description":"성공"},
+				{"value":"음수",	"description":"오류코드"}
+			]
+		},
+
+		"GetFaxSendState": {
+			"description":"팩스 전송상태를 확인합니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",	"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",	"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"30",	"name":"SendKey",	"description":"바로빌부여 전송키"}
+			],
+			"returnType":"int",
+			"returnValue": [
+				{"value":"0",		"description":"변환대기중"},
+				{"value":"1",		"description":"변환중"},
+				{"value":"2",		"description":"변환완료"},
+				{"value":"3",		"description":"전송완료"},
+				{"value":"4",		"description":"DB항목 오류"},
+				{"value":"5",		"description":"변환중 오류"},
+				{"value":"음수",	"description":"오류코드"}
+			]
+		},
+		"GetFaxMessage": {
+			"description":"팩스 전송상태 및 상세내역을 확인합니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",	"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",	"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"30",	"name":"SendKey",	"description":"바로빌부여 전송키"}
+			],
+			"returnType":"FaxMessage",
+			"returnValue": [
+				{"value":"FaxMessage.SendState 가 양수인 경우",	"description":"성공"},
+				{"value":"FaxMessage.SendState 가 음수인 경우",	"description":"오류코드"}
+			]
+		},
+		"GetFaxMessageEx": {
+			"description":"팩스 전송상태 및 상세내역을 확인합니다. <span class='blue'>(팩스 변환파일 다운로드 URL 추가)</span>",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",	"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",	"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"30",	"name":"SendKey",	"description":"바로빌부여 전송키"}
+			],
+			"returnType":"FaxMessageEx",
+			"returnValue": [
+				{"value":"FaxMessageEx.SendState 가 양수인 경우",	"description":"성공"},
+				{"value":"FaxMessageEx.SendState 가 음수인 경우",	"description":"오류코드"}
+			]
+		},
+		"GetFaxSendMessages": {
+			"description":"여러건의 팩스 전송상태 및 상세내역을 확인합니다. <span class='red'>(최대 100 건)</span>",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",		"name":"CERTKEY",		"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",		"name":"CorpNum",		"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string[]",	"length":"30[]",	"name":"SendKeyList",	"description":"바로빌부여 전송키 배열"}
+			],
+			"returnType":"FaxMessage[]",
+			"returnValue": [
+				{"value":"배열 항목의 FaxMessage.SendState 가 양수인 경우",	"description":"성공"},
+				{"value":"배열 항목의 FaxMessage.SendState 가 음수인 경우",	"description":"오류코드"}
+			]
+		},
+		"GetFaxSendMessagesEx": {
+			"description":"여러건의 팩스 전송상태 및 상세내역을 확인합니다. <span class='blue'>(팩스 변환파일 다운로드 URL 추가)</span> <span class='red'>(최대 100 건)</span>",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",		"name":"CERTKEY",		"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",		"name":"CorpNum",		"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string[]",	"length":"30[]",	"name":"SendKeyList",	"description":"바로빌부여 전송키 배열"}
+			],
+			"returnType":"FaxMessageEx[]",
+			"returnValue": [
+				{"value":"배열 항목의 FaxMessageEx.SendState 가 양수인 경우",	"description":"성공"},
+				{"value":"배열 항목의 FaxMessageEx.SendState 가 음수인 경우",	"description":"오류코드"}
+			]
+		},
+		"GetFaxSendMessagesByRefKey": {
+			"description":"여러건의 팩스 전송상태 및 상세내역을 연동사부여 전송키로 확인합니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",		"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",		"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"30",	"name":"RefKey",		"description":"연동사부여 전송키"}
+			],
+			"returnType":"FaxMessage[]",
+			"returnValue": [
+				{"value":"배열 항목의 FaxMessage.SendState 가 양수인 경우",	"description":"성공"},
+				{"value":"배열 항목의 FaxMessage.SendState 가 음수인 경우",	"description":"오류코드"}
+			]
+		},
+		"GetFaxSendMessagesByRefKeyEx": {
+			"description":"여러건의 팩스 전송상태 및 상세내역을 연동사부여 전송키로 확인합니다. <span class='blue'>(팩스 변환파일 다운로드 URL 추가)</span>",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",		"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",		"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"30",	"name":"RefKey",		"description":"연동사부여 전송키"}
+			],
+			"returnType":"FaxMessageEx[]",
+			"returnValue": [
+				{"value":"배열 항목의 FaxMessageEx.SendState 가 양수인 경우",	"description":"성공"},
+				{"value":"배열 항목의 FaxMessageEx.SendState 가 음수인 경우",	"description":"오류코드"}
+			]
+		},
+
+		"GetFaxHistoryURL": {
+			"description":"팩스 전송내역을 조회할 수 있는 URL을 반환합니다.<br><span class='red'>반환된 URL은 60초까지만 유효합니다.</span>",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",	"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",	"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"ID",		"description":"바로빌 회원사 담당자 아이디"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"PWD",		"description":"바로빌 회원사 담당자 비밀번호"}
+			],
+			"returnType":"string",
+			"returnValue": [
+				{"value":"URL 형식",				"description":"성공"},
+				{"value":"음수 값 형식의 문자열",	"description":"오류코드"}
+			]
+		},
+
+		"GetFaxFileUrl": {
+			"description":"팩스 전송 시 업로드한 파일의 원본 또는 TIF(변환)파일을 다운로드할 수 있는 URL을 반환합니다.<br><span class='red'>반환된 URL은 60초까지만 유효합니다.</span>",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",	"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",	"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"30",	"name":"SendKey",	"description":"바로빌부여 전송키"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"FileType",	"description":"1:원본파일 2:TIF(변환)파일"}
+			],
+			"returnType":"string[]",
+			"returnValue": [
+				{"value":"URL 배열 형식",							"description":"성공"},
+				{"value":"첫번째 배열의 값이 음수 형식의 문자열",	"description":"오류코드"}
+			]
+		}
+	},
+	"CARD": {
+		"GetCard": {
+			"description":"카드정보를 반환합니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",	"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",	"description":"바로빌 회원사 사업자번호 ('-'제외)"}
+			],
+			"returnType":"Card[]",
+			"returnValue": [
+				{"value":"배열 항목의 Card.CardNum 이 음수 값 형식의 문자열인 경우",	"description":"오류코드"}
+			]
+		},
+		"GetDailyCardLog": {
+			"description":"카드사용내역을 1일분씩 조회합니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",		"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",		"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"ID",			"description":"바로빌 회원사 담당자 아이디"}, 
+				{"required":"O",	"type":"string",	"length":"20",	"name":"CardNum",		"description":"카드번호"},
+				{"required":"O",	"type":"string",	"length":"8",	"name":"BaseDate",		"description":"조회기준일자. yyyyMMdd 형식"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"CountPerPage",	"description":"한 페이지 당 조회 건 수"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"CurrentPage",	"description":"조회할 페이지 번호"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"OrderDirection","description":"정렬방향<br><br>1:ASC<br>2:DESC"}
+			],
+			"returnType":"PagedCardLog",
+			"returnValue": [
+				{"value":"PagedCardLog.CurrentPage 가 양수인 경우",	"description":"성공"},
+				{"value":"PagedCardLog.CurrentPage 가 음수인 경우",	"description":"오류코드"}
+			]
+		},
+		"GetDailyCardLogEx": {
+			"description":"카드사용내역을 1일분씩 조회합니다.<br><span class='red'>GetDailyCardLog 에 비해 더 많은 가맹점 정보를 제공합니다.</span>",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",		"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",		"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"ID",			"description":"바로빌 회원사 담당자 아이디"}, 
+				{"required":"O",	"type":"string",	"length":"20",	"name":"CardNum",		"description":"카드번호"},
+				{"required":"O",	"type":"string",	"length":"8",	"name":"BaseDate",		"description":"조회기준일자. yyyyMMdd 형식"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"CountPerPage",	"description":"한 페이지 당 조회 건 수"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"CurrentPage",	"description":"조회할 페이지 번호"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"OrderDirection","description":"정렬방향<br><br>1:ASC<br>2:DESC"}
+			],
+			"returnType":"PagedCardLogEx",
+			"returnValue": [
+				{"value":"PagedCardLogEx.CurrentPage 가 양수인 경우",	"description":"성공"},
+				{"value":"PagedCardLogEx.CurrentPage 가 음수인 경우",	"description":"오류코드"}
+			]
+		},
+		"GetMonthlyCardLog": {
+			"description":"카드사용내역을 1개월분씩 조회합니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",		"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",		"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"ID",			"description":"바로빌 회원사 담당자 아이디"}, 
+				{"required":"O",	"type":"string",	"length":"20",	"name":"CardNum",		"description":"카드번호"},
+				{"required":"O",	"type":"string",	"length":"6",	"name":"BaseMonth",		"description":"조회기준월. yyyyMM 형식"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"CountPerPage",	"description":"한 페이지 당 조회 건 수"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"CurrentPage",	"description":"조회할 페이지 번호"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"OrderDirection","description":"정렬방향<br><br>1:ASC<br>2:DESC"}
+			],
+			"returnType":"PagedCardLog",
+			"returnValue": [
+				{"value":"PagedCardLog.CurrentPage 가 양수인 경우",	"description":"성공"},
+				{"value":"PagedCardLog.CurrentPage 가 음수인 경우",	"description":"오류코드"}
+			]
+		},
+		"GetMonthlyCardLogEx": {
+			"description":"카드사용내역을 1개월분씩 조회합니다.<br><span class='red'>GetMonthlyCardLog 에 비해 더 많은 가맹점 정보를 제공합니다.</span>",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",		"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",		"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"ID",			"description":"바로빌 회원사 담당자 아이디"}, 
+				{"required":"O",	"type":"string",	"length":"20",	"name":"CardNum",		"description":"카드번호"},
+				{"required":"O",	"type":"string",	"length":"6",	"name":"BaseMonth",		"description":"조회기준월. yyyyMM 형식"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"CountPerPage",	"description":"한 페이지 당 조회 건 수"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"CurrentPage",	"description":"조회할 페이지 번호"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"OrderDirection","description":"정렬방향<br><br>1:ASC<br>2:DESC"}
+			],
+			"returnType":"PagedCardLogEx",
+			"returnValue": [
+				{"value":"PagedCardLogEx.CurrentPage 가 양수인 경우",	"description":"성공"},
+				{"value":"PagedCardLogEx.CurrentPage 가 음수인 경우",	"description":"오류코드"}
+			]
+		},
+		"GetCardLog": {
+			"deprecatedBy":"GetDailyCardLog",
+			"description":"카드사용내역을 1일분씩 조회합니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",		"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",		"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"ID",			"description":"바로빌 회원사 담당자 아이디"}, 
+				{"required":"O",	"type":"string",	"length":"20",	"name":"CardNum",		"description":"카드번호"},
+				{"required":"O",	"type":"string",	"length":"8",	"name":"BaseDate",		"description":"조회기준일자. yyyyMMdd 형식"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"CountPerPage",	"description":"한 페이지 당 조회 건 수"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"CurrentPage",	"description":"조회할 페이지 번호"}
+			],
+			"returnType":"PagedCardLog",
+			"returnValue": [
+				{"value":"PagedCardLog.CurrentPage 가 양수인 경우",	"description":"성공"},
+				{"value":"PagedCardLog.CurrentPage 가 음수인 경우",	"description":"오류코드"}
+			]
+		},
+		"GetCardLogEx": {
+			"deprecatedBy":"GetDailyCardLogEx",
+			"description":"카드사용내역을 1일분씩 조회합니다.<br><span class='red'>GetCardLog 에 비해 더 많은 가맹점 정보를 제공합니다.</span>",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",		"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",		"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"ID",			"description":"바로빌 회원사 담당자 아이디"}, 
+				{"required":"O",	"type":"string",	"length":"20",	"name":"CardNum",		"description":"카드번호"},
+				{"required":"O",	"type":"string",	"length":"8",	"name":"BaseDate",		"description":"조회기준일자. yyyyMMdd 형식"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"CountPerPage",	"description":"한 페이지 당 조회 건 수"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"CurrentPage",	"description":"조회할 페이지 번호"}
+			],
+			"returnType":"PagedCardLogEx",
+			"returnValue": [
+				{"value":"PagedCardLogEx.CurrentPage 가 양수인 경우",	"description":"성공"},
+				{"value":"PagedCardLogEx.CurrentPage 가 음수인 경우",	"description":"오류코드"}
+			]
+		},
+
+		"GetCardScrapRequestURL": {
+			"description":"카드 조회 서비스를 신청할 수 있는 URL을 반환합니다.<br><span class='red'>반환된 URL은 60초까지만 유효합니다.</span>",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",	"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",	"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"ID",		"description":"바로빌 회원사 담당자 아이디"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"PWD",		"description":"바로빌 회원사 담당자 비밀번호"}
+			],
+			"returnType":"string",
+			"returnValue": [
+				{"value":"URL 형식",				"description":"성공"},
+				{"value":"음수 값 형식의 문자열",	"description":"오류코드"}
+			]
+		},
+		"GetCardManagementURL": {
+			"description":"카드정보를 관리할 수 있는 URL을 반환합니다.<br><span class='red'>반환된 URL은 60초까지만 유효합니다.</span>",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",	"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",	"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"ID",		"description":"바로빌 회원사 담당자 아이디"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"PWD",		"description":"바로빌 회원사 담당자 비밀번호"}
+			],
+			"returnType":"string",
+			"returnValue": [
+				{"value":"URL 형식",				"description":"성공"},
+				{"value":"음수 값 형식의 문자열",	"description":"오류코드"}
+			]
+		},
+		"GetCardLogURL": {
+			"description":"카드사용내역을 조회할 수 있는 URL을 반환합니다.<br><span class='red'>반환된 URL은 60초까지만 유효합니다.</span>",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",	"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",	"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"ID",		"description":"바로빌 회원사 담당자 아이디"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"PWD",		"description":"바로빌 회원사 담당자 비밀번호"}
+			],
+			"returnType":"string",
+			"returnValue": [
+				{"value":"URL 형식",				"description":"성공"},
+				{"value":"음수 값 형식의 문자열",	"description":"오류코드"}
+			]
+		}
+	},
+	"BANKACCOUNT": {
+		"GetBankAccount": {
+			"description":"등록한 계좌정보를 조회합니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",	"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",	"description":"바로빌 회원사 사업자번호 ('-'제외)"}
+			],
+			"returnType":"BankAccount[]",
+			"returnValue": [
+				{"value":"배열 항목의 BankAccount.BankAccountNum 이 음수 값 형식의 문자열인 경우",	"description":"오류코드"}
+			]
+		},
+		"GetBankAccountEx": {
+			"description":"등록한 계좌정보를 조회합니다.<br><span class='red'>유효한 계좌만 필터링 할 수 있습니다.</span>",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",	"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",	"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"AvailOnly",	"description":"0:모든계좌 조회<br>1:사용중인 계좌만 조회"}
+			],
+			"returnType":"BankAccount[]",
+			"returnValue": [
+				{"value":"배열 항목의 BankAccount.BankAccountNum 이 음수 값 형식의 문자열인 경우",	"description":"오류코드"}
+			]
+		},
+		"GetDailyBankAccountLog": {
+			"description":"계좌 입출금내역을 1일분씩 조회합니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",			"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",			"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"ID",				"description":"바로빌 회원사 담당자 아이디"}, 
+				{"required":"O",	"type":"string",	"length":"20",	"name":"BankAccountNum",	"description":"계좌번호"},
+				{"required":"O",	"type":"string",	"length":"8",	"name":"BaseDate",			"description":"조회기준일자. yyyyMMdd 형식"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"CountPerPage",		"description":"한 페이지 당 조회 건 수"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"CurrentPage",		"description":"조회할 페이지 번호"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"OrderDirection",	"description":"정렬방향<br><br>1:ASC<br>2:DESC"}
+			],
+			"returnType":"PagedBankAccountLog",
+			"returnValue": [
+				{"value":"PagedBankAccountLog.CurrentPage 가 양수인 경우",	"description":"성공"},
+				{"value":"PagedBankAccountLog.CurrentPage 가 음수인 경우",	"description":"오류코드"}
+			]
+		},
+		"GetDailyBankAccountLogEx": {
+			"description":"계좌 입출금내역을 1일분씩 조회합니다.<br><span class='red'>GetBankAccountLog 에 입출금 내역의 고유 키값을 추가합니다.</span>",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",			"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",			"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"ID",				"description":"바로빌 회원사 담당자 아이디"}, 
+				{"required":"O",	"type":"string",	"length":"20",	"name":"BankAccountNum",	"description":"계좌번호"},
+				{"required":"O",	"type":"string",	"length":"8",	"name":"BaseDate",			"description":"조회기준일자. yyyyMMdd 형식"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"CountPerPage",		"description":"한 페이지 당 조회 건 수"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"CurrentPage",		"description":"조회할 페이지 번호"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"OrderDirection",	"description":"정렬방향<br><br>1:ASC<br>2:DESC"}
+			],
+			"returnType":"PagedBankAccountLogEx",
+			"returnValue": [
+				{"value":"PagedBankAccountLogEx.CurrentPage 가 양수인 경우",	"description":"성공"},
+				{"value":"PagedBankAccountLogEx.CurrentPage 가 음수인 경우",	"description":"오류코드"}
+			]
+		},
+		"GetMonthlyBankAccountLog": {
+			"description":"계좌 입출금내역을 1일분씩 조회합니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",			"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",			"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"ID",				"description":"바로빌 회원사 담당자 아이디"}, 
+				{"required":"O",	"type":"string",	"length":"20",	"name":"BankAccountNum",	"description":"계좌번호"},
+				{"required":"O",	"type":"string",	"length":"6",	"name":"BaseMonth",			"description":"조회기준월. yyyyMM 형식"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"CountPerPage",		"description":"한 페이지 당 조회 건 수"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"CurrentPage",		"description":"조회할 페이지 번호"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"OrderDirection",	"description":"정렬방향<br><br>1:ASC<br>2:DESC"}
+			],
+			"returnType":"PagedBankAccountLog",
+			"returnValue": [
+				{"value":"PagedBankAccountLog.CurrentPage 가 양수인 경우",	"description":"성공"},
+				{"value":"PagedBankAccountLog.CurrentPage 가 음수인 경우",	"description":"오류코드"}
+			]
+		},
+		"GetMonthlyBankAccountLogEx": {
+			"description":"계좌 입출금내역을 1일분씩 조회합니다.<br><span class='red'>GetBankAccountLog 에 입출금 내역의 고유 키값을 추가합니다.</span>",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",			"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",			"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"ID",				"description":"바로빌 회원사 담당자 아이디"}, 
+				{"required":"O",	"type":"string",	"length":"20",	"name":"BankAccountNum",	"description":"계좌번호"},
+				{"required":"O",	"type":"string",	"length":"6",	"name":"BaseMonth",			"description":"조회기준월. yyyyMM 형식"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"CountPerPage",		"description":"한 페이지 당 조회 건 수"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"CurrentPage",		"description":"조회할 페이지 번호"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"OrderDirection",	"description":"정렬방향<br><br>1:ASC<br>2:DESC"}
+			],
+			"returnType":"PagedBankAccountLogEx",
+			"returnValue": [
+				{"value":"PagedBankAccountLogEx.CurrentPage 가 양수인 경우",	"description":"성공"},
+				{"value":"PagedBankAccountLogEx.CurrentPage 가 음수인 경우",	"description":"오류코드"}
+			]
+		},
+		"GetBankAccountLog": {
+			"deprecatedBy":"GetDailyBankAccountLog",
+			"description":"계좌 입출금내역을 1일분씩 조회합니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",			"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",			"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"ID",				"description":"바로빌 회원사 담당자 아이디"}, 
+				{"required":"O",	"type":"string",	"length":"20",	"name":"BankAccountNum",	"description":"계좌번호"},
+				{"required":"O",	"type":"string",	"length":"8",	"name":"BaseDate",			"description":"조회기준일자. yyyyMMdd 형식"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"CountPerPage",		"description":"한 페이지 당 조회 건 수"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"CurrentPage",		"description":"조회할 페이지 번호"}
+			],
+			"returnType":"PagedBankAccountLog",
+			"returnValue": [
+				{"value":"PagedBankAccountLog.CurrentPage 가 양수인 경우",	"description":"성공"},
+				{"value":"PagedBankAccountLog.CurrentPage 가 음수인 경우",	"description":"오류코드"}
+			]
+		},
+		"GetBankAccountLogEx": {
+			"deprecatedBy":"GetDailyBankAccountLogEx",
+			"description":"계좌 입출금내역을 1일분씩 조회합니다.<br><span class='red'>GetBankAccountLog 에 입출금 내역의 고유 키값을 추가합니다.</span>",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",			"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",			"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"ID",				"description":"바로빌 회원사 담당자 아이디"}, 
+				{"required":"O",	"type":"string",	"length":"20",	"name":"BankAccountNum",	"description":"계좌번호"},
+				{"required":"O",	"type":"string",	"length":"8",	"name":"BaseDate",			"description":"조회기준일자. yyyyMMdd 형식"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"CountPerPage",		"description":"한 페이지 당 조회 건 수"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"CurrentPage",		"description":"조회할 페이지 번호"},
+				{"required":"O",	"type":"int",		"length":"",	"name":"OrderDirection",	"description":"정렬방향<br><br>1:ASC<br>2:DESC"}
+			],
+			"returnType":"PagedBankAccountLogEx",
+			"returnValue": [
+				{"value":"PagedBankAccountLogEx.CurrentPage 가 양수인 경우",	"description":"성공"},
+				{"value":"PagedBankAccountLogEx.CurrentPage 가 음수인 경우",	"description":"오류코드"}
+			]
+		},
+
+		"GetBankAccountScrapRequestURL": {
+			"description":"계좌 조회 서비스를 신청할 수 있는 URL을 반환합니다.<br><span class='red'>반환된 URL은 60초까지만 유효합니다.</span>",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",	"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",	"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"ID",		"description":"바로빌 회원사 담당자 아이디"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"PWD",		"description":"바로빌 회원사 담당자 비밀번호"}
+			],
+			"returnType":"string",
+			"returnValue": [
+				{"value":"URL 형식",				"description":"성공"},
+				{"value":"음수 값 형식의 문자열",	"description":"오류코드"}
+			]
+		},
+		"GetBankAccountManagementURL": {
+			"description":"계좌정보를 관리할 수 있는 URL을 반환합니다.<br><span class='red'>반환된 URL은 60초까지만 유효합니다.</span>",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",	"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",	"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"ID",		"description":"바로빌 회원사 담당자 아이디"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"PWD",		"description":"바로빌 회원사 담당자 비밀번호"}
+			],
+			"returnType":"string",
+			"returnValue": [
+				{"value":"URL 형식",				"description":"성공"},
+				{"value":"음수 값 형식의 문자열",	"description":"오류코드"}
+			]
+		},
+		"GetBankAccountLogURL": {
+			"description":"계좌 입출금내역을 조회할 수 있는 URL을 반환합니다.<br><span class='red'>반환된 URL은 60초까지만 유효합니다.</span>",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",	"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",	"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"ID",		"description":"바로빌 회원사 담당자 아이디"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"PWD",		"description":"바로빌 회원사 담당자 비밀번호"}
+			],
+			"returnType":"string",
+			"returnValue": [
+				{"value":"URL 형식",				"description":"성공"},
+				{"value":"음수 값 형식의 문자열",	"description":"오류코드"}
+			]
+		}
+	},
+	"CORPSTATE": {
+		"GetCorpState": {
+			"description":"휴폐업 상태를 조회합니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",		"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",		"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CheckCorpNum",	"description":"확인할 사업자번호 ('-'제외)"}
+			],
+			"returnType":"CorpState",
+			"returnValue": [
+				{"value":"CorpState.State 가 음수인 경우",	"description":"오류코드"}
+			]
+		},
+		"GetCorpStates": {
+			"description":"여러건의 휴폐업 상태를 조회합니다.",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",		"name":"CERTKEY",			"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",		"name":"CorpNum",			"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string[]",	"length":"10[]",	"name":"CheckCorpNumList",	"description":"확인할 사업자번호 배열 ('-'제외)"}
+			],
+			"returnType":"CorpState[]",
+			"returnValue": [
+				{"value":"배열 항목의 CorpState.State 가 음수인 경우",	"description":"오류코드"}
+			]
+		},
+
+		"GetCorpStateScrapRequestURL": {
+			"description":"휴폐업 조회 서비스를 신청할 수 있는 URL을 반환합니다.<br><span class='red'>반환된 URL은 60초까지만 유효합니다.</span>",
+			"parameter": [
+				{"required":"O",	"type":"string",	"length":"50",	"name":"CERTKEY",	"description":"바로빌 연동인증키"},
+				{"required":"O",	"type":"string",	"length":"10",	"name":"CorpNum",	"description":"바로빌 회원사 사업자번호 ('-'제외)"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"ID",		"description":"바로빌 회원사 담당자 아이디"},
+				{"required":"O",	"type":"string",	"length":"20",	"name":"PWD",		"description":"바로빌 회원사 담당자 비밀번호"}
+			],
+			"returnType":"string",
+			"returnValue": [
+				{"value":"URL 형식",				"description":"성공"},
+				{"value":"음수 값 형식의 문자열",	"description":"오류코드"}
+			]
+		}
+	}
+}

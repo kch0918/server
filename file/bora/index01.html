@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>KPI01 - 클릭시 상단으로 부드럽게 스크롤되는 버튼</title>
+
+<script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+</head>
+
+<style>
+    body {
+        height:1500px;
+        text-align:center;
+    }
+    * {
+        padding:0;
+        margin:0;
+        border:0;
+        outline:none;
+    }
+    img {
+        max-width:100%;
+    }
+    a {
+        text-decoration: none;
+    }
+
+    .btn_top {
+        position: fixed;
+        width: 78px;
+        height: 49px;
+        line-height:49px;
+        background: url('http://rora.dechive.co.kr//img/foot_vr.png')no-repeat center center;
+        bottom: 80px;
+        right: 80px;
+        font-size: 18px;
+        color: #fff;
+        z-index: 997;
+        text-align: center;
+        padding: 10px 10px;
+        cursor: pointer;
+        background-size: 100%;
+        display:none;
+    }
+    
+    .btn_top > img {
+        width: 10px;
+        display: inline-block;
+        vertical-align: middle;
+        margin-left: 7px;
+        margin-top: -3px;
+    }
+
+</style>
+
+<body>
+    <div class="btn_top">TOP<img src="http://rora.dechive.co.kr/img/btn_top.png"></div>
+
+
+
+<script>
+ $(window).ready(function() {
+    $(".btn_top").click(function() {
+        $("html, body").animate({"scrollTop":"0"}, 500);
+    })
+
+    $(window).scroll(function() {
+        var scroll_p = $(window).scrollTop();
+        if(scroll_p > 500) {
+            $(".btn_top").css("display","block");
+        }else {
+            $(".btn_top").css("display","none");
+        }
+    })
+
+ })   
+   
+
+</script>
+
+</body>
+</html>
+
+
+
+

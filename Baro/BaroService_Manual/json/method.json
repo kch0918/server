@@ -1,0 +1,458 @@
+{
+	"BAROBILL": {
+		"name": "바로빌 기본 API",
+		"category": {
+			"COMMON": {
+				"name": "공통",
+				"method": [
+					"GetErrString"
+				]
+			},
+			"JOIN": {
+				"name": "가입",
+				"method": [
+					"CheckCorpIsMember",
+					"RegistCorp",
+					"AddUserToCorp"
+				]
+			},
+			"INFOU": {
+				"name": "정보 수정",
+				"method": [
+					"UpdateCorpInfo",
+					"UpdateUserInfo",
+					"UpdateUserPWD",
+					"ChangeCorpManager"
+				]
+			},
+			"INFOC": {
+				"name": "정보 확인",
+				"method": [
+					"GetCorpMemberContacts"
+				]
+			},
+			"POINT": {
+				"name": "포인트 관련",
+				"method": [
+					"GetCashChargeURL",
+					"GetBalanceCostAmount",
+					"GetBalanceCostAmountOfInterOP",
+					"GetChargeUnitCost",
+					"CheckChargeable"
+				]
+			},
+			"CERT": {
+				"name": "공인인증서 관련",
+				"method": [
+					"GetCertificateRegistURL",
+					"GetCertificateExpireDate",
+					"CheckCERTIsValid"
+				]
+			},
+			"URL": {
+				"name": "바로빌 URL 관련",
+				"method": [
+					"GetBaroBillURL",
+					"GetLoginURL"
+				]
+			},
+			"SMS": {
+				"name": "문자 발신번호 관련",
+				"method": [
+					"RegistSMSFromNumber",
+					"CheckSMSFromNumber",
+					"GetSMSFromNumberURL"
+				]
+			}
+		}
+	},
+	"TI": {
+		"name": "전자(세금)계산서 API",
+		"category": {
+			"QUICK": {
+				"name": "<span class='red'>간편 발행</span>",
+				"method": [
+					"RegistAndIssueTaxInvoice",
+					"RegistAndIssueBrokerTaxInvoice",
+					"RegistAndPreIssueTaxInvoice",
+					"RegistAndPreIssueBrokerTaxInvoice",
+					"RegistAndReverseIssueTaxInvoice"
+				]
+			},
+			"LIST": {
+				"name": "<span class='red'>홈택스 조회</span>",
+				"method": [
+					"GetTaxInvoiceScrapRequestURL",
+					"GetDailyTaxInvoiceSalesList",
+					"GetDailyTaxInvoicePurchaseList",
+					"GetMonthlyTaxInvoiceSalesList",
+					"GetMonthlyTaxInvoicePurchaseList",
+					"GetTaxInvoiceSalesList",
+					"GetTaxInvoiceSalesListEx",
+					"GetTaxInvoicePurchaseList",
+					"GetTaxInvoicePurchaseListEx"
+				]
+			},
+			"CRUD": {
+				"name": "저장/수정/삭제",
+				"method": [
+					"CheckMgtNumIsExists",
+					"CheckIsValidTaxInvoice",
+					"RegistTaxInvoice",
+					"RegistTaxInvoiceEX",
+					"RegistTaxInvoiceReverse",
+					"RegistTaxInvoiceReverseEX",
+					"RegistBrokerTaxInvoice",
+					"RegistBrokerTaxInvoiceEX",
+					"RegistModifyTaxInvoice",
+					"RegistModifyTaxInvoiceEX",
+					"RegistModifyBrokerTaxInvoice",
+					"RegistModifyBrokerTaxInvoiceEX",
+					"UpdateTaxInvoice",
+					"UpdateTaxInvoiceEX",
+					"UpdateBrokerTaxInvoice",
+					"UpdateBrokerTaxInvoiceEX",
+					"UpdateTaxInvoiceFooterString",
+					"DeleteTaxInvoice"
+				]
+			},
+			"PROCESS": {
+				"name": "프로세스",
+				"method": [
+					"IssueTaxInvoice",
+					"PreIssueTaxInvoice",
+					"ReverseIssueTaxInvoice",
+					"ProcTaxInvoice",
+					"SendToNTS"
+				]
+			},
+			"FILE": {
+				"name": "파일첨부",
+				"method": [
+					"AttachFileByFTP",
+					"DeleteAttachFileWithFileIndex",
+					"DeleteAttachFile",
+					"GetAttachedFileList"
+				]
+			},
+			"LINK": {
+				"name": "다른 문서와 연결",
+				"method": [
+					"MakeDocLinkage",
+					"RemoveDocLinkage",
+					"GetLinkedDocs"
+				]
+			},
+			"INFO": {
+				"name": "정보 확인",
+				"method": [
+					"GetTaxInvoice",
+					"GetTaxInvoiceState",
+					"GetTaxInvoiceStateEX",
+					"GetTaxInvoiceStates",
+					"GetTaxInvoiceStatesEX",
+					"GetTaxInvoiceLog"
+				]
+			},
+			"URL": {
+				"name": "URL 관련",
+				"method": [
+					"GetTaxInvoicePopUpURL",
+					"GetTaxInvoicePrintURL",
+					"GetTaxInvoicesPrintURL",
+					"GetTaxinvoiceMailURL"
+				]
+			},
+			"UMS": {
+				"name": "이메일/문자/팩스",
+				"method": [
+					"ReSendEmail",
+					"ReSendSMS",
+					"SendInvoiceSMS",
+					"SendInvoiceFax"
+				]
+			},
+			"NTS": {
+				"name": "국세청 전송설정",
+				"method": [
+					"GetNTSSendOption",
+					"ChangeNTSSendOption"
+				]
+			}
+		}
+	},
+	"EDOC": {
+		"name": "전자문서 API",
+		"category": {
+			"CRUD": {
+				"name": "저장/수정/삭제",
+				"method": [
+					"CheckMgtKeyIsExists",
+					"CheckIsValidEDoc",
+					"RegistEDoc",
+					"UpdateEDoc",
+					"DeleteEDoc"
+				]
+			},
+			"PROCESS": {
+				"name": "프로세스",
+				"method": [
+					"IssueEDoc",
+					"CancelEDoc"
+				]
+			},
+			"FILE": {
+				"name": "파일첨부",
+				"method": [
+					"AttachFileByFTP",
+					"DeleteAttachFileWithFileIndex",
+					"DeleteAttachFile",
+					"GetAttachedFileList"
+				]
+			},
+			"LINK": {
+				"name": "다른 문서와 연결",
+				"method": [
+					"MakeDocLinkage",
+					"RemoveDocLinkage",
+					"GetLinkedDocs"
+				]
+			},
+			"INFO": {
+				"name": "정보 확인",
+				"method": [
+					"GetEDoc",
+					"GetEDocState",
+					"GetEDocStates",
+					"GetEDocLog"
+				]
+			},
+			"URL": {
+				"name": "URL 관련",
+				"method": [
+					"GetEDocPopUpURL",
+					"GetEDocPrintURL",
+					"GetEDocsPrintURL",
+					"GetEDocMailURL"
+				]
+			},
+			"UMS": {
+				"name": "이메일/문자/팩스",
+				"method": [
+					"SendEmail",
+					"SendSMS",
+					"SendFax"
+				]
+			}
+		}
+	},
+	"CASHBILL": {
+		"name": "현금영수증 API",
+		"category": {
+			"LIST": {
+				"name": "<span class='red'>홈택스 조회</span>",
+				"method": [
+					"GetCashBillScrapRequestURL",
+					"GetDailyCashBillSalesList",
+					"GetDailyCashBillPurchaseList",
+					"GetMonthlyCashBillSalesList",
+					"GetMonthlyCashBillPurchaseList",
+					"GetCashBillSalesList",
+					"GetCashBillPurchaseList"
+				]
+			},
+			"CRUD": {
+				"name": "저장/수정/삭제",
+				"method": [
+					"CheckMgtKeyIsExists",
+					"CheckIsValidCashBill",
+					"RegistCashBill",
+					"UpdateCashBill",
+					"DeleteCashBill"
+				]
+			},
+			"PROCESS": {
+				"name": "프로세스",
+				"method": [
+					"IssueCashBill",
+					"CancelCashBillBeforeNTSSend",
+					"CancelCashBill",
+					"CancelCashBillPartial"
+				]
+			},
+			"INFO": {
+				"name": "정보 확인",
+				"method": [
+					"GetCashBill",
+					"GetCashBillState",
+					"GetCashBillStates",
+					"GetCashBillLog"
+				]
+			},
+			"URL": {
+				"name": "URL 관련",
+				"method": [
+					"GetCashBillPopUpURL",
+					"GetCashBillPrintURL",
+					"GetCashBillsPrintURL"
+				]
+			},
+			"UMS": {
+				"name": "이메일/문자/팩스",
+				"method": [
+					"SendEmail",
+					"SendSMS",
+					"SendFax"
+				]
+			}
+		}
+	},
+	"SMS": {
+		"name": "문자 전송 API",
+		"category": {
+			"SEND": {
+				"name": "전송",
+				"method": [
+					"SendMessage",
+					"SendMessages",
+					"SendSMSMessage",
+					"SendLMSMessage",
+					"SendMMSMessage",
+					"SendMMSMessageFromFTP"
+				]
+			},
+			"RESERVE": {
+				"name": "예약 취소",
+				"method": [
+					"CancelReservedSMSMessage",
+					"CancelReservedSMSMessageByReceiptNum"
+				]
+			},
+			"INFO": {
+				"name": "정보 확인",
+				"method": [
+					"GetSMSSendState",
+					"GetSMSSendMessage",
+					"GetSMSSendMessages",
+					"GetSMSSendMessagesByRefKey",
+					"GetMessagesByReceiptNum"
+				]
+			},
+			"URL": {
+				"name": "URL 관련",
+				"method": [
+					"GetSMSHistoryURL"
+				]
+			}
+		}
+	},
+	"FAX": {
+		"name": "팩스 전송 API",
+		"category": {
+			"SEND": {
+				"name": "전송",
+				"method": [
+					"SendFaxFromFTP",
+					"SendFaxFromFTPEx",
+					"SendFaxesFromFTP",
+					"SendFaxesFromFTPEx",
+					"ReSendFax"
+				]
+			},
+			"RESERVE": {
+				"name": "예약 취소",
+				"method": [
+					"CancelReservedFaxMessage"
+				]
+			},
+			"INFO": {
+				"name": "정보 확인",
+				"method": [
+					"GetFaxSendState",
+					"GetFaxMessage",
+					"GetFaxMessageEx",
+					"GetFaxSendMessages",
+					"GetFaxSendMessagesEx",
+					"GetFaxSendMessagesByRefKey",
+					"GetFaxSendMessagesByRefKeyEx"
+				]
+			},
+			"URL": {
+				"name": "URL 관련",
+				"method": [
+					"GetFaxHistoryURL",
+					"GetFaxFileUrl"
+				]
+			}
+		}
+	},
+	"CARD": {
+		"name": "카드 조회 API",
+		"category": {
+			"INFO": {
+				"name": "조회",
+				"method": [
+					"GetCard",
+					"GetDailyCardLog",
+					"GetDailyCardLogEx",
+					"GetMonthlyCardLog",
+					"GetMonthlyCardLogEx",
+					"GetCardLog",
+					"GetCardLogEx"
+				]
+			},
+			"URL": {
+				"name": "URL 관련",
+				"method": [
+					"GetCardScrapRequestURL",
+					"GetCardManagementURL",
+					"GetCardLogURL"
+				]
+			}
+		}
+	},
+	"BANKACCOUNT": {
+		"name": "계좌 조회 API",
+		"category": {
+			"INFO": {
+				"name": "조회",
+				"method": [
+					"GetBankAccount",
+					"GetBankAccountEx",
+					"GetDailyBankAccountLog",
+					"GetDailyBankAccountLogEx",
+					"GetMonthlyBankAccountLog",
+					"GetMonthlyBankAccountLogEx",
+					"GetBankAccountLog",
+					"GetBankAccountLogEx"
+				]
+			},
+			"URL": {
+				"name": "URL 관련",
+				"method": [
+					"GetBankAccountScrapRequestURL",
+					"GetBankAccountManagementURL",
+					"GetBankAccountLogURL"
+				]
+			}
+		}
+	},
+	"CORPSTATE": {
+		"name": "휴폐업 조회 API",
+		"category": {
+			"INFO": {
+				"name": "조회",
+				"method": [
+					"GetCorpState",
+					"GetCorpStates"
+				]
+			},
+			"URL": {
+				"name": "URL 관련",
+				"method": [
+					"GetCorpStateScrapRequestURL"
+				]
+			}
+		}
+	}
+}

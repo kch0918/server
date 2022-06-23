@@ -1,0 +1,621 @@
+@charset "utf-8";
+
+/*****************/
+/* invoice-write */
+/*****************/
+.invoice-write {
+	position:relative;
+	font-size:12px;
+}
+
+.invoice-write .form-container {
+	border:2px solid #dedede;
+}
+.invoice-write.invoice-write-red .form-container {
+	border-color:#d13827;
+}
+.invoice-write.invoice-write-blue .form-container {
+	border-color:#0068a5;	
+}
+
+.invoice-write .table-invoice th,
+.invoice-write .table-invoice td {
+	border:1px solid #dedede;
+	border-top-width:0;
+	border-left-width:0;
+	padding:2px;
+	height:26px;
+}
+.invoice-write .table-invoice th {
+	background-color:#f4f4f4;
+}
+.invoice-write .table-invoice th.bg-n,
+.invoice-write .table-invoice td.bg-n {
+	background-color:transparent !important;
+}
+
+.invoice-write.invoice-write-red .table-invoice th,
+.invoice-write.invoice-write-red .table-invoice td {
+	border-right-color:#f3d3d4;
+}
+.invoice-write.invoice-write-red .table-invoice th {
+	color:#d13827; 
+}
+.invoice-write.invoice-write-red .table-invoice th.bt1,
+.invoice-write.invoice-write-red .table-invoice td.bt1 {
+	border-top-color:#d13827;
+}
+
+.invoice-write.invoice-write-blue .table-invoice th,
+.invoice-write.invoice-write-blue .table-invoice td {
+	border-right-color:#acbccc;
+}
+.invoice-write.invoice-write-blue .table-invoice th {
+	color:#0068a5; 
+}
+.invoice-write.invoice-write-blue .table-invoice th.bt1,
+.invoice-write.invoice-write-blue .table-invoice td.bt1 {
+	border-top-color:#0068a5;
+}
+
+.invoice-write .table-invoice th.invoicer,
+.invoice-write .table-invoice td.invoicer {
+	border-bottom-color:#e6a9a6;
+	border-right-color:#e6a9a6;
+}
+.invoice-write .table-invoice th.invoicer {
+	background-color:#f8f4f3; 
+	color:#ab2519;
+	font-weight:normal;
+}
+.invoice-write .table-invoice th.invoicer.title {
+	background-color:#cd2d1f; 
+	color:#fff;
+	font-weight:bold;
+	line-height:30px;
+}
+.invoice-write .table-invoice th.invoicee,
+.invoice-write .table-invoice td.invoicee {
+	border-bottom-color:#80b4cc;
+	border-right-color:#80b4cc;
+}
+.invoice-write .table-invoice th.invoicee {
+	background-color:#edf2f8; 
+	color:#015790;
+	font-weight:normal;
+}
+.invoice-write .table-invoice th.invoicee.title {
+	background-color:#035587; 
+	color:#fff;
+	font-weight:bold;
+	line-height:16px;
+}
+
+.invoice-write .table-invoice .invoice-items td {
+	height:30px;
+}
+
+.invoice-write .table-invoice input[type=text] {
+	height:100%;
+	min-height:20px;
+}
+.invoice-write .table-invoice input[type=text].truster-tax-reg-id {
+	height:20px;
+}
+
+.invoice-write .table-invoice textarea {
+	overflow:hidden;
+	min-height:35px;
+}
+
+/****************/
+/* invoice-view */
+/****************/
+.invoice-view {
+	position:relative;
+	font-size:12px;	
+}
+.invoice-view.invoice-view-red .form-header,
+.invoice-view.invoice-view-red .form-header *,
+.invoice-view.invoice-view-red .form-body,
+.invoice-view.invoice-view-red .form-body *,
+.invoice-view.invoice-view-red .form-footer,
+.invoice-view.invoice-view-red .form-footer *,
+.invoice-view.invoice-view-red .form-description,
+.invoice-view.invoice-view-red .form-description *,
+.invoice-view.invoice-view-red .form-description2,
+.invoice-view.invoice-view-red .form-description2 * {
+	color:#d13827;
+}
+.invoice-view.invoice-view-blue .form-header,
+.invoice-view.invoice-view-blue .form-header *,
+.invoice-view.invoice-view-blue .form-body,
+.invoice-view.invoice-view-blue .form-body *,
+.invoice-view.invoice-view-blue .form-footer,
+.invoice-view.invoice-view-blue .form-footer *,
+.invoice-view.invoice-view-blue .form-description,
+.invoice-view.invoice-view-blue .form-description *,
+.invoice-view.invoice-view-blue .form-description2,
+.invoice-view.invoice-view-blue .form-description2 * {
+	color:#0068a5;
+}
+
+/* watermark */
+.invoice-view .watermark-container {
+	position:relative;
+	width:100%;
+	height:0px;
+	line-height:0px;
+	font-size:0px;
+	z-index:997;
+}
+.invoice-view .watermark-container .watermark {
+	position:absolute;
+	width:340px;
+	height:150px;
+}
+.invoice-view .watermark-container .watermark img {
+	width:100%;
+	height:100%;
+}
+.invoice-view .watermark-container .watermark.watermark1{
+	top:85px;
+	left:35px;	
+}
+.invoice-view .watermark-container .watermark.watermark2{
+	top:85px;
+	right:15px;
+}
+
+/* seal */
+.invoice-view .seal-container{
+	position:relative;
+	z-index:998;
+	width:100%;
+	height:0px;
+	font-size:0px;
+	line-height:0px;
+}
+.invoice-view .seal-container .seal {
+	position: absolute;
+}
+.invoice-view .seal-container .seal.truster {
+	top: 243px;
+	right: 0px;
+}
+.invoice-view .seal-container .seal.ti {
+	top: 87px;
+	left: 340px;
+}
+
+/* form-header */
+.invoice-view .form-header {
+	position:relative;
+	z-index:999;
+	height:17px;
+	text-align:right;
+}
+.invoice-view .form-header .ntsconfirmnum {
+	position:absolute;
+	top:0;
+	right:0;
+	line-height:1;
+}
+
+/* form-body */
+.invoice-view .form-body {
+	position:relative;
+	z-index:998;
+	box-sizing:content-box;
+}
+.invoice-view .form-body * { box-sizing:content-box; letter-spacing:0; }
+
+.invoice-view .form-body {
+	border:2px solid #dedede;
+}
+.invoice-view.invoice-view-red .form-body {
+	border-color:#d13827;
+}
+.invoice-view.invoice-view-blue .form-body {
+	border-color:#0068a5;	
+}
+
+.invoice-view .form-container .table-invoice {
+	width:100%;
+	border-spacing:0px 0px;
+}
+.invoice-view .form-container .table-invoice th, 
+.invoice-view .form-container .table-invoice td {
+	font-weight:normal;
+	padding:2px 0;
+	height:20px;
+}
+.invoice-view .form-container .table-invoice td {
+	color:#000;
+}
+.invoice-view .form-container .table-invoice th.a_l, 
+.invoice-view .form-container .table-invoice td.a_l {
+	padding-left:3px !important;
+}
+.invoice-view .form-container .table-invoice th.a_r, 
+.invoice-view .form-container .table-invoice td.a_r {
+	padding-right:3px !important;
+}
+.invoice-view .form-container .table-invoice th.bg-n,
+.invoice-view .form-container .table-invoice td.bg-n {
+	background-color:transparent !important;
+}
+
+.invoice-view .form-container .table-invoice th,
+.invoice-view .form-container .table-invoice td {
+	border-right:1px solid #a0a0a0;	
+	border-bottom:1px solid #a0a0a0;
+}
+.invoice-view .form-container .table-invoice th,
+.invoice-view .form-container .table-invoice td.th {
+	background-color:#f5f5f5;
+}
+.invoice-view .form-container .table-invoice th.br,
+.invoice-view .form-container .table-invoice td.br {
+	border-right-color:#333;
+}
+.invoice-view .form-container .table-invoice th.bb,
+.invoice-view .form-container .table-invoice td.bb {
+	border-bottom-color:#333;
+}
+
+.invoice-view .form-container .table-invoice .invoice-items tr td .detailtext {
+	color:#000;
+}
+
+.invoice-view.invoice-view-red .form-container .table-invoice th,
+.invoice-view.invoice-view-red .form-container .table-invoice td {
+	border-right-color:#e6a9a6;
+	border-bottom-color:#e6a9a6;
+}
+.invoice-view.invoice-view-red .form-container .table-invoice th,
+.invoice-view.invoice-view-red .form-container .table-invoice td.th {
+	background-color:#faf4f4;
+}
+.invoice-view.invoice-view-red .form-container .table-invoice th {
+	color:#d13827;
+}
+.invoice-view.invoice-view-red .form-container .table-invoice th.br,
+.invoice-view.invoice-view-red .form-container .table-invoice td.br {
+	border-right-color:#d13827;
+}
+.invoice-view.invoice-view-red .form-container .table-invoice th.bb,
+.invoice-view.invoice-view-red .form-container .table-invoice td.bb {
+	border-bottom-color:#d13827;
+}
+
+.invoice-view.invoice-view-blue .form-container .table-invoice th,
+.invoice-view.invoice-view-blue .form-container .table-invoice td {
+	border-right-color:#80b4cc;
+	border-bottom-color:#80b4cc;
+}
+.invoice-view.invoice-view-blue .form-container .table-invoice th,
+.invoice-view.invoice-view-blue .form-container .table-invoice td.th {
+	background-color:#edf2f8;
+}
+.invoice-view.invoice-view-blue .form-container .table-invoice th {
+	color:#0068a5;
+}
+.invoice-view.invoice-view-blue .form-container .table-invoice th.br,
+.invoice-view.invoice-view-blue .form-container .table-invoice td.br {
+	border-right-color:#0068a5;
+}
+.invoice-view.invoice-view-blue .form-container .table-invoice th.bb,
+.invoice-view.invoice-view-blue .form-container .table-invoice td.bb {
+	border-bottom-color:#0068a5;
+}
+
+/* form-footer */
+.invoice-view .form-footer {
+	position:relative;
+	height:17px;
+	font-size:12px;
+}
+.invoice-view .form-footer .mgtnum {
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	text-align:center;
+	letter-spacing:0;
+}
+
+/* stamp */
+.invoice-view .stamp-container {
+	position:relative;
+	z-index:998;
+	height:0px;
+	font-size:0px;
+	line-height:0px;
+}
+.invoice-view .stamp-container .stamp {
+	position:absolute;
+	top:-77px;
+	right:120px;
+	width:134px;
+	height:134px;
+}
+.invoice-view .stamp-container .stamp img {
+	width:100%;
+	height:100%;
+}
+.invoice-view .stamp-container .stamp .stamp-datetime{
+	position:absolute;
+	top:90px;
+	left:0px;
+	width:100%;
+	font-weight:bold;
+	font-size:12px;
+	line-height:12px;
+	letter-spacing: 0;
+	text-align:center;
+}
+.invoice-view .stamp-container .stamp.stamp-red .stamp-datetime {
+	color:#F14A55;
+}
+.invoice-view .stamp-container .stamp.stamp-blue .stamp-datetime {
+	color:#566CC0;
+}
+
+/* form-description */
+.form-description {
+	color:#000 !important;
+}
+
+/* form-description2 */
+.form-description2 {
+	margin-top:10px;
+	padding:3px 5px 3px 5px;
+	border:2px solid #555;
+}
+
+/* attached-highlight */
+.attached-highlight.on {
+	background: #b7e8ff;
+}
+
+/* modify-taxinvoice-tip */
+.modify-taxinvoice-tip{
+	position:absolute;
+	top:-5000px;
+	padding:5px;
+	border:1px solid #666;
+	background-color:#FFC;
+	box-shadow: 2px 2px 5px #DDD;
+}
+
+/**************************/
+/* invoice-view-for-print */
+/**************************/
+.invoice-view.invoice-view-for-print * {
+	font-family:dotum, sans-serif;
+	letter-spacing:-1px;
+}
+.invoice-view.invoice-view-for-print.invoice-view-red .form-header,
+.invoice-view.invoice-view-for-print.invoice-view-red .form-header *,
+.invoice-view.invoice-view-for-print.invoice-view-red .form-body,
+.invoice-view.invoice-view-for-print.invoice-view-red .form-body *,
+.invoice-view.invoice-view-for-print.invoice-view-red .form-footer,
+.invoice-view.invoice-view-for-print.invoice-view-red .form-footer *,
+.invoice-view.invoice-view-for-print.invoice-view-red .form-description,
+.invoice-view.invoice-view-for-print.invoice-view-red .form-description *,
+.invoice-view.invoice-view-for-print.invoice-view-red .form-description2,
+.invoice-view.invoice-view-for-print.invoice-view-red .form-description2 * {
+	color:red;
+}
+.invoice-view.invoice-view-for-print.invoice-view-blue .form-header,
+.invoice-view.invoice-view-for-print.invoice-view-blue .form-header *,
+.invoice-view.invoice-view-for-print.invoice-view-blue .form-body,
+.invoice-view.invoice-view-for-print.invoice-view-blue .form-body *,
+.invoice-view.invoice-view-for-print.invoice-view-blue .form-footer,
+.invoice-view.invoice-view-for-print.invoice-view-blue .form-footer *,
+.invoice-view.invoice-view-for-print.invoice-view-blue .form-description,
+.invoice-view.invoice-view-for-print.invoice-view-blue .form-description *,
+.invoice-view.invoice-view-for-print.invoice-view-blue .form-description2,
+.invoice-view.invoice-view-for-print.invoice-view-blue .form-description2 * {
+	color:blue;
+}
+
+/* watermark */
+.invoice-view.invoice-view-for-print .watermark-container .watermark {
+	width:270px;
+	height:100px;
+}
+.invoice-view.invoice-view-for-print .watermark-container .watermark.watermark1 {
+	top:55px;
+	left:35px;
+}
+.invoice-view.invoice-view-for-print .watermark-container .watermark.watermark2 {
+	top:55px;
+	right:15px;
+}
+
+/* seal */
+.invoice-view.invoice-view-for-print .seal-container .seal.truster {
+	top: 142px;
+	right: 0px;
+}
+.invoice-view.invoice-view-for-print .seal-container .seal.ti {
+	top: 60px;
+	left: 310px;
+}
+
+/* form-header */
+.invoice-view.invoice-view-for-print .form-header {
+	height:12px;
+	font-size:11px;
+}
+
+/* form-body */
+.invoice-view .form-body {
+	border-color:#000;
+}
+.invoice-view.invoice-view-for-print.invoice-view-red .form-body {
+	border-color:red;
+}
+.invoice-view.invoice-view-for-print.invoice-view-blue .form-body {
+	border-color:blue;	
+}
+
+.invoice-view.invoice-view-for-print .form-container .table-invoice th, 
+.invoice-view.invoice-view-for-print .form-container .table-invoice td {	
+	padding:0;
+	line-height:14px;
+	height:18px;
+}
+.invoice-view.invoice-view-for-print .form-container .table-invoice td,
+.invoice-view.invoice-view-for-print .form-container .table-invoice td * {
+	color:#000;
+}
+.invoice-view.invoice-view-for-print .form-container .table-invoice .invoice-items tr td {
+	font-size:10px;
+	height:20px;
+}
+.invoice-view.invoice-view-for-print .form-container .table-invoice .invoice-items tr td .detailtext {
+	overflow: hidden;
+	max-height: 21px;
+	margin-top: -1px;
+	line-height: 10px;
+}
+
+.invoice-view.invoice-view-for-print.invoice-view-red .form-container .table-invoice th,
+.invoice-view.invoice-view-for-print.invoice-view-red .form-container .table-invoice td {
+	border-color:red !important;
+	background:none;
+}
+.invoice-view.invoice-view-for-print.invoice-view-red .form-container .table-invoice th {
+	color:red !important;
+}
+
+.invoice-view.invoice-view-for-print.invoice-view-blue .form-container .table-invoice th,
+.invoice-view.invoice-view-for-print.invoice-view-blue .form-container .table-invoice td {
+	border-color:blue !important;
+	background:none;
+}
+.invoice-view.invoice-view-for-print.invoice-view-blue .form-container .table-invoice th {
+	color:blue !important;
+}
+
+/* stamp */
+.invoice-view.invoice-view-for-print .stamp-container .stamp {
+	width:110px;
+	height:110px;
+}
+.invoice-view.invoice-view-for-print .stamp-container .stamp .stamp-datetime{
+	top:72px;
+}
+
+/* form-description */
+.invoice-view.invoice-view-for-print .form-description {
+	padding-top:3px;
+	font-size:11px;
+	line-height:13px;
+}
+
+/******************/
+/* summation-view */
+/******************/
+.summation-view {
+	font-size:12px;
+	box-sizing:content-box;
+}
+.summation-view * { box-sizing:content-box; letter-spacing:0; }
+
+/* watermark */
+.summation-view .watermark-container {
+	position:relative;
+	z-index:998;
+	width:100%;
+	height:0px;
+	font-size:0px;
+	line-height:0px;
+}
+.summation-view .watermark-container .watermark{
+	position:absolute;
+	top:350px;
+	left:0px;
+	width:100%;
+	text-align:center;
+}
+
+/* form-body */
+.summation-view .form-body {
+	position:relative;
+	z-index:998;
+	box-sizing:content-box;
+}
+.summation-view .form-body * { box-sizing:content-box; letter-spacing:0; }
+
+.summation-view .form-body {
+	position:relative;
+	z-index:999;
+	padding:20px;
+	border:1px solid #999;
+}
+.summation-view .form-body .table-summation {
+	width:100%;
+}
+.summation-view .form-body .table-summation th,
+.summation-view .form-body .table-summation td {
+	height:21px;
+	padding:3px 0;
+	border-right:1px solid #aaa;
+	border-bottom:1px solid #aaa;
+}
+.summation-view .form-body .table-summation th.bb,
+.summation-view .form-body .table-summation td.bb {
+	border-bottom-color:#666;
+}
+.summation-view .form-body .table-summation th.a_l,
+.summation-view .form-body .table-summation td.a_l {
+	padding-left:3px;
+}
+.summation-view .form-body .table-summation th.a_r,
+.summation-view .form-body .table-summation td.a_r {
+	padding-right:3px;
+}
+.summation-view .form-body .table-summation .table-summation-detail {
+	height:250px;
+	border-top:1px solid #666;
+	border-bottom:1px solid #666;
+	overflow-y:scroll;
+}
+
+/****************************/
+/* summation-view-for-print */
+/****************************/
+
+/* watermark */
+.summation-view.summation-view-for-print .watermark-container .watermark{
+	top:340px;
+	left:20px;
+}
+
+/* form-body */
+.summation-view.summation-view-for-print .form-body {
+	border:none;
+	padding:0;
+	font-family:batang,sans-serif;
+}
+.summation-view.summation-view-for-print .form-body .table-summation th,
+.summation-view.summation-view-for-print .form-body .table-summation td {
+	border-right-color:#999;
+	border-bottom-color:#999;
+}
+.summation-view.summation-view-for-print .form-body .table-summation th.bt1,
+.summation-view.summation-view-for-print .form-body .table-summation td.bt1 {
+	border-top:1px solid #999;
+}
+.summation-view.summation-view-for-print .form-body .table-summation th.bl1,
+.summation-view.summation-view-for-print .form-body .table-summation td.bl1 {
+	border-left:1px solid #999;
+}
+.summation-view.summation-view-for-print .form-body .table-summation th.bb,
+.summation-view.summation-view-for-print .form-body .table-summation td.bb {
+	border-bottom-color:#000;
+}
